@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project name="engine" basedir="." default="all">
+
+<!--===================================
+properties
+====================================-->
+    <property name="home.dir" value="." />
+    <property name="src.dir" value="src" />
+    <property name="classes.dir" value="bin" />
+    <property name="images.dir" value="img" />
+    <property name="jarfile" value="hackengine.jar" />
+
+    <patternset id="sources">
+        <include name="*.java" />
+    </patternset>
+ 
+<!--===================================
+classpath
+====================================-->
+    <path id="classpath">
+        <pathelement location="${src.dir}" />
+    </path>
+
+<!--===================================
+default target
+====================================-->
+    <target name="all" depends="jar"/>
+
+<!--===================================
+prepare directories
+====================================-->
+    <target name="prepare">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+<!--===================================
+clean up
+====================================-->
+    <target name="clean">
+        <delete dir="${classes.dir}" />
+    </target>
+
+<!--===================================
+compile
+====================================-->
+    <target name="compile" depends="prepare">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" source="1.5" target="1.5">
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+<!--===================================
+jar
+====================================-->
+<!--    <target name="jar" depends="compile"> -->
+    <target name="jar">
+        <jar jarfile="${jarfile}">
+            <fileset dir="${classes.dir}" includes="**/*.class" />
+            <fileset dir="." includes="${images.dir}/*.png" />
+            <fileset dir="." includes="${images.dir}/*.PNG" />
+	</jar>
+    </target>
+
+</project>

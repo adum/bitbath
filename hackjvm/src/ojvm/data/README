@@ -1,0 +1,13 @@
+Various kinds of data manipulated by the virtual machine ...
+
+One class hierarchy is rooted at JavaValue: it represents all Java
+values (primitive and reference values).
+
+There is also JavaObject which is a representation of objects (not
+references the actual objects).
+
+Another class hierarchy is rooted at InternalObject: it represents all
+things needed by the JVM to represent JavaValues. For example,
+internal representations of classes, methods, etc
+
+No operation in this package needs access to the machine state.

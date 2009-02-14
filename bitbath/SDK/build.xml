@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project name="BitBathSDK" basedir="." default="all">
+
+<!--===================================
+properties
+====================================-->
+    <property name="home.dir" value="." />
+    <property name="src.dir" value="src" />
+    <property name="classes.dir" value="bin" />
+    <property name="lib.dir" value="lib" />
+
+    <patternset id="sources">
+        <include name="*.java" />
+    </patternset>
+ 
+<!--===================================
+classpath
+====================================-->
+    <path id="classpath">
+        <pathelement location="${src.dir}" />
+        <pathelement location="${lib.dir}/hackengine.jar" />
+    </path>
+
+<!--===================================
+default target
+====================================-->
+    <target name="all" depends="compile"/>
+
+<!--===================================
+prepare directories
+====================================-->
+    <target name="prepare">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+<!--===================================
+clean up
+====================================-->
+    <target name="clean">
+        <delete dir="${classes.dir}" />
+    </target>
+
+<!--===================================
+compile
+====================================-->
+    <target name="compile" depends="prepare">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" source="1.5" target="1.5">
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+<!--===================================
+jar-angler
+====================================-->
+    <target name="jar-clover" depends="compile">
+        <jar jarfile="luckyclover.jar">
+            <fileset dir="${classes.dir}/" includes="clover/*.class" />
+            <manifest>
+                    <attribute name="Built-By" value="BitBath SDK"/>
+                    <attribute name="Main-Class" value="clover.LuckyClover"/>
+            </manifest>
+	</jar>
+    </target>
+
+</project>

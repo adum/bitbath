@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>BitBath SDK v389</title>
+</head>
+<body>
+
+<h1>BitBath SDK</h1>
+
+Hi, and welcome to the BitBath SDK. this package will help you produce bots capable of fighting in the BitBath arena.
+
+<h2>Quick Start</h2>
+Launch the RunSimulator.bat file (from Windows) or RunSimulator.sh (from Linux). From the GUI, select two bots to run. From the bin folder, choose Nero.class for one and Genghis.class for the other. Hit the Go button and watch them duel.<p>
+
+Check out Nero.java to see how a fully-functional bot can be written in 20 lines of Java!<p>
+
+<h2>The Game</h2>
+BitBath is a strategy game pitting two opposing bot armies. Each team begins with one city and one unit. The cities produce new units, and the units can fight and capture neutral and enemy cities.<p>
+
+Movement in this game is continuous, and all locations are expressed as floating point numbers. There are three types of terrain: grass, forest, and swamp. Different units move at different speeds in the different terrain types, and take damage differently too.<p>
+
+All combat is handled automatically: if a bot moves in range of an enemy or non-friendly city, it will attack it. There is no way, however, to choose a target. Bots will shoot at cities before enemy units. Therefore, all units need to do is to move about.<p>
+
+Every time an order is issued, such as MOVE, the unit will delay for a small time before beginning to execute. Therefore, it is important not to continually issue orders to a unit, as it will always be waiting to start execution.<p>
+
+Units heal over time. You can see a bar representing health under each unit (including cities).<p>
+
+The game ends when a team has lost all their cities. (Or, if the game lasts 6,000 time units, whoever has the most (cities * 100 + units) wins.)<p>
+
+The world is always 50x50 in size, and there are always 7 cities.<p>
+
+<h2>Bot API</h2>
+Bots are Java classes. The class name is unimportant, but there must exist two public methods in the class, which accept various parameters. The first method is called "think" and deals with movement of units. The second is called "build" and is how you control what units a city will produce.<p>
+
+Note: there is no centralized command and control, nor any global view of the world. All units move autonomously and can only see their nearby environment.<p>
+
+A lot of what follows is more easily explained by looking at example code.<p>
+
+The classfile version must be 1.5 or lower. (If you're using Java 1.6, just make sure you set target to 1.5 when compiling.) If you use multiple classes, you must produce a JAR file for uploading to hacker.org. See the Multiple Classes section below.<p>
+
+Note: just because the final product is Java bytecode does not mean that you must program in Java. Lots of languages compile down or convert into Java bytecode. (See a <a href="http://www.robert-tolksdorf.de/vmlanguages.html">list of 200</a> (not all appropriate).)<p>
+
+<h2>Unit "think" Method</h2>
+
+The think method usually gets called every 0.4 time units, which is pretty often. The method looks like this:<p>
+
+<code>
+<pre>
+public Object think(double dx, double dy, double x, double y, boolean moving, int terrain,
+                int ourID, int ourType, double hp, double maxHP, double range, double time,
+                double[] objX, double[] objY, int[] objID, int[] objFaction, int[] objType, int[][] incomingRadio)
+</pre>
+</code>
+<ul>
+<li>dx, dy: dimensions of the board
+<li>x, y: position of current unit
+<li>moving: whether or not this unit is in motion
+<li>terrain: type of terrain we're on. 0 = grass, 1 = forest, 2 = swamp
+<li>ourID: our unique ID
+<li>ourType: our unit type (see table below)
+<li>hp: our hit points
+<li>maxHP: max hit points if fully healed
+<li>range: the range of our weapon
+<li>time: current game clock
+<li>information about nearby objects is sent in separate arrays
+<ul>
+<li>objX, objY: positions
+<li>objID: unique ID
+<li>objFaction: what faction (team) the object is a part of. 0 always means our faction. An unoccupied city will have a faction value of -1. Other teams have a faction value of greater than 0.
+<li>objType: type of object (see table below). A city is of type 0.
+</ul>
+<li>incomingRadio: radio emitted from nearby units on our team (see radio section for more info)
+</ul>
+<p>
+
+The "think" method returns an object, in which certain public members are instructions for moving the unit. The first is:<br>
+<code>
+public int orderType;
+</code>
+<br>
+This determines what the unit should do. Right now the options are:<br>
+<table border=0>
+<tr><th>order</th><th>value</th></tr>
+<td>MOVE</td><td>1</td></tr>
+<td>STOP</td><td>2</td></tr>
+</table>
+<br>
+For the MOVE order, there are two other class members that determine the destination:<br>
+<code>public double destX, destY;</code><p>
+When a bot has a MOVE order, it will automatically continue moving in that direction, and then stop when it arrives, without the bot having to manually step the path. It will fire at any enemies it meets on the way. Note that destinations are slightly randomized to avoid bots sitting exactly on top of eachother.<p>
+
+The STOP order executes immediately.<p>
+
+Every time you issue a MOVE order, the unit will stop for 2.5 time units before executing the order. No "think" method will be called during this time.<p>
+
+<h2>Unit "build" Method</h2>
+
+The build method determines what to build in a city, out of the three unit types. This method gets called typically ten times per time unit, which is a lot more often than a city actually pops out a new unit. Therefore, if your city is currently building something (the passed in buildItem is non-zero), you should probably return 0 to continue your build. The method looks like this:<p>
+
+<code>
+<pre>
+public int build(double dx, double dy, double x, double y, int terrain, int id, int buildItem,
+                double hp, double maxHP, double time,
+                double[] objX, double[] objY, int[] objID, int[] objFaction, int[] objType, int[][] incomingRadio)
+</pre>
+</code>
+<ul>
+<li>most parameters are the same as described under the "think" method section
+<li>buildItem: the item you're currently building. 0 if nothing is being built.
+</ul>
+<p>
+
+The "build" method returns an integer, which is the type of object to build (see table below). Units pop out near, but not precisely on, the city<p>
+
+<h2>Unit Types</h2>
+<table border=1 cellspacing=0>
+<tr><th></th><th><img src="img/Grunt.png" width=40 height=40></th><th><img src="img/Hovercraft.png" width=40 height=40></th><th><img src="img/Artil.png" width=40 height=40></th></tr>
+<tr><th>Name</th><td>Grunt</td><td>Hovercraft</td><td>Artillery</td></tr>
+<tr><th>Type ID</th><td>1</td><td>2</td><td>3</td></tr>
+<tr><th>Build Time</th><td>32</td><td>36</td><td>40</td></tr>
+<tr><th>Vision</th><td>12</td><td>12</td><td>12</td></tr>
+<tr><th>Range</th><td>4.5</td><td>5.5</td><td>5</td></tr>
+<tr><th>Shields</th><td>1</td><td>1</td><td>1</td></tr>
+<tr><th>Damage</th><td>0.2</td><td>0.1</td><td>0.2</td></tr>
+<tr><th>Reload Time</th><td>1</td><td>1</td><td>1.2</td></tr>
+<tr><th>Damage Type</th><td>Laser</td><td>Fire</td><td>Shell</td></tr>
+<tr><th>Damage on Swamp</th><td>2x</td><td>0.5x</td><td>2x</td></tr>
+<tr><th>Damage in Forest</th><td>0.7x</td><td>2x</td><td>0.5x</td></tr>
+<tr><th>Laser Damage</th><td>1x</td><td>2.5x</td><td>1x</td></tr>
+<tr><th>Fire Damage</th><td>0.4x</td><td>1x</td><td>2.5x</td></tr>
+<tr><th>Shell Damage</th><td>2.5x</td><td>1x</td><td>1x</td></tr>
+<tr><th colspan=4>&nbsp;</th></tr>
+<tr><th>Grass Movement</th><td>1x</td><td>0.7x</td><td>0.8x</td></tr>
+<tr><th>Swamp Movement</th><td>0.1x</td><td>0.9x</td><td>0.05x</td></tr>
+<tr><th>Forest Movement</th><td>0.7x</td><td>0.1x</td><td>0.1x</td></tr>
+</table>
+<p>
+
+Here's an example of how the damage modifiers work: let's say a Grunt attacks a Hovercraft, who is sitting in in forest. The Grunt does laser damage, which is 2.5x against Hovercraft. A Hovercraft in the forest takes 2x damage. So total damage is: 0.2 * 2.5 * 2 = 1.0. A Hovercraft has shields of 1.0, so this is enough to kill in one shot!<p>
+
+Neutral cities maintain a separate damage counter for each faction trying to take them over. In other words, if one guy is sitting there hammering away at a city, another team can't come in and get a lucky hit to take the city over: they have to do the full amount of damage themselves. Note: cities take the same amount of damage no matter the terrain.<p>
+
+The Artillery has a special property: when it shells a target, any enemy units standing nearby (within 2 units of distance) also get hit, for half the damage of the original barrage. This makes it the only unit with splash damage.<p>
+
+<h2>Radio</h2>
+Each bot exists in its own VM, and cannot access memory of another bot directly. They can, however, communicate to eachother over radio. A radio signal is four 32-bit integers, and can be set during the "think" method. What a bot puts in its radio is completely up to the bot designer. All bots nearby (in field of vision) will receive this radio signal, and can use it to help implement strategies on a grand scale. Of course, you only receive radio from bots on your own team.<p>
+
+Please see the Herd.java example bot to see radio used in the game. This bot gathers a group of comrades around, and then sets off in a unified direction by communicating that direction over radio.<p>
+
+When a bot receives an incomingRadio parameter for "think" or "build", this is a multidimensional array. The first dimension is for the different radio signals coming in. The second dimension is 5 ints long. The first of these is the ID of the unit that originated the signal, and the next four ints are the signal itself. This lets you trace the origin of the signal by looking up the unit's position in the unit list that comes to the bot. Just remember to offset by one int when examining the signal.<p>
+
+<h2>HackJVM</h2>
+For reasons of both security and execution control, the battles run under a special JVM called hacked HackJVM (a slightly modified version of <a href="http://www.cs.indiana.edu/~sabry/ojvm/">Amr Sabry's OJVM</a>.) This JVM is completely hosted in Java. It controls security as well as allowing precise limits on how many instructions can be used each time a bot thinks. Additionally, all entropy is controlled externally.<p>
+
+The HackJVM comes with its own rt.jar (the bootstrap classes that Java provides by default, such as java.lang.Object and System). This is a very simplified stripped down version of Apache's Harmony runtime. It's only 100k. It can't do any advanced stuff like opening a socket (that would be bad!) or many kinds of I/O, but can handle basic types, exceptions, and some other simple things. You may create a java.util.Vector class if you wish -- other collections classes will come in the future. You can call System.out.println with a String argument. This can be useful if you need to debug your code running on HackJVM specifically.<p>
+
+Each bot instance gets its own class -- in fact, it gets its own JVM instance.<p>
+
+<h2>Instruction Limit</h2>
+In one "tick" on the clock -- one discrete moment -- all the bots on all teams typically get a chance to think. However, each team must share a common pool of cycles. Together, all bots on a team get only 100,000 instructions (Java bytecode instructions) per tick. Simple bots will come well under this, even with hundreds of units. However, more complicated strategies must think about the cycles they use. Should a unit think too long, and push the cycles over 100k, the rest of the bots won't get a chance to think that turn. They will, however, be first in line on the next tick.<p>
+
+The hard limit for one bot to think is 1,000,000 instructions. This would mean that no other bot on that team would get a chance to think for the next ten ticks.<p>
+
+<h2>Memory Limit</h2>
+Officially, each bot has a 1MB memory limit. However, this is currently not enforced; the VM has no mechanism right now. It will be enforced in the future, however, so please stick to this limit.<p>
+
+<h2>Simulator</h2>
+Running the RunSimulator.bat file will open a simulator. This Java Swing GUI presents basic options for choosing two bots to fight against eachother. Select the class files for each bot and hit Go. By controlling the seed you should control all entropy in the executing bots, which allows behavior to be reproduced.<p>
+
+The simulator will allow you to run bots natively (not native in the normal sense of machine code, but native to the hosted JVM). Only do this for trusted code! There are two reasons to use this: it is approximately 600 times faster, and will allow you to debug your bot code. However, there are some important considerations. First, only trusted code should be run natively because there are no security protections: malicious code could wipe your hard drive. Second, bots may behave differently with respects to pseudo-randomness -- unlike with the HackJVM, there's no way to control entropy here. This may not matter to most people, however. Thirdly, there's no guarantee that the code will execute exactly the same as under the HackJVM. The raw bytecould _should_ do the same things, but it's vital to double-check with the HackJVM before submitting to make sure. Also, the runtime classes are very restricted with the HackJVM, so a bot that goes and uses a java util hashmap class will work fine running as native, but quickly hit a wall with HackJVM. Fourthly, under the HackJVM the code will timeout from an infinite loop. No such luck with native. Fifthly, there are some known but relatively obscure bugs in the HackJVM, so you have to check you don't hit one.<p>
+
+After hitting the Go button, a window called "Watch Bots" appears, and the game runs in this. Along the right-hand side, some metadata about the bots will display as they move, such as how many instructions they took to think on their last move. Along the bottom is a slider bar that controls the speed when you hit Go on this window (hit Fast to max it out).<p>
+
+By clicking the "Info" checkbox, you can see some basic information about the game. When you're running under the HackJVM, this info will include how many instructions your bots are taking up each cycle. Also, this will draw some circles on the game screen. The yellow circle represents the range of the bot's weapon, and the white circle shows how far it can see.<p>
+
+<h2>Sample Bots</h2>
+For your edification, three sample bots have been provided with this SDK. They live in the src directory: Genghis, Herd, and Nero. They are extremely simple and won't get you far.
+
+<h2>Tools</h2>
+To develop your own bot, you'll need a JDK to compile your classes. 1.5 or 1.6 is recommended, but make sure to leave target as 1.5.
+
+<h2>Eclipse</h2>
+
+We include a project for everyone's favorite IDE with the SDK. Just launch the RunSimulator class to get things going inside Eclipse. Setting the Native option will enable you to set breakpoints inside your bots to help debug.
+
+<h2>Ant</h2>
+An ant build file is included (build.xml). Type 'ant' from the main directory to build the class files.
+
+<h2>Submitting Your Bot</h2>
+Go to http://www.hacker.org/bitbath/ to submit your bot online and see how it matches up against the fruit of other evil genious BitBath tacticians.
+
+<h2>Multiple Classes</h2>
+You are free to construct a bot that comprises multiple Java classes. In the simulator, you can just point to the main class file containing the "think" and "build" methods, and it will find any other classes in the same directory that it needs. (If your other classes are in different directories (different packages), you must run the simulator by pointing at a JAR file instead.)<p>
+
+Before you can upload your bot, you must package the classes together into a single file. We use the standard JAR file for this purpose. JAR files contain a manifest file, which contains a list of attributes. For hacker.org, the only manifest attribute that counts is "Main-Class", which must be the fully-qualified class name of your main class (the one that contains "think".) For example, let's say your bot class is called "Bar", and it's in the "foo" package, then the "Main-Class" attribute would have a value of "foo.Bar".<p>
+
+The SDK contains an example of how to build a bot that uses multiple classes. This bot is called "LuckyClover." The source files can be found in /src/clover. The ant file (build.xml) in the main folder has a target called "jar-clover" which will produce the JAR file out of the Clover classes, along with the correct manifest. This bot is also an example of how you can return class objects for orders that aren't the bot's own class.<p>
+
+<h2>More Information</h2>
+Graphics curtesy of Hard Vacuum. For more info, questions, and feedback, please see the forum on hacker.org!<p>
+
+</body>

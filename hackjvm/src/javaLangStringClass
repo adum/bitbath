@@ -1,0 +1,4033 @@
+public final class java.lang.String extends java.lang.Object implements java.io.Serializable java.lang.Comparable 
+private [C value = null
+private int offset = null
+private int count = null
+private static java.lang.ThreadLocal btcConverter = null
+private static java.lang.ThreadLocal ctbConverter = null
+private static final long serialVersionUID = -6849794470754667710
+private static final [Ljava/io/ObjectStreamField; serialPersistentFields = null
+public static final java.util.Comparator CASE_INSENSITIVE_ORDER = null
+static  <clinit> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 0
+Instructions:
+0	aconst_null
+1	putstatic java.lang.String :: btcConverter : java.lang.ThreadLocal
+2	.
+3	.
+4	aconst_null
+5	putstatic java.lang.String :: ctbConverter : java.lang.ThreadLocal
+6	.
+7	.
+8	getstatic java.io.ObjectStreamClass :: NO_FIELDS : [Ljava/io/ObjectStreamField;
+9	.
+10	.
+11	putstatic java.lang.String :: serialPersistentFields : [Ljava/io/ObjectStreamField;
+12	.
+13	.
+14	new java.lang.String$1
+15	.
+16	.
+17	dup
+18	invokespecial java.lang.String$1 :: <init> : ()V
+19	.
+20	.
+21	putstatic java.lang.String :: CASE_INSENSITIVE_ORDER : java.util.Comparator
+22	.
+23	.
+24	return
+Exception handlers:
+
+
+public  <init> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	newarray char
+7	.
+8	putfield java.lang.String :: value : [C
+9	.
+10	.
+11	return
+Exception handlers:
+
+
+ <init> : (II[C)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 4
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	aload_3
+6	putfield java.lang.String :: value : [C
+7	.
+8	.
+9	aload_0
+10	iload_1
+11	putfield java.lang.String :: offset : int
+12	.
+13	.
+14	aload_0
+15	iload_2
+16	putfield java.lang.String :: count : int
+17	.
+18	.
+19	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	aload_1
+6	invokevirtual java.lang.String :: length : ()I
+7	.
+8	.
+9	putfield java.lang.String :: count : int
+10	.
+11	.
+12	aload_0
+13	aload_0
+14	getfield java.lang.String :: count : int
+15	.
+16	.
+17	newarray char
+18	.
+19	putfield java.lang.String :: value : [C
+20	.
+21	.
+22	aload_1
+23	iconst_0
+24	aload_0
+25	getfield java.lang.String :: count : int
+26	.
+27	.
+28	aload_0
+29	getfield java.lang.String :: value : [C
+30	.
+31	.
+32	iconst_0
+33	invokevirtual java.lang.String :: getChars : (II[CI)V
+34	.
+35	.
+36	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/StringBuffer;)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_1
+5	astore_2
+6	aload_2
+7	monitorenter
+8	aload_1
+9	invokevirtual java.lang.StringBuffer :: setShared : ()V
+10	.
+11	.
+12	aload_0
+13	aload_1
+14	invokevirtual java.lang.StringBuffer :: getValue : ()[C
+15	.
+16	.
+17	putfield java.lang.String :: value : [C
+18	.
+19	.
+20	aload_0
+21	iconst_0
+22	putfield java.lang.String :: offset : int
+23	.
+24	.
+25	aload_0
+26	aload_1
+27	invokevirtual java.lang.StringBuffer :: length : ()I
+28	.
+29	.
+30	putfield java.lang.String :: count : int
+31	.
+32	.
+33	aload_2
+34	monitorexit
+35	goto 6
+36	.
+37	.
+38	aload_2
+39	monitorexit
+40	athrow
+41	return
+Exception handlers:
+Exception Handler
+start_pc = 8
+end_pc = 33
+handler_pc = 38
+catchType = null
+
+
+
+public  <init> : ([B)V throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	iconst_0
+3	aload_1
+4	arraylength
+5	invokestatic sun.io.ByteToCharConverter :: getDefault : ()Lsun/io/ByteToCharConverter;
+6	.
+7	.
+8	invokespecial java.lang.String :: <init> : ([BIILsun/io/ByteToCharConverter;)V
+9	.
+10	.
+11	return
+Exception handlers:
+
+
+public  <init> : ([BI)V throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 3
+Instructions:
+0	aload_0
+1	aload_1
+2	iload_2
+3	iconst_0
+4	aload_1
+5	arraylength
+6	invokespecial java.lang.String :: <init> : ([BIII)V
+7	.
+8	.
+9	return
+Exception handlers:
+
+
+public  <init> : ([BII)V throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 4
+Instructions:
+0	aload_0
+1	aload_1
+2	iload_2
+3	iload_3
+4	invokestatic sun.io.ByteToCharConverter :: getDefault : ()Lsun/io/ByteToCharConverter;
+5	.
+6	.
+7	invokespecial java.lang.String :: <init> : ([BIILsun/io/ByteToCharConverter;)V
+8	.
+9	.
+10	return
+Exception handlers:
+
+
+public  <init> : ([BIII)V throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 7
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	iload_3
+5	ifge 12
+6	.
+7	.
+8	new java.lang.StringIndexOutOfBoundsException
+9	.
+10	.
+11	dup
+12	iload_3
+13	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+14	.
+15	.
+16	athrow
+17	iload 4
+18	.
+19	ifge 13
+20	.
+21	.
+22	new java.lang.StringIndexOutOfBoundsException
+23	.
+24	.
+25	dup
+26	iload 4
+27	.
+28	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+29	.
+30	.
+31	athrow
+32	iload_3
+33	aload_1
+34	arraylength
+35	iload 4
+36	.
+37	isub
+38	if_icmple 15
+39	.
+40	.
+41	new java.lang.StringIndexOutOfBoundsException
+42	.
+43	.
+44	dup
+45	iload_3
+46	iload 4
+47	.
+48	iadd
+49	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+50	.
+51	.
+52	athrow
+53	iload 4
+54	.
+55	newarray char
+56	.
+57	astore 5
+58	.
+59	aload_0
+60	iload 4
+61	.
+62	putfield java.lang.String :: count : int
+63	.
+64	.
+65	aload_0
+66	aload 5
+67	.
+68	putfield java.lang.String :: value : [C
+69	.
+70	.
+71	iload_2
+72	ifne 37
+73	.
+74	.
+75	iload 4
+76	.
+77	istore 6
+78	.
+79	goto 19
+80	.
+81	.
+82	aload 5
+83	.
+84	iload 6
+85	.
+86	aload_1
+87	iload 6
+88	.
+89	iload_3
+90	iadd
+91	baload
+92	sipush 255
+93	.
+94	.
+95	iand
+96	int2char
+97	castore
+98	iload 6
+99	.
+100	iinc 6 -1
+101	.
+102	.
+103	ifgt -21
+104	.
+105	.
+106	goto 41
+107	.
+108	.
+109	iload_2
+110	bipush 8
+111	.
+112	ishl
+113	istore_2
+114	iload 4
+115	.
+116	istore 6
+117	.
+118	goto 21
+119	.
+120	.
+121	aload 5
+122	.
+123	iload 6
+124	.
+125	iload_2
+126	aload_1
+127	iload 6
+128	.
+129	iload_3
+130	iadd
+131	baload
+132	sipush 255
+133	.
+134	.
+135	iand
+136	ior
+137	int2char
+138	castore
+139	iload 6
+140	.
+141	iinc 6 -1
+142	.
+143	.
+144	ifgt -23
+145	.
+146	.
+147	return
+Exception handlers:
+
+
+public  <init> : ([BIILjava/lang/String;)V throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 5
+Instructions:
+0	aload_0
+1	aload_1
+2	iload_2
+3	iload_3
+4	aload 4
+5	.
+6	invokestatic java.lang.String :: getBTCConverter : (Ljava/lang/String;)Lsun/io/ByteToCharConverter;
+7	.
+8	.
+9	invokespecial java.lang.String :: <init> : ([BIILsun/io/ByteToCharConverter;)V
+10	.
+11	.
+12	return
+Exception handlers:
+
+
+private  <init> : ([BIILsun/io/ByteToCharConverter;)V throws null
+Code: 
+Code Attribute:
+maxStack = 8
+maxLocals = 7
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	iload_3
+5	ifge 13
+6	.
+7	.
+8	new java.lang.StringIndexOutOfBoundsException
+9	.
+10	.
+11	dup
+12	ldc "length must be >= 0"
+13	.
+14	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (Ljava/lang/String;)V
+15	.
+16	.
+17	athrow
+18	iload_2
+19	ifge 13
+20	.
+21	.
+22	new java.lang.StringIndexOutOfBoundsException
+23	.
+24	.
+25	dup
+26	ldc "offset must be >= 0"
+27	.
+28	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (Ljava/lang/String;)V
+29	.
+30	.
+31	athrow
+32	iload_2
+33	aload_1
+34	arraylength
+35	iload_3
+36	isub
+37	if_icmple 17
+38	.
+39	.
+40	new java.lang.StringIndexOutOfBoundsException
+41	.
+42	.
+43	dup
+44	iload_2
+45	aload_0
+46	getfield java.lang.String :: count : int
+47	.
+48	.
+49	iadd
+50	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+51	.
+52	.
+53	athrow
+54	aload 4
+55	.
+56	invokevirtual sun.io.ByteToCharConverter :: getMaxCharsPerByte : ()I
+57	.
+58	.
+59	iload_3
+60	imul
+61	istore 5
+62	.
+63	aload_0
+64	iload 5
+65	.
+66	newarray char
+67	.
+68	putfield java.lang.String :: value : [C
+69	.
+70	.
+71	aload_0
+72	aload 4
+73	.
+74	aload_1
+75	iload_2
+76	iload_2
+77	iload_3
+78	iadd
+79	aload_0
+80	getfield java.lang.String :: value : [C
+81	.
+82	.
+83	iconst_0
+84	iload 5
+85	.
+86	invokevirtual sun.io.ByteToCharConverter :: convert : ([BII[CII)I
+87	.
+88	.
+89	putfield java.lang.String :: count : int
+90	.
+91	.
+92	aload_0
+93	dup
+94	getfield java.lang.String :: count : int
+95	.
+96	.
+97	aload 4
+98	.
+99	aload_0
+100	getfield java.lang.String :: value : [C
+101	.
+102	.
+103	aload 4
+104	.
+105	invokevirtual sun.io.ByteToCharConverter :: nextCharIndex : ()I
+106	.
+107	.
+108	iload 5
+109	.
+110	invokevirtual sun.io.ByteToCharConverter :: flush : ([CII)I
+111	.
+112	.
+113	iadd
+114	putfield java.lang.String :: count : int
+115	.
+116	.
+117	goto 13
+118	.
+119	.
+120	pop
+121	aload_0
+122	aload 4
+123	.
+124	invokevirtual sun.io.ByteToCharConverter :: nextCharIndex : ()I
+125	.
+126	.
+127	putfield java.lang.String :: count : int
+128	.
+129	.
+130	aload_0
+131	getfield java.lang.String :: count : int
+132	.
+133	.
+134	iload 5
+135	.
+136	if_icmpge 32
+137	.
+138	.
+139	aload_0
+140	getfield java.lang.String :: count : int
+141	.
+142	.
+143	newarray char
+144	.
+145	astore 6
+146	.
+147	aload_0
+148	getfield java.lang.String :: value : [C
+149	.
+150	.
+151	iconst_0
+152	aload 6
+153	.
+154	iconst_0
+155	aload_0
+156	getfield java.lang.String :: count : int
+157	.
+158	.
+159	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+160	.
+161	.
+162	aload_0
+163	aload 6
+164	.
+165	putfield java.lang.String :: value : [C
+166	.
+167	.
+168	return
+Exception handlers:
+Exception Handler
+start_pc = 71
+end_pc = 117
+handler_pc = 120
+catchType = java.io.CharConversionException
+
+
+
+public  <init> : ([BLjava/lang/String;)V throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 3
+Instructions:
+0	aload_0
+1	aload_1
+2	iconst_0
+3	aload_1
+4	arraylength
+5	aload_2
+6	invokespecial java.lang.String :: <init> : ([BIILjava/lang/String;)V
+7	.
+8	.
+9	return
+Exception handlers:
+
+
+public  <init> : ([C)V throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	aload_1
+6	arraylength
+7	putfield java.lang.String :: count : int
+8	.
+9	.
+10	aload_0
+11	aload_0
+12	getfield java.lang.String :: count : int
+13	.
+14	.
+15	newarray char
+16	.
+17	putfield java.lang.String :: value : [C
+18	.
+19	.
+20	aload_1
+21	iconst_0
+22	aload_0
+23	getfield java.lang.String :: value : [C
+24	.
+25	.
+26	iconst_0
+27	aload_0
+28	getfield java.lang.String :: count : int
+29	.
+30	.
+31	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+32	.
+33	.
+34	return
+Exception handlers:
+
+
+public  <init> : ([CII)V throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 4
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	iload_2
+5	ifge 12
+6	.
+7	.
+8	new java.lang.StringIndexOutOfBoundsException
+9	.
+10	.
+11	dup
+12	iload_2
+13	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+14	.
+15	.
+16	athrow
+17	iload_3
+18	ifge 12
+19	.
+20	.
+21	new java.lang.StringIndexOutOfBoundsException
+22	.
+23	.
+24	dup
+25	iload_3
+26	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+27	.
+28	.
+29	athrow
+30	iload_2
+31	aload_1
+32	arraylength
+33	iload_3
+34	isub
+35	if_icmple 14
+36	.
+37	.
+38	new java.lang.StringIndexOutOfBoundsException
+39	.
+40	.
+41	dup
+42	iload_2
+43	iload_3
+44	iadd
+45	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+46	.
+47	.
+48	athrow
+49	aload_0
+50	iload_3
+51	newarray char
+52	.
+53	putfield java.lang.String :: value : [C
+54	.
+55	.
+56	aload_0
+57	iload_3
+58	putfield java.lang.String :: count : int
+59	.
+60	.
+61	aload_1
+62	iload_2
+63	aload_0
+64	getfield java.lang.String :: value : [C
+65	.
+66	.
+67	iconst_0
+68	iload_3
+69	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+70	.
+71	.
+72	return
+Exception handlers:
+
+
+public  charAt : (I)C throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	iload_1
+1	iflt 11
+2	.
+3	.
+4	iload_1
+5	aload_0
+6	getfield java.lang.String :: count : int
+7	.
+8	.
+9	if_icmplt 12
+10	.
+11	.
+12	new java.lang.StringIndexOutOfBoundsException
+13	.
+14	.
+15	dup
+16	iload_1
+17	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+18	.
+19	.
+20	athrow
+21	aload_0
+22	getfield java.lang.String :: value : [C
+23	.
+24	.
+25	iload_1
+26	aload_0
+27	getfield java.lang.String :: offset : int
+28	.
+29	.
+30	iadd
+31	caload
+32	ireturn
+Exception handlers:
+
+
+public  compareTo : (Ljava/lang/Object;)I throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	checkcast java.lang.String
+3	.
+4	.
+5	invokevirtual java.lang.String :: compareTo : (Ljava/lang/String;)I
+6	.
+7	.
+8	ireturn
+Exception handlers:
+
+
+public  compareTo : (Ljava/lang/String;)I throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 11
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: count : int
+2	.
+3	.
+4	istore_2
+5	aload_1
+6	getfield java.lang.String :: count : int
+7	.
+8	.
+9	istore_3
+10	iload_2
+11	iload_3
+12	invokestatic java.lang.Math :: min : (II)I
+13	.
+14	.
+15	istore 4
+16	.
+17	aload_0
+18	getfield java.lang.String :: value : [C
+19	.
+20	.
+21	astore 5
+22	.
+23	aload_1
+24	getfield java.lang.String :: value : [C
+25	.
+26	.
+27	astore 6
+28	.
+29	aload_0
+30	getfield java.lang.String :: offset : int
+31	.
+32	.
+33	istore 7
+34	.
+35	aload_1
+36	getfield java.lang.String :: offset : int
+37	.
+38	.
+39	istore 8
+40	.
+41	goto 36
+42	.
+43	.
+44	aload 5
+45	.
+46	iload 7
+47	.
+48	iinc 7 1
+49	.
+50	.
+51	caload
+52	istore 9
+53	.
+54	aload 6
+55	.
+56	iload 8
+57	.
+58	iinc 8 1
+59	.
+60	.
+61	caload
+62	istore 10
+63	.
+64	iload 9
+65	.
+66	iload 10
+67	.
+68	if_icmpeq 9
+69	.
+70	.
+71	iload 9
+72	.
+73	iload 10
+74	.
+75	isub
+76	ireturn
+77	iload 4
+78	.
+79	iinc 4 -1
+80	.
+81	.
+82	ifne -38
+83	.
+84	.
+85	iload_2
+86	iload_3
+87	isub
+88	ireturn
+Exception handlers:
+
+
+public  compareToIgnoreCase : (Ljava/lang/String;)I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	getstatic java.lang.String :: CASE_INSENSITIVE_ORDER : java.util.Comparator
+1	.
+2	.
+3	aload_0
+4	aload_1
+5	invokeinterface java.util.Comparator :: compare(3) : (Ljava/lang/Object;Ljava/lang/Object;)I
+6	.
+7	.
+8	.
+9	.
+10	ireturn
+Exception handlers:
+
+
+public  concat : (Ljava/lang/String;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 4
+Instructions:
+0	aload_1
+1	invokevirtual java.lang.String :: length : ()I
+2	.
+3	.
+4	istore_2
+5	iload_2
+6	ifne 5
+7	.
+8	.
+9	aload_0
+10	areturn
+11	aload_0
+12	getfield java.lang.String :: count : int
+13	.
+14	.
+15	iload_2
+16	iadd
+17	newarray char
+18	.
+19	astore_3
+20	aload_0
+21	iconst_0
+22	aload_0
+23	getfield java.lang.String :: count : int
+24	.
+25	.
+26	aload_3
+27	iconst_0
+28	invokevirtual java.lang.String :: getChars : (II[CI)V
+29	.
+30	.
+31	aload_1
+32	iconst_0
+33	iload_2
+34	aload_3
+35	aload_0
+36	getfield java.lang.String :: count : int
+37	.
+38	.
+39	invokevirtual java.lang.String :: getChars : (II[CI)V
+40	.
+41	.
+42	new java.lang.String
+43	.
+44	.
+45	dup
+46	iconst_0
+47	aload_0
+48	getfield java.lang.String :: count : int
+49	.
+50	.
+51	iload_2
+52	iadd
+53	aload_3
+54	invokespecial java.lang.String :: <init> : (II[C)V
+55	.
+56	.
+57	areturn
+Exception handlers:
+
+
+public static  copyValueOf : ([C)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	aload_0
+1	iconst_0
+2	aload_0
+3	arraylength
+4	invokestatic java.lang.String :: copyValueOf : ([CII)Ljava/lang/String;
+5	.
+6	.
+7	areturn
+Exception handlers:
+
+
+public static  copyValueOf : ([CII)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 3
+Instructions:
+0	new java.lang.String
+1	.
+2	.
+3	dup
+4	aload_0
+5	iload_1
+6	iload_2
+7	invokespecial java.lang.String :: <init> : ([CII)V
+8	.
+9	.
+10	areturn
+Exception handlers:
+
+
+public  endsWith : (Ljava/lang/String;)Z throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	aload_0
+3	getfield java.lang.String :: count : int
+4	.
+5	.
+6	aload_1
+7	getfield java.lang.String :: count : int
+8	.
+9	.
+10	isub
+11	invokevirtual java.lang.String :: startsWith : (Ljava/lang/String;I)Z
+12	.
+13	.
+14	ireturn
+Exception handlers:
+
+
+public  equals : (Ljava/lang/Object;)Z throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 8
+Instructions:
+0	aload_0
+1	aload_1
+2	if_acmpne 5
+3	.
+4	.
+5	iconst_1
+6	ireturn
+7	aload_1
+8	ifnull 85
+9	.
+10	.
+11	aload_1
+12	instanceof java.lang.String
+13	.
+14	.
+15	ifeq 78
+16	.
+17	.
+18	aload_1
+19	checkcast java.lang.String
+20	.
+21	.
+22	astore_2
+23	aload_0
+24	getfield java.lang.String :: count : int
+25	.
+26	.
+27	istore_3
+28	iload_3
+29	aload_2
+30	getfield java.lang.String :: count : int
+31	.
+32	.
+33	if_icmpne 60
+34	.
+35	.
+36	aload_0
+37	getfield java.lang.String :: value : [C
+38	.
+39	.
+40	astore 4
+41	.
+42	aload_2
+43	getfield java.lang.String :: value : [C
+44	.
+45	.
+46	astore 5
+47	.
+48	aload_0
+49	getfield java.lang.String :: offset : int
+50	.
+51	.
+52	istore 6
+53	.
+54	aload_2
+55	getfield java.lang.String :: offset : int
+56	.
+57	.
+58	istore 7
+59	.
+60	goto 24
+61	.
+62	.
+63	aload 4
+64	.
+65	iload 6
+66	.
+67	iinc 6 1
+68	.
+69	.
+70	caload
+71	aload 5
+72	.
+73	iload 7
+74	.
+75	iinc 7 1
+76	.
+77	.
+78	caload
+79	if_icmpeq 5
+80	.
+81	.
+82	iconst_0
+83	ireturn
+84	iload_3
+85	iinc 3 -1
+86	.
+87	.
+88	ifne -25
+89	.
+90	.
+91	iconst_1
+92	ireturn
+93	iconst_0
+94	ireturn
+Exception handlers:
+
+
+public  equalsIgnoreCase : (Ljava/lang/String;)Z throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 2
+Instructions:
+0	aload_1
+1	ifnull 29
+2	.
+3	.
+4	aload_1
+5	getfield java.lang.String :: count : int
+6	.
+7	.
+8	aload_0
+9	getfield java.lang.String :: count : int
+10	.
+11	.
+12	if_icmpne 18
+13	.
+14	.
+15	aload_0
+16	iconst_1
+17	iconst_0
+18	aload_1
+19	iconst_0
+20	aload_0
+21	getfield java.lang.String :: count : int
+22	.
+23	.
+24	invokevirtual java.lang.String :: regionMatches : (ZILjava/lang/String;II)Z
+25	.
+26	.
+27	ifne 7
+28	.
+29	.
+30	iconst_0
+31	goto 4
+32	.
+33	.
+34	iconst_1
+35	ireturn
+Exception handlers:
+
+
+private static  getBTCConverter : (Ljava/lang/String;)Lsun/io/ByteToCharConverter; throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 3
+Instructions:
+0	aconst_null
+1	astore_1
+2	getstatic java.lang.String :: btcConverter : java.lang.ThreadLocal
+3	.
+4	.
+5	ifnonnull 13
+6	.
+7	.
+8	new java.lang.ThreadLocal
+9	.
+10	.
+11	dup
+12	invokespecial java.lang.ThreadLocal :: <init> : ()V
+13	.
+14	.
+15	putstatic java.lang.String :: btcConverter : java.lang.ThreadLocal
+16	.
+17	.
+18	getstatic java.lang.String :: btcConverter : java.lang.ThreadLocal
+19	.
+20	.
+21	invokevirtual java.lang.ThreadLocal :: get : ()Ljava/lang/Object;
+22	.
+23	.
+24	checkcast java.lang.ref.SoftReference
+25	.
+26	.
+27	astore_2
+28	aload_2
+29	ifnull 26
+30	.
+31	.
+32	aload_2
+33	invokevirtual java.lang.ref.SoftReference :: get : ()Ljava/lang/Object;
+34	.
+35	.
+36	checkcast sun.io.ByteToCharConverter
+37	.
+38	.
+39	dup
+40	astore_1
+41	ifnull 14
+42	.
+43	.
+44	aload_0
+45	aload_1
+46	invokevirtual sun.io.ByteToCharConverter :: getCharacterEncoding : ()Ljava/lang/String;
+47	.
+48	.
+49	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+50	.
+51	.
+52	ifne 25
+53	.
+54	.
+55	aload_0
+56	invokestatic sun.io.ByteToCharConverter :: getConverter : (Ljava/lang/String;)Lsun/io/ByteToCharConverter;
+57	.
+58	.
+59	astore_1
+60	getstatic java.lang.String :: btcConverter : java.lang.ThreadLocal
+61	.
+62	.
+63	new java.lang.ref.SoftReference
+64	.
+65	.
+66	dup
+67	aload_1
+68	invokespecial java.lang.ref.SoftReference :: <init> : (Ljava/lang/Object;)V
+69	.
+70	.
+71	invokevirtual java.lang.ThreadLocal :: set : (Ljava/lang/Object;)V
+72	.
+73	.
+74	goto 7
+75	.
+76	.
+77	aload_1
+78	invokevirtual sun.io.ByteToCharConverter :: reset : ()V
+79	.
+80	.
+81	aload_1
+82	areturn
+Exception handlers:
+
+
+public  getBytes : ()[B throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokestatic sun.io.CharToByteConverter :: getDefault : ()Lsun/io/CharToByteConverter;
+2	.
+3	.
+4	invokespecial java.lang.String :: getBytes : (Lsun/io/CharToByteConverter;)[B
+5	.
+6	.
+7	areturn
+Exception handlers:
+
+
+public  getBytes : (II[BI)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 9
+Instructions:
+0	iload_1
+1	ifge 12
+2	.
+3	.
+4	new java.lang.StringIndexOutOfBoundsException
+5	.
+6	.
+7	dup
+8	iload_1
+9	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+10	.
+11	.
+12	athrow
+13	iload_2
+14	aload_0
+15	getfield java.lang.String :: count : int
+16	.
+17	.
+18	if_icmple 12
+19	.
+20	.
+21	new java.lang.StringIndexOutOfBoundsException
+22	.
+23	.
+24	dup
+25	iload_2
+26	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+27	.
+28	.
+29	athrow
+30	iload_1
+31	iload_2
+32	if_icmple 14
+33	.
+34	.
+35	new java.lang.StringIndexOutOfBoundsException
+36	.
+37	.
+38	dup
+39	iload_2
+40	iload_1
+41	isub
+42	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+43	.
+44	.
+45	athrow
+46	iload 4
+47	.
+48	istore 5
+49	.
+50	aload_0
+51	getfield java.lang.String :: offset : int
+52	.
+53	.
+54	iload_2
+55	iadd
+56	istore 6
+57	.
+58	aload_0
+59	getfield java.lang.String :: offset : int
+60	.
+61	.
+62	iload_1
+63	iadd
+64	istore 7
+65	.
+66	aload_0
+67	getfield java.lang.String :: value : [C
+68	.
+69	.
+70	astore 8
+71	.
+72	goto 19
+73	.
+74	.
+75	aload_3
+76	iload 5
+77	.
+78	iinc 5 1
+79	.
+80	.
+81	aload 8
+82	.
+83	iload 7
+84	.
+85	iinc 7 1
+86	.
+87	.
+88	caload
+89	int2byte
+90	bastore
+91	iload 7
+92	.
+93	iload 6
+94	.
+95	if_icmplt -20
+96	.
+97	.
+98	return
+Exception handlers:
+
+
+public  getBytes : (Ljava/lang/String;)[B throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	invokestatic java.lang.String :: getCTBConverter : (Ljava/lang/String;)Lsun/io/CharToByteConverter;
+3	.
+4	.
+5	invokespecial java.lang.String :: getBytes : (Lsun/io/CharToByteConverter;)[B
+6	.
+7	.
+8	areturn
+Exception handlers:
+
+
+private  getBytes : (Lsun/io/CharToByteConverter;)[B throws null
+Code: 
+Code Attribute:
+maxStack = 8
+maxLocals = 6
+Instructions:
+0	aload_1
+1	invokevirtual sun.io.CharToByteConverter :: reset : ()V
+2	.
+3	.
+4	aload_1
+5	invokevirtual sun.io.CharToByteConverter :: getMaxBytesPerChar : ()I
+6	.
+7	.
+8	aload_0
+9	getfield java.lang.String :: count : int
+10	.
+11	.
+12	imul
+13	istore_2
+14	iload_2
+15	newarray byte
+16	.
+17	astore_3
+18	iconst_0
+19	istore 4
+20	.
+21	iload 4
+22	.
+23	aload_1
+24	aload_0
+25	getfield java.lang.String :: value : [C
+26	.
+27	.
+28	aload_0
+29	getfield java.lang.String :: offset : int
+30	.
+31	.
+32	aload_0
+33	getfield java.lang.String :: offset : int
+34	.
+35	.
+36	aload_0
+37	getfield java.lang.String :: count : int
+38	.
+39	.
+40	iadd
+41	aload_3
+42	iconst_0
+43	iload_2
+44	invokevirtual sun.io.CharToByteConverter :: convertAny : ([CII[BII)I
+45	.
+46	.
+47	iadd
+48	istore 4
+49	.
+50	iload 4
+51	.
+52	aload_1
+53	aload_3
+54	aload_1
+55	invokevirtual sun.io.CharToByteConverter :: nextByteIndex : ()I
+56	.
+57	.
+58	iload_2
+59	invokevirtual sun.io.CharToByteConverter :: flushAny : ([BII)I
+60	.
+61	.
+62	iadd
+63	istore 4
+64	.
+65	goto 34
+66	.
+67	.
+68	pop
+69	new java.lang.InternalError
+70	.
+71	.
+72	dup
+73	new java.lang.StringBuffer
+74	.
+75	.
+76	dup
+77	ldc "Converter malfunction: "
+78	.
+79	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+80	.
+81	.
+82	aload_1
+83	invokevirtual java.lang.Object :: getClass : ()Ljava/lang/Class;
+84	.
+85	.
+86	invokevirtual java.lang.Class :: getName : ()Ljava/lang/String;
+87	.
+88	.
+89	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+90	.
+91	.
+92	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+93	.
+94	.
+95	invokespecial java.lang.InternalError :: <init> : (Ljava/lang/String;)V
+96	.
+97	.
+98	athrow
+99	iload 4
+100	.
+101	iload_2
+102	if_icmpge 22
+103	.
+104	.
+105	iload 4
+106	.
+107	newarray byte
+108	.
+109	astore 5
+110	.
+111	aload_3
+112	iconst_0
+113	aload 5
+114	.
+115	iconst_0
+116	iload 4
+117	.
+118	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+119	.
+120	.
+121	aload 5
+122	.
+123	areturn
+124	aload_3
+125	areturn
+Exception handlers:
+Exception Handler
+start_pc = 21
+end_pc = 65
+handler_pc = 68
+catchType = java.io.CharConversionException
+
+
+
+private static  getCTBConverter : (Ljava/lang/String;)Lsun/io/CharToByteConverter; throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 3
+Instructions:
+0	aconst_null
+1	astore_1
+2	getstatic java.lang.String :: ctbConverter : java.lang.ThreadLocal
+3	.
+4	.
+5	ifnonnull 13
+6	.
+7	.
+8	new java.lang.ThreadLocal
+9	.
+10	.
+11	dup
+12	invokespecial java.lang.ThreadLocal :: <init> : ()V
+13	.
+14	.
+15	putstatic java.lang.String :: ctbConverter : java.lang.ThreadLocal
+16	.
+17	.
+18	getstatic java.lang.String :: ctbConverter : java.lang.ThreadLocal
+19	.
+20	.
+21	invokevirtual java.lang.ThreadLocal :: get : ()Ljava/lang/Object;
+22	.
+23	.
+24	checkcast java.lang.ref.SoftReference
+25	.
+26	.
+27	astore_2
+28	aload_2
+29	ifnull 26
+30	.
+31	.
+32	aload_2
+33	invokevirtual java.lang.ref.SoftReference :: get : ()Ljava/lang/Object;
+34	.
+35	.
+36	checkcast sun.io.CharToByteConverter
+37	.
+38	.
+39	dup
+40	astore_1
+41	ifnull 14
+42	.
+43	.
+44	aload_0
+45	aload_1
+46	invokevirtual sun.io.CharToByteConverter :: getCharacterEncoding : ()Ljava/lang/String;
+47	.
+48	.
+49	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+50	.
+51	.
+52	ifne 25
+53	.
+54	.
+55	aload_0
+56	invokestatic sun.io.CharToByteConverter :: getConverter : (Ljava/lang/String;)Lsun/io/CharToByteConverter;
+57	.
+58	.
+59	astore_1
+60	getstatic java.lang.String :: ctbConverter : java.lang.ThreadLocal
+61	.
+62	.
+63	new java.lang.ref.SoftReference
+64	.
+65	.
+66	dup
+67	aload_1
+68	invokespecial java.lang.ref.SoftReference :: <init> : (Ljava/lang/Object;)V
+69	.
+70	.
+71	invokevirtual java.lang.ThreadLocal :: set : (Ljava/lang/Object;)V
+72	.
+73	.
+74	goto 7
+75	.
+76	.
+77	aload_1
+78	invokevirtual sun.io.CharToByteConverter :: reset : ()V
+79	.
+80	.
+81	aload_1
+82	areturn
+Exception handlers:
+
+
+public  getChars : (II[CI)V throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 5
+Instructions:
+0	iload_1
+1	ifge 12
+2	.
+3	.
+4	new java.lang.StringIndexOutOfBoundsException
+5	.
+6	.
+7	dup
+8	iload_1
+9	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+10	.
+11	.
+12	athrow
+13	iload_2
+14	aload_0
+15	getfield java.lang.String :: count : int
+16	.
+17	.
+18	if_icmple 12
+19	.
+20	.
+21	new java.lang.StringIndexOutOfBoundsException
+22	.
+23	.
+24	dup
+25	iload_2
+26	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+27	.
+28	.
+29	athrow
+30	iload_1
+31	iload_2
+32	if_icmple 14
+33	.
+34	.
+35	new java.lang.StringIndexOutOfBoundsException
+36	.
+37	.
+38	dup
+39	iload_2
+40	iload_1
+41	isub
+42	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+43	.
+44	.
+45	athrow
+46	aload_0
+47	getfield java.lang.String :: value : [C
+48	.
+49	.
+50	aload_0
+51	getfield java.lang.String :: offset : int
+52	.
+53	.
+54	iload_1
+55	iadd
+56	aload_3
+57	iload 4
+58	.
+59	iload_2
+60	iload_1
+61	isub
+62	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+63	.
+64	.
+65	return
+Exception handlers:
+
+
+public  hashCode : ()I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 6
+Instructions:
+0	iconst_0
+1	istore_1
+2	aload_0
+3	getfield java.lang.String :: offset : int
+4	.
+5	.
+6	istore_2
+7	aload_0
+8	getfield java.lang.String :: value : [C
+9	.
+10	.
+11	astore_3
+12	aload_0
+13	getfield java.lang.String :: count : int
+14	.
+15	.
+16	istore 4
+17	.
+18	iconst_0
+19	istore 5
+20	.
+21	goto 18
+22	.
+23	.
+24	bipush 31
+25	.
+26	iload_1
+27	imul
+28	aload_3
+29	iload_2
+30	iinc 2 1
+31	.
+32	.
+33	caload
+34	iadd
+35	istore_1
+36	iinc 5 1
+37	.
+38	.
+39	iload 5
+40	.
+41	iload 4
+42	.
+43	if_icmplt -19
+44	.
+45	.
+46	iload_1
+47	ireturn
+Exception handlers:
+
+
+public  indexOf : (I)I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	iload_1
+2	iconst_0
+3	invokevirtual java.lang.String :: indexOf : (II)I
+4	.
+5	.
+6	ireturn
+Exception handlers:
+
+
+public  indexOf : (II)I throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 6
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: offset : int
+2	.
+3	.
+4	aload_0
+5	getfield java.lang.String :: count : int
+6	.
+7	.
+8	iadd
+9	istore_3
+10	aload_0
+11	getfield java.lang.String :: value : [C
+12	.
+13	.
+14	astore 4
+15	.
+16	iload_2
+17	ifge 8
+18	.
+19	.
+20	iconst_0
+21	istore_2
+22	goto 13
+23	.
+24	.
+25	iload_2
+26	aload_0
+27	getfield java.lang.String :: count : int
+28	.
+29	.
+30	if_icmplt 5
+31	.
+32	.
+33	iconst_m1
+34	ireturn
+35	aload_0
+36	getfield java.lang.String :: offset : int
+37	.
+38	.
+39	iload_2
+40	iadd
+41	istore 5
+42	.
+43	goto 23
+44	.
+45	.
+46	aload 4
+47	.
+48	iload 5
+49	.
+50	caload
+51	iload_1
+52	if_icmpne 11
+53	.
+54	.
+55	iload 5
+56	.
+57	aload_0
+58	getfield java.lang.String :: offset : int
+59	.
+60	.
+61	isub
+62	ireturn
+63	iinc 5 1
+64	.
+65	.
+66	iload 5
+67	.
+68	iload_3
+69	if_icmplt -23
+70	.
+71	.
+72	iconst_m1
+73	ireturn
+Exception handlers:
+
+
+public  indexOf : (Ljava/lang/String;)I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	iconst_0
+3	invokevirtual java.lang.String :: indexOf : (Ljava/lang/String;I)I
+4	.
+5	.
+6	ireturn
+Exception handlers:
+
+
+public  indexOf : (Ljava/lang/String;I)I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 12
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: value : [C
+2	.
+3	.
+4	astore_3
+5	aload_1
+6	getfield java.lang.String :: value : [C
+7	.
+8	.
+9	astore 4
+10	.
+11	aload_0
+12	getfield java.lang.String :: offset : int
+13	.
+14	.
+15	aload_0
+16	getfield java.lang.String :: count : int
+17	.
+18	.
+19	aload_1
+20	getfield java.lang.String :: count : int
+21	.
+22	.
+23	isub
+24	iadd
+25	istore 5
+26	.
+27	iload_2
+28	aload_0
+29	getfield java.lang.String :: count : int
+30	.
+31	.
+32	if_icmplt 25
+33	.
+34	.
+35	aload_0
+36	getfield java.lang.String :: count : int
+37	.
+38	.
+39	ifne 16
+40	.
+41	.
+42	iload_2
+43	ifne 12
+44	.
+45	.
+46	aload_1
+47	getfield java.lang.String :: count : int
+48	.
+49	.
+50	ifne 5
+51	.
+52	.
+53	iconst_0
+54	ireturn
+55	iconst_m1
+56	ireturn
+57	iload_2
+58	ifge 5
+59	.
+60	.
+61	iconst_0
+62	istore_2
+63	aload_1
+64	getfield java.lang.String :: count : int
+65	.
+66	.
+67	ifne 5
+68	.
+69	.
+70	iload_2
+71	ireturn
+72	aload_1
+73	getfield java.lang.String :: offset : int
+74	.
+75	.
+76	istore 6
+77	.
+78	aload 4
+79	.
+80	iload 6
+81	.
+82	caload
+83	istore 7
+84	.
+85	aload_0
+86	getfield java.lang.String :: offset : int
+87	.
+88	.
+89	iload_2
+90	iadd
+91	istore 8
+92	.
+93	goto 6
+94	.
+95	.
+96	iinc 8 1
+97	.
+98	.
+99	iload 8
+100	.
+101	iload 5
+102	.
+103	if_icmpgt 12
+104	.
+105	.
+106	aload_3
+107	iload 8
+108	.
+109	caload
+110	iload 7
+111	.
+112	if_icmpne -16
+113	.
+114	.
+115	iload 8
+116	.
+117	iload 5
+118	.
+119	if_icmple 5
+120	.
+121	.
+122	iconst_m1
+123	ireturn
+124	iload 8
+125	.
+126	iconst_1
+127	iadd
+128	istore 9
+129	.
+130	iload 9
+131	.
+132	aload_1
+133	getfield java.lang.String :: count : int
+134	.
+135	.
+136	iadd
+137	iconst_1
+138	isub
+139	istore 10
+140	.
+141	iload 6
+142	.
+143	iconst_1
+144	iadd
+145	istore 11
+146	.
+147	goto 27
+148	.
+149	.
+150	aload_3
+151	iload 9
+152	.
+153	iinc 9 1
+154	.
+155	.
+156	caload
+157	aload 4
+158	.
+159	iload 11
+160	.
+161	iinc 11 1
+162	.
+163	.
+164	caload
+165	if_icmpeq 9
+166	.
+167	.
+168	iinc 8 1
+169	.
+170	.
+171	goto -72
+172	.
+173	.
+174	iload 9
+175	.
+176	iload 10
+177	.
+178	if_icmplt -28
+179	.
+180	.
+181	iload 8
+182	.
+183	aload_0
+184	getfield java.lang.String :: offset : int
+185	.
+186	.
+187	isub
+188	ireturn
+Exception handlers:
+
+
+public native  intern : ()Ljava/lang/String; throws null
+Code: 
+null
+
+public  lastIndexOf : (I)I throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 2
+Instructions:
+0	aload_0
+1	iload_1
+2	aload_0
+3	getfield java.lang.String :: count : int
+4	.
+5	.
+6	iconst_1
+7	isub
+8	invokevirtual java.lang.String :: lastIndexOf : (II)I
+9	.
+10	.
+11	ireturn
+Exception handlers:
+
+
+public  lastIndexOf : (II)I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 6
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: offset : int
+2	.
+3	.
+4	istore_3
+5	aload_0
+6	getfield java.lang.String :: value : [C
+7	.
+8	.
+9	astore 4
+10	.
+11	aload_0
+12	getfield java.lang.String :: offset : int
+13	.
+14	.
+15	iload_2
+16	aload_0
+17	getfield java.lang.String :: count : int
+18	.
+19	.
+20	if_icmplt 12
+21	.
+22	.
+23	aload_0
+24	getfield java.lang.String :: count : int
+25	.
+26	.
+27	iconst_1
+28	isub
+29	goto 4
+30	.
+31	.
+32	iload_2
+33	iadd
+34	istore 5
+35	.
+36	goto 23
+37	.
+38	.
+39	aload 4
+40	.
+41	iload 5
+42	.
+43	caload
+44	iload_1
+45	if_icmpne 11
+46	.
+47	.
+48	iload 5
+49	.
+50	aload_0
+51	getfield java.lang.String :: offset : int
+52	.
+53	.
+54	isub
+55	ireturn
+56	iinc 5 -1
+57	.
+58	.
+59	iload 5
+60	.
+61	iload_3
+62	if_icmpge -23
+63	.
+64	.
+65	iconst_m1
+66	ireturn
+Exception handlers:
+
+
+public  lastIndexOf : (Ljava/lang/String;)I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	aload_0
+3	getfield java.lang.String :: count : int
+4	.
+5	.
+6	invokevirtual java.lang.String :: lastIndexOf : (Ljava/lang/String;I)I
+7	.
+8	.
+9	ireturn
+Exception handlers:
+
+
+public  lastIndexOf : (Ljava/lang/String;I)I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 13
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: count : int
+2	.
+3	.
+4	aload_1
+5	getfield java.lang.String :: count : int
+6	.
+7	.
+8	isub
+9	istore_3
+10	iload_2
+11	ifge 5
+12	.
+13	.
+14	iconst_m1
+15	ireturn
+16	iload_2
+17	iload_3
+18	if_icmple 5
+19	.
+20	.
+21	iload_3
+22	istore_2
+23	aload_1
+24	getfield java.lang.String :: count : int
+25	.
+26	.
+27	ifne 5
+28	.
+29	.
+30	iload_2
+31	ireturn
+32	aload_0
+33	getfield java.lang.String :: value : [C
+34	.
+35	.
+36	astore 4
+37	.
+38	aload_1
+39	getfield java.lang.String :: value : [C
+40	.
+41	.
+42	astore 5
+43	.
+44	aload_1
+45	getfield java.lang.String :: offset : int
+46	.
+47	.
+48	aload_1
+49	getfield java.lang.String :: count : int
+50	.
+51	.
+52	iadd
+53	iconst_1
+54	isub
+55	istore 6
+56	.
+57	aload 5
+58	.
+59	iload 6
+60	.
+61	caload
+62	istore 7
+63	.
+64	aload_0
+65	getfield java.lang.String :: offset : int
+66	.
+67	.
+68	aload_1
+69	getfield java.lang.String :: count : int
+70	.
+71	.
+72	iadd
+73	iconst_1
+74	isub
+75	istore 8
+76	.
+77	iload 8
+78	.
+79	iload_2
+80	iadd
+81	istore 9
+82	.
+83	goto 6
+84	.
+85	.
+86	iinc 9 -1
+87	.
+88	.
+89	iload 9
+90	.
+91	iload 8
+92	.
+93	if_icmplt 13
+94	.
+95	.
+96	aload 4
+97	.
+98	iload 9
+99	.
+100	caload
+101	iload 7
+102	.
+103	if_icmpne -17
+104	.
+105	.
+106	iload 9
+107	.
+108	iload 8
+109	.
+110	if_icmpge 5
+111	.
+112	.
+113	iconst_m1
+114	ireturn
+115	iload 9
+116	.
+117	iconst_1
+118	isub
+119	istore 10
+120	.
+121	iload 10
+122	.
+123	aload_1
+124	getfield java.lang.String :: count : int
+125	.
+126	.
+127	iconst_1
+128	isub
+129	isub
+130	istore 11
+131	.
+132	iload 6
+133	.
+134	iconst_1
+135	isub
+136	istore 12
+137	.
+138	goto 28
+139	.
+140	.
+141	aload 4
+142	.
+143	iload 10
+144	.
+145	iinc 10 -1
+146	.
+147	.
+148	caload
+149	aload 5
+150	.
+151	iload 12
+152	.
+153	iinc 12 -1
+154	.
+155	.
+156	caload
+157	if_icmpeq 9
+158	.
+159	.
+160	iinc 9 -1
+161	.
+162	.
+163	goto -74
+164	.
+165	.
+166	iload 10
+167	.
+168	iload 11
+169	.
+170	if_icmpgt -29
+171	.
+172	.
+173	iload 11
+174	.
+175	aload_0
+176	getfield java.lang.String :: offset : int
+177	.
+178	.
+179	isub
+180	iconst_1
+181	iadd
+182	ireturn
+Exception handlers:
+
+
+public  length : ()I throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: count : int
+2	.
+3	.
+4	ireturn
+Exception handlers:
+
+
+public  regionMatches : (ILjava/lang/String;II)Z throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 10
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: value : [C
+2	.
+3	.
+4	astore 5
+5	.
+6	aload_0
+7	getfield java.lang.String :: offset : int
+8	.
+9	.
+10	iload_1
+11	iadd
+12	istore 6
+13	.
+14	aload_0
+15	getfield java.lang.String :: offset : int
+16	.
+17	.
+18	aload_0
+19	getfield java.lang.String :: count : int
+20	.
+21	.
+22	iadd
+23	istore 7
+24	.
+25	aload_2
+26	getfield java.lang.String :: value : [C
+27	.
+28	.
+29	astore 8
+30	.
+31	aload_2
+32	getfield java.lang.String :: offset : int
+33	.
+34	.
+35	iload_3
+36	iadd
+37	istore 9
+38	.
+39	iload_3
+40	iflt 37
+41	.
+42	.
+43	iload_1
+44	iflt 33
+45	.
+46	.
+47	iload_1
+48	i2l
+49	aload_0
+50	getfield java.lang.String :: count : int
+51	.
+52	.
+53	i2l
+54	iload 4
+55	.
+56	i2l
+57	lsub
+58	lcmp
+59	ifgt 18
+60	.
+61	.
+62	iload_3
+63	i2l
+64	aload_2
+65	getfield java.lang.String :: count : int
+66	.
+67	.
+68	i2l
+69	iload 4
+70	.
+71	i2l
+72	lsub
+73	lcmp
+74	ifle 26
+75	.
+76	.
+77	iconst_0
+78	ireturn
+79	aload 5
+80	.
+81	iload 6
+82	.
+83	iinc 6 1
+84	.
+85	.
+86	caload
+87	aload 8
+88	.
+89	iload 9
+90	.
+91	iinc 9 1
+92	.
+93	.
+94	caload
+95	if_icmpeq 5
+96	.
+97	.
+98	iconst_0
+99	ireturn
+100	iload 4
+101	.
+102	iinc 4 -1
+103	.
+104	.
+105	ifgt -26
+106	.
+107	.
+108	iconst_1
+109	ireturn
+Exception handlers:
+
+
+public  regionMatches : (ZILjava/lang/String;II)Z throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 15
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: value : [C
+2	.
+3	.
+4	astore 6
+5	.
+6	aload_0
+7	getfield java.lang.String :: offset : int
+8	.
+9	.
+10	iload_2
+11	iadd
+12	istore 7
+13	.
+14	aload_0
+15	getfield java.lang.String :: offset : int
+16	.
+17	.
+18	aload_0
+19	getfield java.lang.String :: count : int
+20	.
+21	.
+22	iadd
+23	istore 8
+24	.
+25	aload_3
+26	getfield java.lang.String :: value : [C
+27	.
+28	.
+29	astore 9
+30	.
+31	aload_3
+32	getfield java.lang.String :: offset : int
+33	.
+34	.
+35	iload 4
+36	.
+37	iadd
+38	istore 10
+39	.
+40	iload 4
+41	.
+42	iflt 38
+43	.
+44	.
+45	iload_2
+46	iflt 34
+47	.
+48	.
+49	iload_2
+50	i2l
+51	aload_0
+52	getfield java.lang.String :: count : int
+53	.
+54	.
+55	i2l
+56	iload 5
+57	.
+58	i2l
+59	lsub
+60	lcmp
+61	ifgt 19
+62	.
+63	.
+64	iload 4
+65	.
+66	i2l
+67	aload_3
+68	getfield java.lang.String :: count : int
+69	.
+70	.
+71	i2l
+72	iload 5
+73	.
+74	i2l
+75	lsub
+76	lcmp
+77	ifle 75
+78	.
+79	.
+80	iconst_0
+81	ireturn
+82	aload 6
+83	.
+84	iload 7
+85	.
+86	iinc 7 1
+87	.
+88	.
+89	caload
+90	istore 11
+91	.
+92	aload 9
+93	.
+94	iload 10
+95	.
+96	iinc 10 1
+97	.
+98	.
+99	caload
+100	istore 12
+101	.
+102	iload 11
+103	.
+104	iload 12
+105	.
+106	if_icmpeq 46
+107	.
+108	.
+109	iload_1
+110	ifeq 40
+111	.
+112	.
+113	iload 11
+114	.
+115	invokestatic java.lang.Character :: toUpperCase : (C)C
+116	.
+117	.
+118	istore 13
+119	.
+120	iload 12
+121	.
+122	invokestatic java.lang.Character :: toUpperCase : (C)C
+123	.
+124	.
+125	istore 14
+126	.
+127	iload 13
+128	.
+129	iload 14
+130	.
+131	if_icmpeq 21
+132	.
+133	.
+134	iload 13
+135	.
+136	invokestatic java.lang.Character :: toLowerCase : (C)C
+137	.
+138	.
+139	iload 14
+140	.
+141	invokestatic java.lang.Character :: toLowerCase : (C)C
+142	.
+143	.
+144	if_icmpne 6
+145	.
+146	.
+147	goto 5
+148	.
+149	.
+150	iconst_0
+151	ireturn
+152	iload 5
+153	.
+154	iinc 5 -1
+155	.
+156	.
+157	ifgt -75
+158	.
+159	.
+160	iconst_1
+161	ireturn
+Exception handlers:
+
+
+public  replace : (CC)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 10
+Instructions:
+0	iload_1
+1	iload_2
+2	if_icmpeq 141
+3	.
+4	.
+5	aload_0
+6	getfield java.lang.String :: count : int
+7	.
+8	.
+9	istore_3
+10	iconst_m1
+11	istore 4
+12	.
+13	aload_0
+14	getfield java.lang.String :: value : [C
+15	.
+16	.
+17	astore 5
+18	.
+19	aload_0
+20	getfield java.lang.String :: offset : int
+21	.
+22	.
+23	istore 6
+24	.
+25	goto 18
+26	.
+27	.
+28	aload 5
+29	.
+30	iload 6
+31	.
+32	iload 4
+33	.
+34	iadd
+35	caload
+36	iload_1
+37	if_icmpne 6
+38	.
+39	.
+40	goto 12
+41	.
+42	.
+43	iinc 4 1
+44	.
+45	.
+46	iload 4
+47	.
+48	iload_3
+49	if_icmplt -21
+50	.
+51	.
+52	iload 4
+53	.
+54	iload_3
+55	if_icmpge 88
+56	.
+57	.
+58	iload_3
+59	newarray char
+60	.
+61	astore 7
+62	.
+63	iconst_0
+64	istore 8
+65	.
+66	goto 19
+67	.
+68	.
+69	aload 7
+70	.
+71	iload 8
+72	.
+73	aload 5
+74	.
+75	iload 6
+76	.
+77	iload 8
+78	.
+79	iadd
+80	caload
+81	castore
+82	iinc 8 1
+83	.
+84	.
+85	iload 8
+86	.
+87	iload 4
+88	.
+89	if_icmplt -20
+90	.
+91	.
+92	goto 33
+93	.
+94	.
+95	aload 5
+96	.
+97	iload 6
+98	.
+99	iload 4
+100	.
+101	iadd
+102	caload
+103	istore 9
+104	.
+105	aload 7
+106	.
+107	iload 4
+108	.
+109	iload 9
+110	.
+111	iload_1
+112	if_icmpne 7
+113	.
+114	.
+115	iload_2
+116	goto 5
+117	.
+118	.
+119	iload 9
+120	.
+121	castore
+122	iinc 4 1
+123	.
+124	.
+125	iload 4
+126	.
+127	iload_3
+128	if_icmplt -33
+129	.
+130	.
+131	new java.lang.String
+132	.
+133	.
+134	dup
+135	iconst_0
+136	iload_3
+137	aload 7
+138	.
+139	invokespecial java.lang.String :: <init> : (II[C)V
+140	.
+141	.
+142	areturn
+143	aload_0
+144	areturn
+Exception handlers:
+
+
+public  startsWith : (Ljava/lang/String;)Z throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	iconst_0
+3	invokevirtual java.lang.String :: startsWith : (Ljava/lang/String;I)Z
+4	.
+5	.
+6	ireturn
+Exception handlers:
+
+
+public  startsWith : (Ljava/lang/String;I)Z throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 9
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: value : [C
+2	.
+3	.
+4	astore_3
+5	aload_0
+6	getfield java.lang.String :: offset : int
+7	.
+8	.
+9	iload_2
+10	iadd
+11	istore 4
+12	.
+13	aload_0
+14	getfield java.lang.String :: offset : int
+15	.
+16	.
+17	aload_0
+18	getfield java.lang.String :: count : int
+19	.
+20	.
+21	iadd
+22	istore 5
+23	.
+24	aload_1
+25	getfield java.lang.String :: value : [C
+26	.
+27	.
+28	astore 6
+29	.
+30	aload_1
+31	getfield java.lang.String :: offset : int
+32	.
+33	.
+34	istore 7
+35	.
+36	aload_1
+37	getfield java.lang.String :: count : int
+38	.
+39	.
+40	istore 8
+41	.
+42	iload_2
+43	iflt 14
+44	.
+45	.
+46	iload_2
+47	aload_0
+48	getfield java.lang.String :: count : int
+49	.
+50	.
+51	iload 8
+52	.
+53	isub
+54	if_icmple 25
+55	.
+56	.
+57	iconst_0
+58	ireturn
+59	aload_3
+60	iload 4
+61	.
+62	iinc 4 1
+63	.
+64	.
+65	caload
+66	aload 6
+67	.
+68	iload 7
+69	.
+70	iinc 7 1
+71	.
+72	.
+73	caload
+74	if_icmpeq 5
+75	.
+76	.
+77	iconst_0
+78	ireturn
+79	iinc 8 -1
+80	.
+81	.
+82	iload 8
+83	.
+84	ifge -25
+85	.
+86	.
+87	iconst_1
+88	ireturn
+Exception handlers:
+
+
+public  substring : (I)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	iload_1
+2	aload_0
+3	getfield java.lang.String :: count : int
+4	.
+5	.
+6	invokevirtual java.lang.String :: substring : (II)Ljava/lang/String;
+7	.
+8	.
+9	areturn
+Exception handlers:
+
+
+public  substring : (II)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 3
+Instructions:
+0	iload_1
+1	ifge 12
+2	.
+3	.
+4	new java.lang.StringIndexOutOfBoundsException
+5	.
+6	.
+7	dup
+8	iload_1
+9	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+10	.
+11	.
+12	athrow
+13	iload_2
+14	aload_0
+15	getfield java.lang.String :: count : int
+16	.
+17	.
+18	if_icmple 12
+19	.
+20	.
+21	new java.lang.StringIndexOutOfBoundsException
+22	.
+23	.
+24	dup
+25	iload_2
+26	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+27	.
+28	.
+29	athrow
+30	iload_1
+31	iload_2
+32	if_icmple 14
+33	.
+34	.
+35	new java.lang.StringIndexOutOfBoundsException
+36	.
+37	.
+38	dup
+39	iload_2
+40	iload_1
+41	isub
+42	invokespecial java.lang.StringIndexOutOfBoundsException :: <init> : (I)V
+43	.
+44	.
+45	athrow
+46	iload_1
+47	ifne 15
+48	.
+49	.
+50	iload_2
+51	aload_0
+52	getfield java.lang.String :: count : int
+53	.
+54	.
+55	if_icmpne 7
+56	.
+57	.
+58	aload_0
+59	goto 23
+60	.
+61	.
+62	new java.lang.String
+63	.
+64	.
+65	dup
+66	aload_0
+67	getfield java.lang.String :: offset : int
+68	.
+69	.
+70	iload_1
+71	iadd
+72	iload_2
+73	iload_1
+74	isub
+75	aload_0
+76	getfield java.lang.String :: value : [C
+77	.
+78	.
+79	invokespecial java.lang.String :: <init> : (II[C)V
+80	.
+81	.
+82	areturn
+Exception handlers:
+
+
+public  toCharArray : ()[C throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 2
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: count : int
+2	.
+3	.
+4	newarray char
+5	.
+6	astore_1
+7	aload_0
+8	iconst_0
+9	aload_0
+10	getfield java.lang.String :: count : int
+11	.
+12	.
+13	aload_1
+14	iconst_0
+15	invokevirtual java.lang.String :: getChars : (II[CI)V
+16	.
+17	.
+18	aload_1
+19	areturn
+Exception handlers:
+
+
+public  toLowerCase : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokestatic java.util.Locale :: getDefault : ()Ljava/util/Locale;
+2	.
+3	.
+4	invokevirtual java.lang.String :: toLowerCase : (Ljava/util/Locale;)Ljava/lang/String;
+5	.
+6	.
+7	areturn
+Exception handlers:
+
+
+public  toLowerCase : (Ljava/util/Locale;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 9
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: count : int
+2	.
+3	.
+4	istore_2
+5	aload_0
+6	getfield java.lang.String :: offset : int
+7	.
+8	.
+9	istore_3
+10	aload_0
+11	getfield java.lang.String :: value : [C
+12	.
+13	.
+14	astore 4
+15	.
+16	iconst_0
+17	istore 5
+18	.
+19	goto 30
+20	.
+21	.
+22	aload_0
+23	getfield java.lang.String :: value : [C
+24	.
+25	.
+26	iload_3
+27	iload 5
+28	.
+29	iadd
+30	caload
+31	istore 6
+32	.
+33	iload 6
+34	.
+35	iload 6
+36	.
+37	invokestatic java.lang.Character :: toLowerCase : (C)C
+38	.
+39	.
+40	if_icmpeq 6
+41	.
+42	.
+43	goto 14
+44	.
+45	.
+46	iinc 5 1
+47	.
+48	.
+49	iload 5
+50	.
+51	iload_2
+52	if_icmplt -30
+53	.
+54	.
+55	aload_0
+56	areturn
+57	aload_0
+58	getfield java.lang.String :: count : int
+59	.
+60	.
+61	newarray char
+62	.
+63	astore 6
+64	.
+65	aload 4
+66	.
+67	iload_3
+68	aload 6
+69	.
+70	iconst_0
+71	iload 5
+72	.
+73	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+74	.
+75	.
+76	aload_1
+77	invokevirtual java.util.Locale :: getLanguage : ()Ljava/lang/String;
+78	.
+79	.
+80	ldc "tr"
+81	.
+82	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+83	.
+84	.
+85	ifeq 77
+86	.
+87	.
+88	iload 5
+89	.
+90	istore 7
+91	.
+92	goto 61
+93	.
+94	.
+95	aload 4
+96	.
+97	iload_3
+98	iload 7
+99	.
+100	iadd
+101	caload
+102	istore 8
+103	.
+104	iload 8
+105	.
+106	bipush 73
+107	.
+108	if_icmpne 14
+109	.
+110	.
+111	aload 6
+112	.
+113	iload 7
+114	.
+115	sipush 305
+116	.
+117	.
+118	castore
+119	goto 31
+120	.
+121	.
+122	iload 8
+123	.
+124	sipush 304
+125	.
+126	.
+127	if_icmpne 13
+128	.
+129	.
+130	aload 6
+131	.
+132	iload 7
+133	.
+134	bipush 105
+135	.
+136	castore
+137	goto 13
+138	.
+139	.
+140	aload 6
+141	.
+142	iload 7
+143	.
+144	iload 8
+145	.
+146	invokestatic java.lang.Character :: toLowerCase : (C)C
+147	.
+148	.
+149	castore
+150	iinc 7 1
+151	.
+152	.
+153	iload 7
+154	.
+155	iload_2
+156	if_icmplt -61
+157	.
+158	.
+159	goto 34
+160	.
+161	.
+162	iload 5
+163	.
+164	istore 7
+165	.
+166	goto 21
+167	.
+168	.
+169	aload 6
+170	.
+171	iload 7
+172	.
+173	aload 4
+174	.
+175	iload_3
+176	iload 7
+177	.
+178	iadd
+179	caload
+180	invokestatic java.lang.Character :: toLowerCase : (C)C
+181	.
+182	.
+183	castore
+184	iinc 7 1
+185	.
+186	.
+187	iload 7
+188	.
+189	iload_2
+190	if_icmplt -21
+191	.
+192	.
+193	new java.lang.String
+194	.
+195	.
+196	dup
+197	aload 6
+198	.
+199	invokespecial java.lang.String :: <init> : ([C)V
+200	.
+201	.
+202	areturn
+Exception handlers:
+
+
+public  toString : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	areturn
+Exception handlers:
+
+
+public  toUpperCase : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokestatic java.util.Locale :: getDefault : ()Ljava/util/Locale;
+2	.
+3	.
+4	invokevirtual java.lang.String :: toUpperCase : (Ljava/util/Locale;)Ljava/lang/String;
+5	.
+6	.
+7	areturn
+Exception handlers:
+
+
+public  toUpperCase : (Ljava/util/Locale;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 11
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: count : int
+2	.
+3	.
+4	istore_2
+5	aload_0
+6	getfield java.lang.String :: offset : int
+7	.
+8	.
+9	istore_3
+10	aload_0
+11	getfield java.lang.String :: value : [C
+12	.
+13	.
+14	astore 4
+15	.
+16	iconst_0
+17	istore 5
+18	.
+19	goto 30
+20	.
+21	.
+22	aload_0
+23	getfield java.lang.String :: value : [C
+24	.
+25	.
+26	iload_3
+27	iload 5
+28	.
+29	iadd
+30	caload
+31	istore 6
+32	.
+33	iload 6
+34	.
+35	iload 6
+36	.
+37	invokestatic java.lang.Character :: toUpperCase : (C)C
+38	.
+39	.
+40	if_icmpeq 6
+41	.
+42	.
+43	goto 14
+44	.
+45	.
+46	iinc 5 1
+47	.
+48	.
+49	iload 5
+50	.
+51	iload_2
+52	if_icmplt -30
+53	.
+54	.
+55	aload_0
+56	areturn
+57	iload_2
+58	newarray char
+59	.
+60	astore 6
+61	.
+62	iconst_0
+63	istore 7
+64	.
+65	aload 4
+66	.
+67	iload_3
+68	aload 6
+69	.
+70	iconst_0
+71	iload 5
+72	.
+73	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+74	.
+75	.
+76	aload_1
+77	invokevirtual java.util.Locale :: getLanguage : ()Ljava/lang/String;
+78	.
+79	.
+80	ldc "tr"
+81	.
+82	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+83	.
+84	.
+85	ifeq 149
+86	.
+87	.
+88	iload 5
+89	.
+90	istore 8
+91	.
+92	goto 133
+93	.
+94	.
+95	aload 4
+96	.
+97	iload_3
+98	iload 8
+99	.
+100	iadd
+101	caload
+102	istore 9
+103	.
+104	iload 9
+105	.
+106	bipush 105
+107	.
+108	if_icmpne 17
+109	.
+110	.
+111	aload 6
+112	.
+113	iload 8
+114	.
+115	iload 7
+116	.
+117	iadd
+118	sipush 304
+119	.
+120	.
+121	castore
+122	goto 100
+123	.
+124	.
+125	iload 9
+126	.
+127	sipush 305
+128	.
+129	.
+130	if_icmpne 16
+131	.
+132	.
+133	aload 6
+134	.
+135	iload 8
+136	.
+137	iload 7
+138	.
+139	iadd
+140	bipush 73
+141	.
+142	castore
+143	goto 79
+144	.
+145	.
+146	iload 9
+147	.
+148	sipush 223
+149	.
+150	.
+151	if_icmpne 58
+152	.
+153	.
+154	aload 6
+155	.
+156	arraylength
+157	iconst_1
+158	iadd
+159	newarray char
+160	.
+161	astore 10
+162	.
+163	aload 6
+164	.
+165	iconst_0
+166	aload 10
+167	.
+168	iconst_0
+169	iload 8
+170	.
+171	iconst_1
+172	iadd
+173	iload 7
+174	.
+175	iadd
+176	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+177	.
+178	.
+179	aload 10
+180	.
+181	iload 8
+182	.
+183	iload 7
+184	.
+185	iadd
+186	bipush 83
+187	.
+188	castore
+189	iinc 7 1
+190	.
+191	.
+192	aload 10
+193	.
+194	iload 8
+195	.
+196	iload 7
+197	.
+198	iadd
+199	bipush 83
+200	.
+201	castore
+202	aload 10
+203	.
+204	astore 6
+205	.
+206	goto 16
+207	.
+208	.
+209	aload 6
+210	.
+211	iload 8
+212	.
+213	iload 7
+214	.
+215	iadd
+216	iload 9
+217	.
+218	invokestatic java.lang.Character :: toUpperCase : (C)C
+219	.
+220	.
+221	castore
+222	iinc 8 1
+223	.
+224	.
+225	iload 8
+226	.
+227	iload_2
+228	if_icmplt -133
+229	.
+230	.
+231	goto 104
+232	.
+233	.
+234	iload 5
+235	.
+236	istore 8
+237	.
+238	goto 91
+239	.
+240	.
+241	aload 4
+242	.
+243	iload_3
+244	iload 8
+245	.
+246	iadd
+247	caload
+248	istore 9
+249	.
+250	iload 9
+251	.
+252	sipush 223
+253	.
+254	.
+255	if_icmpne 58
+256	.
+257	.
+258	aload 6
+259	.
+260	arraylength
+261	iconst_1
+262	iadd
+263	newarray char
+264	.
+265	astore 10
+266	.
+267	aload 6
+268	.
+269	iconst_0
+270	aload 10
+271	.
+272	iconst_0
+273	iload 8
+274	.
+275	iconst_1
+276	iadd
+277	iload 7
+278	.
+279	iadd
+280	invokestatic java.lang.System :: arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V
+281	.
+282	.
+283	aload 10
+284	.
+285	iload 8
+286	.
+287	iload 7
+288	.
+289	iadd
+290	bipush 83
+291	.
+292	castore
+293	iinc 7 1
+294	.
+295	.
+296	aload 10
+297	.
+298	iload 8
+299	.
+300	iload 7
+301	.
+302	iadd
+303	bipush 83
+304	.
+305	castore
+306	aload 10
+307	.
+308	astore 6
+309	.
+310	goto 16
+311	.
+312	.
+313	aload 6
+314	.
+315	iload 8
+316	.
+317	iload 7
+318	.
+319	iadd
+320	iload 9
+321	.
+322	invokestatic java.lang.Character :: toUpperCase : (C)C
+323	.
+324	.
+325	castore
+326	iinc 8 1
+327	.
+328	.
+329	iload 8
+330	.
+331	iload_2
+332	if_icmplt -91
+333	.
+334	.
+335	new java.lang.String
+336	.
+337	.
+338	dup
+339	aload 6
+340	.
+341	invokespecial java.lang.String :: <init> : ([C)V
+342	.
+343	.
+344	areturn
+Exception handlers:
+
+
+public  trim : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 5
+Instructions:
+0	aload_0
+1	getfield java.lang.String :: count : int
+2	.
+3	.
+4	istore_1
+5	iconst_0
+6	istore_2
+7	aload_0
+8	getfield java.lang.String :: offset : int
+9	.
+10	.
+11	istore_3
+12	aload_0
+13	getfield java.lang.String :: value : [C
+14	.
+15	.
+16	astore 4
+17	.
+18	goto 6
+19	.
+20	.
+21	iinc 2 1
+22	.
+23	.
+24	iload_2
+25	iload_1
+26	if_icmpge 20
+27	.
+28	.
+29	aload 4
+30	.
+31	iload_3
+32	iload_2
+33	iadd
+34	caload
+35	bipush 32
+36	.
+37	if_icmple -16
+38	.
+39	.
+40	goto 6
+41	.
+42	.
+43	iinc 1 -1
+44	.
+45	.
+46	iload_2
+47	iload_1
+48	if_icmpge 16
+49	.
+50	.
+51	aload 4
+52	.
+53	iload_3
+54	iload_1
+55	iadd
+56	iconst_1
+57	isub
+58	caload
+59	bipush 32
+60	.
+61	if_icmple -18
+62	.
+63	.
+64	iload_2
+65	ifgt 11
+66	.
+67	.
+68	iload_1
+69	aload_0
+70	getfield java.lang.String :: count : int
+71	.
+72	.
+73	if_icmpge 12
+74	.
+75	.
+76	aload_0
+77	iload_2
+78	iload_1
+79	invokevirtual java.lang.String :: substring : (II)Ljava/lang/String;
+80	.
+81	.
+82	goto 4
+83	.
+84	.
+85	aload_0
+86	areturn
+Exception handlers:
+
+
+public static  valueOf : (C)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 2
+Instructions:
+0	iconst_1
+1	newarray char
+2	.
+3	dup
+4	iconst_0
+5	iload_0
+6	castore
+7	astore_1
+8	new java.lang.String
+9	.
+10	.
+11	dup
+12	iconst_0
+13	iconst_1
+14	aload_1
+15	invokespecial java.lang.String :: <init> : (II[C)V
+16	.
+17	.
+18	areturn
+Exception handlers:
+
+
+public static  valueOf : (D)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	dload_0
+1	invokestatic java.lang.Double :: toString : (D)Ljava/lang/String;
+2	.
+3	.
+4	areturn
+Exception handlers:
+
+
+public static  valueOf : (F)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	fload_0
+1	invokestatic java.lang.Float :: toString : (F)Ljava/lang/String;
+2	.
+3	.
+4	areturn
+Exception handlers:
+
+
+public static  valueOf : (I)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	iload_0
+1	bipush 10
+2	.
+3	invokestatic java.lang.Integer :: toString : (II)Ljava/lang/String;
+4	.
+5	.
+6	areturn
+Exception handlers:
+
+
+public static  valueOf : (J)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	lload_0
+1	bipush 10
+2	.
+3	invokestatic java.lang.Long :: toString : (JI)Ljava/lang/String;
+4	.
+5	.
+6	areturn
+Exception handlers:
+
+
+public static  valueOf : (Ljava/lang/Object;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	ifnonnull 8
+2	.
+3	.
+4	ldc "null"
+5	.
+6	goto 7
+7	.
+8	.
+9	aload_0
+10	invokevirtual java.lang.Object :: toString : ()Ljava/lang/String;
+11	.
+12	.
+13	areturn
+Exception handlers:
+
+
+public static  valueOf : (Z)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	iload_0
+1	ifeq 8
+2	.
+3	.
+4	ldc "true"
+5	.
+6	goto 5
+7	.
+8	.
+9	ldc "false"
+10	.
+11	areturn
+Exception handlers:
+
+
+public static  valueOf : ([C)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	new java.lang.String
+1	.
+2	.
+3	dup
+4	aload_0
+5	invokespecial java.lang.String :: <init> : ([C)V
+6	.
+7	.
+8	areturn
+Exception handlers:
+
+
+public static  valueOf : ([CII)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 3
+Instructions:
+0	new java.lang.String
+1	.
+2	.
+3	dup
+4	aload_0
+5	iload_1
+6	iload_2
+7	invokespecial java.lang.String :: <init> : ([CII)V
+8	.
+9	.
+10	areturn
+Exception handlers:
+
+

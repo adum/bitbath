@@ -1,0 +1,4 @@
+
+Here we define the actual operations that observe and modify the state
+of the machine according to the data.
+

@@ -1,0 +1,1572 @@
+public class java.lang.Thread extends java.lang.Object implements java.lang.Runnable 
+private [C name = null
+private int priority = null
+private java.lang.Thread threadQ = null
+private long eetop = null
+private boolean single_step = null
+private boolean daemon = null
+private boolean stillborn = null
+private java.lang.Runnable target = null
+private java.lang.ThreadGroup group = null
+private java.lang.ClassLoader contextClassLoader = null
+private java.security.AccessControlContext inheritedAccessControlContext = null
+private static int threadInitNumber = null
+private static java.lang.RuntimePermission stopThreadPermission = null
+java.lang.InheritableThreadLocal$Entry values = null
+private int initial_stack_memory = null
+private int PrivateInfo = null
+public static final int MIN_PRIORITY = 1
+public static final int NORM_PRIORITY = 5
+public static final int MAX_PRIORITY = 10
+static  <clinit> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 0
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.Thread :: registerNatives : ()V
+1	.
+2	.
+3	return
+Exception handlers:
+
+
+public  <init> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.Thread :: daemon : boolean
+7	.
+8	.
+9	aload_0
+10	iconst_0
+11	putfield java.lang.Thread :: stillborn : boolean
+12	.
+13	.
+14	aload_0
+15	aconst_null
+16	putfield java.lang.Thread :: values : java.lang.InheritableThreadLocal$Entry
+17	.
+18	.
+19	aload_0
+20	aconst_null
+21	aconst_null
+22	new java.lang.StringBuffer
+23	.
+24	.
+25	dup
+26	ldc "Thread-"
+27	.
+28	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+29	.
+30	.
+31	invokestatic java.lang.Thread :: nextThreadNum : ()I
+32	.
+33	.
+34	invokevirtual java.lang.StringBuffer :: append : (I)Ljava/lang/StringBuffer;
+35	.
+36	.
+37	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+38	.
+39	.
+40	invokespecial java.lang.Thread :: init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V
+41	.
+42	.
+43	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/Runnable;)V throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.Thread :: daemon : boolean
+7	.
+8	.
+9	aload_0
+10	iconst_0
+11	putfield java.lang.Thread :: stillborn : boolean
+12	.
+13	.
+14	aload_0
+15	aconst_null
+16	putfield java.lang.Thread :: values : java.lang.InheritableThreadLocal$Entry
+17	.
+18	.
+19	aload_0
+20	aconst_null
+21	aload_1
+22	new java.lang.StringBuffer
+23	.
+24	.
+25	dup
+26	ldc "Thread-"
+27	.
+28	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+29	.
+30	.
+31	invokestatic java.lang.Thread :: nextThreadNum : ()I
+32	.
+33	.
+34	invokevirtual java.lang.StringBuffer :: append : (I)Ljava/lang/StringBuffer;
+35	.
+36	.
+37	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+38	.
+39	.
+40	invokespecial java.lang.Thread :: init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V
+41	.
+42	.
+43	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/Runnable;Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 3
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.Thread :: daemon : boolean
+7	.
+8	.
+9	aload_0
+10	iconst_0
+11	putfield java.lang.Thread :: stillborn : boolean
+12	.
+13	.
+14	aload_0
+15	aconst_null
+16	putfield java.lang.Thread :: values : java.lang.InheritableThreadLocal$Entry
+17	.
+18	.
+19	aload_0
+20	aconst_null
+21	aload_1
+22	aload_2
+23	invokespecial java.lang.Thread :: init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V
+24	.
+25	.
+26	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.Thread :: daemon : boolean
+7	.
+8	.
+9	aload_0
+10	iconst_0
+11	putfield java.lang.Thread :: stillborn : boolean
+12	.
+13	.
+14	aload_0
+15	aconst_null
+16	putfield java.lang.Thread :: values : java.lang.InheritableThreadLocal$Entry
+17	.
+18	.
+19	aload_0
+20	aconst_null
+21	aconst_null
+22	aload_1
+23	invokespecial java.lang.Thread :: init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V
+24	.
+25	.
+26	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;)V throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 3
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.Thread :: daemon : boolean
+7	.
+8	.
+9	aload_0
+10	iconst_0
+11	putfield java.lang.Thread :: stillborn : boolean
+12	.
+13	.
+14	aload_0
+15	aconst_null
+16	putfield java.lang.Thread :: values : java.lang.InheritableThreadLocal$Entry
+17	.
+18	.
+19	aload_0
+20	aload_1
+21	aload_2
+22	new java.lang.StringBuffer
+23	.
+24	.
+25	dup
+26	ldc "Thread-"
+27	.
+28	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+29	.
+30	.
+31	invokestatic java.lang.Thread :: nextThreadNum : ()I
+32	.
+33	.
+34	invokevirtual java.lang.StringBuffer :: append : (I)Ljava/lang/StringBuffer;
+35	.
+36	.
+37	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+38	.
+39	.
+40	invokespecial java.lang.Thread :: init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V
+41	.
+42	.
+43	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 4
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.Thread :: daemon : boolean
+7	.
+8	.
+9	aload_0
+10	iconst_0
+11	putfield java.lang.Thread :: stillborn : boolean
+12	.
+13	.
+14	aload_0
+15	aconst_null
+16	putfield java.lang.Thread :: values : java.lang.InheritableThreadLocal$Entry
+17	.
+18	.
+19	aload_0
+20	aload_1
+21	aload_2
+22	aload_3
+23	invokespecial java.lang.Thread :: init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V
+24	.
+25	.
+26	return
+Exception handlers:
+
+
+public  <init> : (Ljava/lang/ThreadGroup;Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 3
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.Thread :: daemon : boolean
+7	.
+8	.
+9	aload_0
+10	iconst_0
+11	putfield java.lang.Thread :: stillborn : boolean
+12	.
+13	.
+14	aload_0
+15	aconst_null
+16	putfield java.lang.Thread :: values : java.lang.InheritableThreadLocal$Entry
+17	.
+18	.
+19	aload_0
+20	aload_1
+21	aconst_null
+22	aload_2
+23	invokespecial java.lang.Thread :: init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V
+24	.
+25	.
+26	return
+Exception handlers:
+
+
+public static  activeCount : ()I throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.Thread :: currentThread : ()Ljava/lang/Thread;
+1	.
+2	.
+3	invokevirtual java.lang.Thread :: getThreadGroup : ()Ljava/lang/ThreadGroup;
+4	.
+5	.
+6	invokevirtual java.lang.ThreadGroup :: activeCount : ()I
+7	.
+8	.
+9	ireturn
+Exception handlers:
+
+
+public final  checkAccess : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+1	.
+2	.
+3	astore_1
+4	aload_1
+5	ifnull 8
+6	.
+7	.
+8	aload_1
+9	aload_0
+10	invokevirtual java.lang.SecurityManager :: checkAccess : (Ljava/lang/Thread;)V
+11	.
+12	.
+13	return
+Exception handlers:
+
+
+public native  countStackFrames : ()I throws null
+Code: 
+null
+
+public static native  currentThread : ()Ljava/lang/Thread; throws null
+Code: 
+null
+
+public  destroy : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	new java.lang.NoSuchMethodError
+1	.
+2	.
+3	dup
+4	invokespecial java.lang.NoSuchMethodError :: <init> : ()V
+5	.
+6	.
+7	athrow
+Exception handlers:
+
+
+public static  dumpStack : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 0
+Instructions:
+0	new java.lang.Exception
+1	.
+2	.
+3	dup
+4	ldc "Stack trace"
+5	.
+6	invokespecial java.lang.Exception :: <init> : (Ljava/lang/String;)V
+7	.
+8	.
+9	invokevirtual java.lang.Throwable :: printStackTrace : ()V
+10	.
+11	.
+12	return
+Exception handlers:
+
+
+public static  enumerate : ([Ljava/lang/Thread;)I throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.Thread :: currentThread : ()Ljava/lang/Thread;
+1	.
+2	.
+3	invokevirtual java.lang.Thread :: getThreadGroup : ()Ljava/lang/ThreadGroup;
+4	.
+5	.
+6	aload_0
+7	invokevirtual java.lang.ThreadGroup :: enumerate : ([Ljava/lang/Thread;)I
+8	.
+9	.
+10	ireturn
+Exception handlers:
+
+
+private  exit : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.Thread :: group : java.lang.ThreadGroup
+2	.
+3	.
+4	ifnull 16
+5	.
+6	.
+7	aload_0
+8	getfield java.lang.Thread :: group : java.lang.ThreadGroup
+9	.
+10	.
+11	aload_0
+12	invokevirtual java.lang.ThreadGroup :: remove : (Ljava/lang/Thread;)V
+13	.
+14	.
+15	aload_0
+16	aconst_null
+17	putfield java.lang.Thread :: group : java.lang.ThreadGroup
+18	.
+19	.
+20	aload_0
+21	aconst_null
+22	putfield java.lang.Thread :: target : java.lang.Runnable
+23	.
+24	.
+25	return
+Exception handlers:
+
+
+public  getContextClassLoader : ()Ljava/lang/ClassLoader; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	getfield java.lang.Thread :: contextClassLoader : java.lang.ClassLoader
+2	.
+3	.
+4	ifnonnull 5
+5	.
+6	.
+7	aconst_null
+8	areturn
+9	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+10	.
+11	.
+12	astore_1
+13	aload_1
+14	ifnull 37
+15	.
+16	.
+17	invokestatic java.lang.ClassLoader :: getCallerClassLoader : ()Ljava/lang/ClassLoader;
+18	.
+19	.
+20	astore_2
+21	aload_2
+22	ifnull 29
+23	.
+24	.
+25	aload_2
+26	aload_0
+27	getfield java.lang.Thread :: contextClassLoader : java.lang.ClassLoader
+28	.
+29	.
+30	if_acmpeq 21
+31	.
+32	.
+33	aload_0
+34	getfield java.lang.Thread :: contextClassLoader : java.lang.ClassLoader
+35	.
+36	.
+37	aload_2
+38	invokevirtual java.lang.ClassLoader :: isAncestor : (Ljava/lang/ClassLoader;)Z
+39	.
+40	.
+41	ifne 10
+42	.
+43	.
+44	aload_1
+45	invokestatic java.lang.ClassLoader :: getGetClassLoaderPerm : ()Ljava/lang/RuntimePermission;
+46	.
+47	.
+48	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+49	.
+50	.
+51	aload_0
+52	getfield java.lang.Thread :: contextClassLoader : java.lang.ClassLoader
+53	.
+54	.
+55	areturn
+Exception handlers:
+
+
+public final  getName : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.Thread :: name : [C
+2	.
+3	.
+4	invokestatic java.lang.String :: valueOf : ([C)Ljava/lang/String;
+5	.
+6	.
+7	areturn
+Exception handlers:
+
+
+public final  getPriority : ()I throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.Thread :: priority : int
+2	.
+3	.
+4	ireturn
+Exception handlers:
+
+
+public final  getThreadGroup : ()Ljava/lang/ThreadGroup; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.Thread :: group : java.lang.ThreadGroup
+2	.
+3	.
+4	areturn
+Exception handlers:
+
+
+private  init : (Ljava/lang/ThreadGroup;Ljava/lang/Runnable;Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 6
+Instructions:
+0	invokestatic java.lang.Thread :: currentThread : ()Ljava/lang/Thread;
+1	.
+2	.
+3	astore 4
+4	.
+5	aload_1
+6	ifnonnull 29
+7	.
+8	.
+9	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+10	.
+11	.
+12	astore 5
+13	.
+14	aload 5
+15	.
+16	ifnull 9
+17	.
+18	.
+19	aload 5
+20	.
+21	invokevirtual java.lang.SecurityManager :: getThreadGroup : ()Ljava/lang/ThreadGroup;
+22	.
+23	.
+24	astore_1
+25	aload_1
+26	ifnonnull 9
+27	.
+28	.
+29	aload 4
+30	.
+31	invokevirtual java.lang.Thread :: getThreadGroup : ()Ljava/lang/ThreadGroup;
+32	.
+33	.
+34	astore_1
+35	aload_1
+36	invokevirtual java.lang.ThreadGroup :: checkAccess : ()V
+37	.
+38	.
+39	aload_0
+40	aload_1
+41	putfield java.lang.Thread :: group : java.lang.ThreadGroup
+42	.
+43	.
+44	aload_0
+45	aload 4
+46	.
+47	invokevirtual java.lang.Thread :: isDaemon : ()Z
+48	.
+49	.
+50	putfield java.lang.Thread :: daemon : boolean
+51	.
+52	.
+53	aload_0
+54	aload 4
+55	.
+56	invokevirtual java.lang.Thread :: getPriority : ()I
+57	.
+58	.
+59	putfield java.lang.Thread :: priority : int
+60	.
+61	.
+62	aload_0
+63	aload_3
+64	invokevirtual java.lang.String :: toCharArray : ()[C
+65	.
+66	.
+67	putfield java.lang.Thread :: name : [C
+68	.
+69	.
+70	aload_0
+71	aload 4
+72	.
+73	getfield java.lang.Thread :: contextClassLoader : java.lang.ClassLoader
+74	.
+75	.
+76	putfield java.lang.Thread :: contextClassLoader : java.lang.ClassLoader
+77	.
+78	.
+79	aload_0
+80	invokestatic java.security.AccessController :: getContext : ()Ljava/security/AccessControlContext;
+81	.
+82	.
+83	putfield java.lang.Thread :: inheritedAccessControlContext : java.security.AccessControlContext
+84	.
+85	.
+86	aload_0
+87	aload_2
+88	putfield java.lang.Thread :: target : java.lang.Runnable
+89	.
+90	.
+91	aload_0
+92	aload_0
+93	getfield java.lang.Thread :: priority : int
+94	.
+95	.
+96	invokevirtual java.lang.Thread :: setPriority : (I)V
+97	.
+98	.
+99	aload 4
+100	.
+101	aload_0
+102	invokestatic java.lang.InheritableThreadLocal :: bequeath : (Ljava/lang/Thread;Ljava/lang/Thread;)V
+103	.
+104	.
+105	aload_1
+106	aload_0
+107	invokevirtual java.lang.ThreadGroup :: add : (Ljava/lang/Thread;)V
+108	.
+109	.
+110	return
+Exception handlers:
+
+
+public  interrupt : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokevirtual java.lang.Thread :: checkAccess : ()V
+2	.
+3	.
+4	aload_0
+5	invokespecial java.lang.Thread :: interrupt0 : ()V
+6	.
+7	.
+8	return
+Exception handlers:
+
+
+private native  interrupt0 : ()V throws null
+Code: 
+null
+
+public static  interrupted : ()Z throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.Thread :: currentThread : ()Ljava/lang/Thread;
+1	.
+2	.
+3	iconst_1
+4	invokespecial java.lang.Thread :: isInterrupted : (Z)Z
+5	.
+6	.
+7	ireturn
+Exception handlers:
+
+
+public final native  isAlive : ()Z throws null
+Code: 
+null
+
+public final  isDaemon : ()Z throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.Thread :: daemon : boolean
+2	.
+3	.
+4	ireturn
+Exception handlers:
+
+
+public  isInterrupted : ()Z throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	aload_0
+1	iconst_0
+2	invokespecial java.lang.Thread :: isInterrupted : (Z)Z
+3	.
+4	.
+5	ireturn
+Exception handlers:
+
+
+private native  isInterrupted : (Z)Z throws null
+Code: 
+null
+
+public final  join : ()V throws java.lang.InterruptedException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	aload_0
+1	lconst_0
+2	invokevirtual java.lang.Thread :: join : (J)V
+3	.
+4	.
+5	return
+Exception handlers:
+
+
+public final synchronized  join : (J)V throws java.lang.InterruptedException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 9
+Instructions:
+0	invokestatic java.lang.System :: currentTimeMillis : ()J
+1	.
+2	.
+3	lstore_3
+4	lconst_0
+5	lstore 5
+6	.
+7	lload_1
+8	lconst_0
+9	lcmp
+10	ifge 13
+11	.
+12	.
+13	new java.lang.IllegalArgumentException
+14	.
+15	.
+16	dup
+17	ldc "timeout value is negative"
+18	.
+19	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+20	.
+21	.
+22	athrow
+23	lload_1
+24	lconst_0
+25	lcmp
+26	ifne 47
+27	.
+28	.
+29	goto 8
+30	.
+31	.
+32	aload_0
+33	lconst_0
+34	invokevirtual java.lang.Object :: wait : (J)V
+35	.
+36	.
+37	aload_0
+38	invokevirtual java.lang.Thread :: isAlive : ()Z
+39	.
+40	.
+41	ifne -9
+42	.
+43	.
+44	goto 36
+45	.
+46	.
+47	lload_1
+48	lload 5
+49	.
+50	lsub
+51	lstore 7
+52	.
+53	lload 7
+54	.
+55	lconst_0
+56	lcmp
+57	ifle 23
+58	.
+59	.
+60	aload_0
+61	lload 7
+62	.
+63	invokevirtual java.lang.Object :: wait : (J)V
+64	.
+65	.
+66	invokestatic java.lang.System :: currentTimeMillis : ()J
+67	.
+68	.
+69	lload_3
+70	lsub
+71	lstore 5
+72	.
+73	aload_0
+74	invokevirtual java.lang.Thread :: isAlive : ()Z
+75	.
+76	.
+77	ifne -30
+78	.
+79	.
+80	return
+Exception handlers:
+
+
+public final synchronized  join : (JI)V throws java.lang.InterruptedException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 4
+Instructions:
+0	lload_1
+1	lconst_0
+2	lcmp
+3	ifge 13
+4	.
+5	.
+6	new java.lang.IllegalArgumentException
+7	.
+8	.
+9	dup
+10	ldc "timeout value is negative"
+11	.
+12	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+13	.
+14	.
+15	athrow
+16	iload_3
+17	iflt 9
+18	.
+19	.
+20	iload_3
+21	ldc 999999
+22	.
+23	if_icmple 13
+24	.
+25	.
+26	new java.lang.IllegalArgumentException
+27	.
+28	.
+29	dup
+30	ldc "nanosecond timeout value out of range"
+31	.
+32	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+33	.
+34	.
+35	athrow
+36	iload_3
+37	ldc 500000
+38	.
+39	if_icmpge 13
+40	.
+41	.
+42	iload_3
+43	ifeq 13
+44	.
+45	.
+46	lload_1
+47	lconst_0
+48	lcmp
+49	ifne 7
+50	.
+51	.
+52	lload_1
+53	lconst_1
+54	ladd
+55	lstore_1
+56	aload_0
+57	lload_1
+58	invokevirtual java.lang.Thread :: join : (J)V
+59	.
+60	.
+61	return
+Exception handlers:
+
+
+private static synchronized  nextThreadNum : ()I throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.Thread :: threadInitNumber : int
+1	.
+2	.
+3	dup
+4	iconst_1
+5	iadd
+6	putstatic java.lang.Thread :: threadInitNumber : int
+7	.
+8	.
+9	ireturn
+Exception handlers:
+
+
+private static native  registerNatives : ()V throws null
+Code: 
+null
+
+public final  resume : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokevirtual java.lang.Thread :: checkAccess : ()V
+2	.
+3	.
+4	aload_0
+5	invokespecial java.lang.Thread :: resume0 : ()V
+6	.
+7	.
+8	return
+Exception handlers:
+
+
+private native  resume0 : ()V throws null
+Code: 
+null
+
+public  run : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.Thread :: target : java.lang.Runnable
+2	.
+3	.
+4	ifnull 12
+5	.
+6	.
+7	aload_0
+8	getfield java.lang.Thread :: target : java.lang.Runnable
+9	.
+10	.
+11	invokeinterface java.lang.Runnable :: run(1) : ()V
+12	.
+13	.
+14	.
+15	.
+16	return
+Exception handlers:
+
+
+public  setContextClassLoader : (Ljava/lang/ClassLoader;)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 3
+Instructions:
+0	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+1	.
+2	.
+3	astore_2
+4	aload_2
+5	ifnull 16
+6	.
+7	.
+8	aload_2
+9	new java.lang.RuntimePermission
+10	.
+11	.
+12	dup
+13	ldc "setContextClassLoader"
+14	.
+15	invokespecial java.lang.RuntimePermission :: <init> : (Ljava/lang/String;)V
+16	.
+17	.
+18	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+19	.
+20	.
+21	aload_0
+22	aload_1
+23	putfield java.lang.Thread :: contextClassLoader : java.lang.ClassLoader
+24	.
+25	.
+26	return
+Exception handlers:
+
+
+public final  setDaemon : (Z)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokevirtual java.lang.Thread :: checkAccess : ()V
+2	.
+3	.
+4	aload_0
+5	invokevirtual java.lang.Thread :: isAlive : ()Z
+6	.
+7	.
+8	ifeq 11
+9	.
+10	.
+11	new java.lang.IllegalThreadStateException
+12	.
+13	.
+14	dup
+15	invokespecial java.lang.IllegalThreadStateException :: <init> : ()V
+16	.
+17	.
+18	athrow
+19	aload_0
+20	iload_1
+21	putfield java.lang.Thread :: daemon : boolean
+22	.
+23	.
+24	return
+Exception handlers:
+
+
+public final  setName : (Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokevirtual java.lang.Thread :: checkAccess : ()V
+2	.
+3	.
+4	aload_0
+5	aload_1
+6	invokevirtual java.lang.String :: toCharArray : ()[C
+7	.
+8	.
+9	putfield java.lang.Thread :: name : [C
+10	.
+11	.
+12	return
+Exception handlers:
+
+
+public final  setPriority : (I)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokevirtual java.lang.Thread :: checkAccess : ()V
+2	.
+3	.
+4	iload_1
+5	bipush 10
+6	.
+7	if_icmpgt 8
+8	.
+9	.
+10	iload_1
+11	iconst_1
+12	if_icmpge 11
+13	.
+14	.
+15	new java.lang.IllegalArgumentException
+16	.
+17	.
+18	dup
+19	invokespecial java.lang.IllegalArgumentException :: <init> : ()V
+20	.
+21	.
+22	athrow
+23	iload_1
+24	aload_0
+25	getfield java.lang.Thread :: group : java.lang.ThreadGroup
+26	.
+27	.
+28	invokevirtual java.lang.ThreadGroup :: getMaxPriority : ()I
+29	.
+30	.
+31	if_icmple 11
+32	.
+33	.
+34	aload_0
+35	getfield java.lang.Thread :: group : java.lang.ThreadGroup
+36	.
+37	.
+38	invokevirtual java.lang.ThreadGroup :: getMaxPriority : ()I
+39	.
+40	.
+41	istore_1
+42	aload_0
+43	aload_0
+44	iload_1
+45	dup_x1
+46	putfield java.lang.Thread :: priority : int
+47	.
+48	.
+49	invokespecial java.lang.Thread :: setPriority0 : (I)V
+50	.
+51	.
+52	return
+Exception handlers:
+
+
+private native  setPriority0 : (I)V throws null
+Code: 
+null
+
+public static native  sleep : (J)V throws java.lang.InterruptedException 
+Code: 
+null
+
+public static  sleep : (JI)V throws java.lang.InterruptedException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 3
+Instructions:
+0	lload_0
+1	lconst_0
+2	lcmp
+3	ifge 13
+4	.
+5	.
+6	new java.lang.IllegalArgumentException
+7	.
+8	.
+9	dup
+10	ldc "timeout value is negative"
+11	.
+12	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+13	.
+14	.
+15	athrow
+16	iload_2
+17	iflt 9
+18	.
+19	.
+20	iload_2
+21	ldc 999999
+22	.
+23	if_icmple 13
+24	.
+25	.
+26	new java.lang.IllegalArgumentException
+27	.
+28	.
+29	dup
+30	ldc "nanosecond timeout value out of range"
+31	.
+32	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+33	.
+34	.
+35	athrow
+36	iload_2
+37	ldc 500000
+38	.
+39	if_icmpge 13
+40	.
+41	.
+42	iload_2
+43	ifeq 13
+44	.
+45	.
+46	lload_0
+47	lconst_0
+48	lcmp
+49	ifne 7
+50	.
+51	.
+52	lload_0
+53	lconst_1
+54	ladd
+55	lstore_0
+56	lload_0
+57	invokestatic java.lang.Thread :: sleep : (J)V
+58	.
+59	.
+60	return
+Exception handlers:
+
+
+public synchronized native  start : ()V throws null
+Code: 
+null
+
+public final  stop : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 4
+Instructions:
+0	aload_0
+1	astore_1
+2	aload_1
+3	monitorenter
+4	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+5	.
+6	.
+7	astore_3
+8	aload_3
+9	ifnull 39
+10	.
+11	.
+12	aload_0
+13	invokevirtual java.lang.Thread :: checkAccess : ()V
+14	.
+15	.
+16	aload_0
+17	invokestatic java.lang.Thread :: currentThread : ()Ljava/lang/Thread;
+18	.
+19	.
+20	if_acmpeq 28
+21	.
+22	.
+23	getstatic java.lang.Thread :: stopThreadPermission : java.lang.RuntimePermission
+24	.
+25	.
+26	ifnonnull 15
+27	.
+28	.
+29	new java.lang.RuntimePermission
+30	.
+31	.
+32	dup
+33	ldc "stopThread"
+34	.
+35	invokespecial java.lang.RuntimePermission :: <init> : (Ljava/lang/String;)V
+36	.
+37	.
+38	putstatic java.lang.Thread :: stopThreadPermission : java.lang.RuntimePermission
+39	.
+40	.
+41	aload_3
+42	getstatic java.lang.Thread :: stopThreadPermission : java.lang.RuntimePermission
+43	.
+44	.
+45	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+46	.
+47	.
+48	aload_0
+49	invokevirtual java.lang.Thread :: resume : ()V
+50	.
+51	.
+52	aload_0
+53	new java.lang.ThreadDeath
+54	.
+55	.
+56	dup
+57	invokespecial java.lang.ThreadDeath :: <init> : ()V
+58	.
+59	.
+60	invokespecial java.lang.Thread :: stop0 : (Ljava/lang/Object;)V
+61	.
+62	.
+63	aload_1
+64	monitorexit
+65	goto 6
+66	.
+67	.
+68	aload_1
+69	monitorexit
+70	athrow
+71	return
+Exception handlers:
+Exception Handler
+start_pc = 4
+end_pc = 63
+handler_pc = 68
+catchType = null
+
+
+
+public final synchronized  stop : (Ljava/lang/Throwable;)V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 3
+Instructions:
+0	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+1	.
+2	.
+3	astore_2
+4	aload_2
+5	ifnull 46
+6	.
+7	.
+8	aload_0
+9	invokevirtual java.lang.Thread :: checkAccess : ()V
+10	.
+11	.
+12	aload_0
+13	invokestatic java.lang.Thread :: currentThread : ()Ljava/lang/Thread;
+14	.
+15	.
+16	if_acmpne 10
+17	.
+18	.
+19	aload_1
+20	instanceof java.lang.ThreadDeath
+21	.
+22	.
+23	ifne 28
+24	.
+25	.
+26	getstatic java.lang.Thread :: stopThreadPermission : java.lang.RuntimePermission
+27	.
+28	.
+29	ifnonnull 15
+30	.
+31	.
+32	new java.lang.RuntimePermission
+33	.
+34	.
+35	dup
+36	ldc "stopThread"
+37	.
+38	invokespecial java.lang.RuntimePermission :: <init> : (Ljava/lang/String;)V
+39	.
+40	.
+41	putstatic java.lang.Thread :: stopThreadPermission : java.lang.RuntimePermission
+42	.
+43	.
+44	aload_2
+45	getstatic java.lang.Thread :: stopThreadPermission : java.lang.RuntimePermission
+46	.
+47	.
+48	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+49	.
+50	.
+51	aload_0
+52	invokevirtual java.lang.Thread :: resume : ()V
+53	.
+54	.
+55	aload_0
+56	aload_1
+57	invokespecial java.lang.Thread :: stop0 : (Ljava/lang/Object;)V
+58	.
+59	.
+60	return
+Exception handlers:
+
+
+private native  stop0 : (Ljava/lang/Object;)V throws null
+Code: 
+null
+
+public final  suspend : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokevirtual java.lang.Thread :: checkAccess : ()V
+2	.
+3	.
+4	aload_0
+5	invokespecial java.lang.Thread :: suspend0 : ()V
+6	.
+7	.
+8	return
+Exception handlers:
+
+
+private native  suspend0 : ()V throws null
+Code: 
+null
+
+public  toString : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokevirtual java.lang.Thread :: getThreadGroup : ()Ljava/lang/ThreadGroup;
+2	.
+3	.
+4	ifnull 55
+5	.
+6	.
+7	new java.lang.StringBuffer
+8	.
+9	.
+10	dup
+11	ldc "Thread["
+12	.
+13	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+14	.
+15	.
+16	aload_0
+17	invokevirtual java.lang.Thread :: getName : ()Ljava/lang/String;
+18	.
+19	.
+20	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+21	.
+22	.
+23	ldc ","
+24	.
+25	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+26	.
+27	.
+28	aload_0
+29	invokevirtual java.lang.Thread :: getPriority : ()I
+30	.
+31	.
+32	invokevirtual java.lang.StringBuffer :: append : (I)Ljava/lang/StringBuffer;
+33	.
+34	.
+35	ldc ","
+36	.
+37	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+38	.
+39	.
+40	aload_0
+41	invokevirtual java.lang.Thread :: getThreadGroup : ()Ljava/lang/ThreadGroup;
+42	.
+43	.
+44	invokevirtual java.lang.ThreadGroup :: getName : ()Ljava/lang/String;
+45	.
+46	.
+47	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+48	.
+49	.
+50	ldc "]"
+51	.
+52	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+53	.
+54	.
+55	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+56	.
+57	.
+58	areturn
+59	new java.lang.StringBuffer
+60	.
+61	.
+62	dup
+63	ldc "Thread["
+64	.
+65	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+66	.
+67	.
+68	aload_0
+69	invokevirtual java.lang.Thread :: getName : ()Ljava/lang/String;
+70	.
+71	.
+72	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+73	.
+74	.
+75	ldc ","
+76	.
+77	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+78	.
+79	.
+80	aload_0
+81	invokevirtual java.lang.Thread :: getPriority : ()I
+82	.
+83	.
+84	invokevirtual java.lang.StringBuffer :: append : (I)Ljava/lang/StringBuffer;
+85	.
+86	.
+87	ldc ","
+88	.
+89	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+90	.
+91	.
+92	ldc ""
+93	.
+94	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+95	.
+96	.
+97	ldc "]"
+98	.
+99	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+100	.
+101	.
+102	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+103	.
+104	.
+105	areturn
+Exception handlers:
+
+
+public static native  yield : ()V throws null
+Code: 
+null
+
+

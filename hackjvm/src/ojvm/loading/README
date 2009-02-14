@@ -1,0 +1,5 @@
+
+Loading, parsing, and a small amount of verification of class
+files. The result is an AbsynClass which contains a collection of
+AbsynMethod, AbsynField, etc. No operation in this package requires
+access to the machine state. 

@@ -1,0 +1,648 @@
+class sun.io.Converters extends java.lang.Object implements 
+private static java.lang.Object lock = null
+private static java.lang.String converterPackageName = null
+private static java.lang.String defaultEncoding = null
+public static final int BYTE_TO_CHAR = 0
+public static final int CHAR_TO_BYTE = 1
+private static final [Ljava/lang/String; converterPrefix = null
+private static [Ljava/lang/ref/SoftReference; classCache = null
+static java.lang.Class class$sun$io$Converters = null
+static  <clinit> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 0
+Instructions:
+0	getstatic sun.io.Converters :: class$sun$io$Converters : java.lang.Class
+1	.
+2	.
+3	ifnull 9
+4	.
+5	.
+6	getstatic sun.io.Converters :: class$sun$io$Converters : java.lang.Class
+7	.
+8	.
+9	goto 12
+10	.
+11	.
+12	ldc "sun.io.Converters"
+13	.
+14	invokestatic sun.io.Converters :: class$ : (Ljava/lang/String;)Ljava/lang/Class;
+15	.
+16	.
+17	dup
+18	putstatic sun.io.Converters :: class$sun$io$Converters : java.lang.Class
+19	.
+20	.
+21	putstatic sun.io.Converters :: lock : java.lang.Object
+22	.
+23	.
+24	aconst_null
+25	putstatic sun.io.Converters :: converterPackageName : java.lang.String
+26	.
+27	.
+28	aconst_null
+29	putstatic sun.io.Converters :: defaultEncoding : java.lang.String
+30	.
+31	.
+32	iconst_2
+33	anewarray java.lang.String
+34	.
+35	.
+36	dup
+37	iconst_0
+38	ldc "ByteToChar"
+39	.
+40	aastore
+41	dup
+42	iconst_1
+43	ldc "CharToByte"
+44	.
+45	aastore
+46	putstatic sun.io.Converters :: converterPrefix : [Ljava/lang/String;
+47	.
+48	.
+49	iconst_2
+50	anewarray java.lang.ref.SoftReference
+51	.
+52	.
+53	putstatic sun.io.Converters :: classCache : [Ljava/lang/ref/SoftReference;
+54	.
+55	.
+56	return
+Exception handlers:
+
+
+private  <init> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	return
+Exception handlers:
+
+
+static  class$ : (Ljava/lang/String;)Ljava/lang/Class; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokestatic java.lang.Class :: forName : (Ljava/lang/String;)Ljava/lang/Class;
+2	.
+3	.
+4	areturn
+5	astore_1
+6	new java.lang.NoClassDefFoundError
+7	.
+8	.
+9	dup
+10	aload_1
+11	invokevirtual java.lang.Throwable :: getMessage : ()Ljava/lang/String;
+12	.
+13	.
+14	invokespecial java.lang.NoClassDefFoundError :: <init> : (Ljava/lang/String;)V
+15	.
+16	.
+17	athrow
+Exception handlers:
+Exception Handler
+start_pc = 0
+end_pc = 5
+handler_pc = 5
+catchType = java.lang.ClassNotFoundException
+
+
+
+private static  getConverterClass : (ILjava/lang/String;)Ljava/lang/Class; throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 3
+Instructions:
+0	aconst_null
+1	astore_2
+2	aload_1
+3	ldc "ISO8859_1"
+4	.
+5	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+6	.
+7	.
+8	ifne 53
+9	.
+10	.
+11	aload_1
+12	ldc "8859_1"
+13	.
+14	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+15	.
+16	.
+17	ifeq 9
+18	.
+19	.
+20	ldc "ISO8859_1"
+21	.
+22	astore_2
+23	goto 38
+24	.
+25	.
+26	aload_1
+27	ldc "ISO8859-1"
+28	.
+29	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+30	.
+31	.
+32	ifeq 9
+33	.
+34	.
+35	ldc "ISO8859_1"
+36	.
+37	astore_2
+38	goto 23
+39	.
+40	.
+41	aload_1
+42	ldc "646"
+43	.
+44	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+45	.
+46	.
+47	ifeq 9
+48	.
+49	.
+50	ldc "ISO8859_1"
+51	.
+52	astore_2
+53	goto 8
+54	.
+55	.
+56	aload_1
+57	invokestatic sun.io.CharacterEncoding :: aliasName : (Ljava/lang/String;)Ljava/lang/String;
+58	.
+59	.
+60	astore_2
+61	aload_2
+62	ifnonnull 5
+63	.
+64	.
+65	aload_1
+66	astore_2
+67	new java.lang.StringBuffer
+68	.
+69	.
+70	dup
+71	invokestatic sun.io.Converters :: getConverterPackageName : ()Ljava/lang/String;
+72	.
+73	.
+74	invokestatic java.lang.String :: valueOf : (Ljava/lang/Object;)Ljava/lang/String;
+75	.
+76	.
+77	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+78	.
+79	.
+80	ldc "."
+81	.
+82	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+83	.
+84	.
+85	getstatic sun.io.Converters :: converterPrefix : [Ljava/lang/String;
+86	.
+87	.
+88	iload_0
+89	aaload
+90	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+91	.
+92	.
+93	aload_2
+94	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+95	.
+96	.
+97	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+98	.
+99	.
+100	invokestatic java.lang.Class :: forName : (Ljava/lang/String;)Ljava/lang/Class;
+101	.
+102	.
+103	areturn
+104	pop
+105	new java.io.UnsupportedEncodingException
+106	.
+107	.
+108	dup
+109	aload_2
+110	invokespecial java.io.UnsupportedEncodingException :: <init> : (Ljava/lang/String;)V
+111	.
+112	.
+113	athrow
+Exception handlers:
+Exception Handler
+start_pc = 67
+end_pc = 104
+handler_pc = 104
+catchType = java.lang.ClassNotFoundException
+
+
+
+private static  getConverterPackageName : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	getstatic sun.io.Converters :: converterPackageName : java.lang.String
+1	.
+2	.
+3	astore_0
+4	aload_0
+5	ifnull 5
+6	.
+7	.
+8	aload_0
+9	areturn
+10	new sun.security.action.GetPropertyAction
+11	.
+12	.
+13	dup
+14	ldc "file.encoding.pkg"
+15	.
+16	invokespecial sun.security.action.GetPropertyAction :: <init> : (Ljava/lang/String;)V
+17	.
+18	.
+19	astore_1
+20	aload_1
+21	invokestatic java.security.AccessController :: doPrivileged : (Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+22	.
+23	.
+24	checkcast java.lang.String
+25	.
+26	.
+27	astore_0
+28	aload_0
+29	ifnull 10
+30	.
+31	.
+32	aload_0
+33	putstatic sun.io.Converters :: converterPackageName : java.lang.String
+34	.
+35	.
+36	goto 6
+37	.
+38	.
+39	ldc "sun.io"
+40	.
+41	astore_0
+42	aload_0
+43	areturn
+Exception handlers:
+
+
+private static  getDefaultConverterClass : (I)Ljava/lang/Class; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 5
+Instructions:
+0	iconst_0
+1	istore_1
+2	getstatic sun.io.Converters :: classCache : [Ljava/lang/ref/SoftReference;
+3	.
+4	.
+5	iload_0
+6	aaload
+7	astore_2
+8	aload_2
+9	ifnull 23
+10	.
+11	.
+12	aload_2
+13	invokevirtual java.lang.ref.SoftReference :: get : ()Ljava/lang/Object;
+14	.
+15	.
+16	checkcast java.lang.Class
+17	.
+18	.
+19	astore_3
+20	aload_3
+21	ifnull 5
+22	.
+23	.
+24	aload_3
+25	areturn
+26	getstatic sun.io.Converters :: classCache : [Ljava/lang/ref/SoftReference;
+27	.
+28	.
+29	iload_0
+30	aconst_null
+31	aastore
+32	getstatic sun.io.Converters :: defaultEncoding : java.lang.String
+33	.
+34	.
+35	astore_3
+36	getstatic sun.io.Converters :: defaultEncoding : java.lang.String
+37	.
+38	.
+39	ifnull 8
+40	.
+41	.
+42	iconst_1
+43	istore_1
+44	goto 39
+45	.
+46	.
+47	new sun.security.action.GetPropertyAction
+48	.
+49	.
+50	dup
+51	ldc "file.encoding"
+52	.
+53	invokespecial sun.security.action.GetPropertyAction :: <init> : (Ljava/lang/String;)V
+54	.
+55	.
+56	astore 4
+57	.
+58	aload 4
+59	.
+60	invokestatic java.security.AccessController :: doPrivileged : (Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+61	.
+62	.
+63	checkcast java.lang.String
+64	.
+65	.
+66	astore_3
+67	aload_3
+68	ifnull 12
+69	.
+70	.
+71	aload_3
+72	putstatic sun.io.Converters :: defaultEncoding : java.lang.String
+73	.
+74	.
+75	iconst_1
+76	istore_1
+77	goto 6
+78	.
+79	.
+80	ldc "ISO8859_1"
+81	.
+82	astore_3
+83	iload_0
+84	aload_3
+85	invokestatic sun.io.Converters :: getConverterClass : (ILjava/lang/String;)Ljava/lang/Class;
+86	.
+87	.
+88	astore 4
+89	.
+90	iload_1
+91	ifeq 66
+92	.
+93	.
+94	getstatic sun.io.Converters :: classCache : [Ljava/lang/ref/SoftReference;
+95	.
+96	.
+97	iload_0
+98	new java.lang.ref.SoftReference
+99	.
+100	.
+101	dup
+102	aload 4
+103	.
+104	invokespecial java.lang.ref.SoftReference :: <init> : (Ljava/lang/Object;)V
+105	.
+106	.
+107	aastore
+108	goto 49
+109	.
+110	.
+111	pop
+112	iload_0
+113	ldc "Default"
+114	.
+115	invokestatic sun.io.Converters :: getConverterClass : (ILjava/lang/String;)Ljava/lang/Class;
+116	.
+117	.
+118	astore 4
+119	.
+120	goto 37
+121	.
+122	.
+123	pop
+124	new java.lang.InternalError
+125	.
+126	.
+127	dup
+128	new java.lang.StringBuffer
+129	.
+130	.
+131	dup
+132	ldc "Cannot find default "
+133	.
+134	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+135	.
+136	.
+137	getstatic sun.io.Converters :: converterPrefix : [Ljava/lang/String;
+138	.
+139	.
+140	iload_0
+141	aaload
+142	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+143	.
+144	.
+145	ldc " converter class"
+146	.
+147	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+148	.
+149	.
+150	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+151	.
+152	.
+153	invokespecial java.lang.InternalError :: <init> : (Ljava/lang/String;)V
+154	.
+155	.
+156	athrow
+157	aload 4
+158	.
+159	areturn
+Exception handlers:
+Exception Handler
+start_pc = 83
+end_pc = 108
+handler_pc = 111
+catchType = java.io.UnsupportedEncodingException
+
+Exception Handler
+start_pc = 112
+end_pc = 120
+handler_pc = 123
+catchType = java.io.UnsupportedEncodingException
+
+
+
+static  newConverter : (ILjava/lang/String;)Ljava/lang/Object; throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 4
+Instructions:
+0	getstatic sun.io.Converters :: lock : java.lang.Object
+1	.
+2	.
+3	astore_3
+4	aload_3
+5	monitorenter
+6	iload_0
+7	aload_1
+8	invokestatic sun.io.Converters :: getConverterClass : (ILjava/lang/String;)Ljava/lang/Class;
+9	.
+10	.
+11	astore_2
+12	aload_3
+13	monitorexit
+14	goto 6
+15	.
+16	.
+17	aload_3
+18	monitorexit
+19	athrow
+20	aload_1
+21	aload_2
+22	invokestatic sun.io.Converters :: newConverter : (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+23	.
+24	.
+25	areturn
+Exception handlers:
+Exception Handler
+start_pc = 6
+end_pc = 12
+handler_pc = 17
+catchType = null
+
+
+
+private static  newConverter : (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object; throws java.io.UnsupportedEncodingException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_1
+1	invokevirtual java.lang.Class :: newInstance : ()Ljava/lang/Object;
+2	.
+3	.
+4	areturn
+5	pop
+6	new java.io.UnsupportedEncodingException
+7	.
+8	.
+9	dup
+10	aload_0
+11	invokespecial java.io.UnsupportedEncodingException :: <init> : (Ljava/lang/String;)V
+12	.
+13	.
+14	athrow
+15	pop
+16	new java.io.UnsupportedEncodingException
+17	.
+18	.
+19	dup
+20	aload_0
+21	invokespecial java.io.UnsupportedEncodingException :: <init> : (Ljava/lang/String;)V
+22	.
+23	.
+24	athrow
+Exception handlers:
+Exception Handler
+start_pc = 0
+end_pc = 5
+handler_pc = 5
+catchType = java.lang.InstantiationException
+
+Exception Handler
+start_pc = 0
+end_pc = 5
+handler_pc = 15
+catchType = java.lang.IllegalAccessException
+
+
+
+static  newDefaultConverter : (I)Ljava/lang/Object; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 3
+Instructions:
+0	getstatic sun.io.Converters :: lock : java.lang.Object
+1	.
+2	.
+3	astore_2
+4	aload_2
+5	monitorenter
+6	iload_0
+7	invokestatic sun.io.Converters :: getDefaultConverterClass : (I)Ljava/lang/Class;
+8	.
+9	.
+10	astore_1
+11	aload_2
+12	monitorexit
+13	goto 6
+14	.
+15	.
+16	aload_2
+17	monitorexit
+18	athrow
+19	ldc ""
+20	.
+21	aload_1
+22	invokestatic sun.io.Converters :: newConverter : (Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Object;
+23	.
+24	.
+25	areturn
+26	pop
+27	new java.lang.InternalError
+28	.
+29	.
+30	dup
+31	new java.lang.StringBuffer
+32	.
+33	.
+34	dup
+35	ldc "Cannot instantiate default converter class "
+36	.
+37	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+38	.
+39	.
+40	aload_1
+41	invokevirtual java.lang.Class :: getName : ()Ljava/lang/String;
+42	.
+43	.
+44	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+45	.
+46	.
+47	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+48	.
+49	.
+50	invokespecial java.lang.InternalError :: <init> : (Ljava/lang/String;)V
+51	.
+52	.
+53	athrow
+Exception handlers:
+Exception Handler
+start_pc = 6
+end_pc = 11
+handler_pc = 16
+catchType = null
+
+Exception Handler
+start_pc = 19
+end_pc = 26
+handler_pc = 26
+catchType = java.io.UnsupportedEncodingException
+
+
+
+

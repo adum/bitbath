@@ -1,0 +1,22 @@
+#!/local/bin/scsh -s 
+!#
+
+;; generate javadoc documentation for the metajvm
+
+(define packages 
+  '(;; "ojvm"
+    "ojvm.operations"
+    "ojvm.machine"
+    "ojvm.util"
+    "ojvm.data"
+    "ojvm.loading.instructions"
+    "ojvm.loading"))
+
+(define destDir "doc") 
+
+;; (define apiImages "/local/apps/Java/jdk-1.2.2/docs/api/images")
+;; (define apiUserGuide "/local/apps/Java/jdk-1.2.2/docs/api/API_users_guide.html")
+
+(run (/local/apps/Lang/Java/java-1.2/bin/javadoc -d ,destDir ,@packages))
+
+

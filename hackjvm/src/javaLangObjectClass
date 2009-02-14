@@ -1,0 +1,214 @@
+public class java.lang.Object extends null implements 
+static  <clinit> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 0
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.Object :: registerNatives : ()V
+1	.
+2	.
+3	return
+Exception handlers:
+
+
+public  <init> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 0
+maxLocals = 1
+Instructions:
+0	return
+Exception handlers:
+
+
+protected native  clone : ()Ljava/lang/Object; throws java.lang.CloneNotSupportedException 
+Code: 
+null
+
+public  equals : (Ljava/lang/Object;)Z throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	if_acmpeq 7
+3	.
+4	.
+5	iconst_0
+6	goto 4
+7	.
+8	.
+9	iconst_1
+10	ireturn
+Exception handlers:
+
+
+protected  finalize : ()V throws java.lang.Throwable 
+Code: 
+Code Attribute:
+maxStack = 0
+maxLocals = 1
+Instructions:
+0	return
+Exception handlers:
+
+
+public final native  getClass : ()Ljava/lang/Class; throws null
+Code: 
+null
+
+public native  hashCode : ()I throws null
+Code: 
+null
+
+public final native  notify : ()V throws null
+Code: 
+null
+
+public final native  notifyAll : ()V throws null
+Code: 
+null
+
+private static native  registerNatives : ()V throws null
+Code: 
+null
+
+public  toString : ()Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	new java.lang.StringBuffer
+1	.
+2	.
+3	dup
+4	aload_0
+5	invokevirtual java.lang.Object :: getClass : ()Ljava/lang/Class;
+6	.
+7	.
+8	invokevirtual java.lang.Class :: getName : ()Ljava/lang/String;
+9	.
+10	.
+11	invokestatic java.lang.String :: valueOf : (Ljava/lang/Object;)Ljava/lang/String;
+12	.
+13	.
+14	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+15	.
+16	.
+17	ldc "@"
+18	.
+19	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+20	.
+21	.
+22	aload_0
+23	invokevirtual java.lang.Object :: hashCode : ()I
+24	.
+25	.
+26	invokestatic java.lang.Integer :: toHexString : (I)Ljava/lang/String;
+27	.
+28	.
+29	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+30	.
+31	.
+32	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+33	.
+34	.
+35	areturn
+Exception handlers:
+
+
+public final  wait : ()V throws java.lang.InterruptedException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	aload_0
+1	lconst_0
+2	invokevirtual java.lang.Object :: wait : (J)V
+3	.
+4	.
+5	return
+Exception handlers:
+
+
+public final native  wait : (J)V throws java.lang.InterruptedException 
+Code: 
+null
+
+public final  wait : (JI)V throws java.lang.InterruptedException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 4
+Instructions:
+0	lload_1
+1	lconst_0
+2	lcmp
+3	ifge 13
+4	.
+5	.
+6	new java.lang.IllegalArgumentException
+7	.
+8	.
+9	dup
+10	ldc "timeout value is negative"
+11	.
+12	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+13	.
+14	.
+15	athrow
+16	iload_3
+17	iflt 9
+18	.
+19	.
+20	iload_3
+21	ldc 999999
+22	.
+23	if_icmple 13
+24	.
+25	.
+26	new java.lang.IllegalArgumentException
+27	.
+28	.
+29	dup
+30	ldc "nanosecond timeout value out of range"
+31	.
+32	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+33	.
+34	.
+35	athrow
+36	iload_3
+37	ldc 500000
+38	.
+39	if_icmpge 13
+40	.
+41	.
+42	iload_3
+43	ifeq 13
+44	.
+45	.
+46	lload_1
+47	lconst_0
+48	lcmp
+49	ifne 7
+50	.
+51	.
+52	lload_1
+53	lconst_1
+54	ladd
+55	lstore_1
+56	aload_0
+57	lload_1
+58	invokevirtual java.lang.Object :: wait : (J)V
+59	.
+60	.
+61	return
+Exception handlers:
+
+
+

@@ -1,0 +1,30 @@
+#!/bin/ksh
+
+JAVAC=/local/apps/Lang/Java/java-1.2/bin/javac
+
+echo "Compiling package exceptions..."
+$JAVAC ojvm/exceptions/*.java
+
+echo "Compiling package util..."
+$JAVAC ojvm/util/*.java
+
+echo "Compiling package loading..."
+$JAVAC ojvm/loading/*.java
+
+echo "Compiling package instructions..."
+$JAVAC ojvm/loading/instructions/*.java
+
+echo "Compiling package data..."
+$JAVAC ojvm/data/*.java
+
+echo "Compiling package machine..."
+$JAVAC ojvm/machine/*.java
+
+echo "Compiling package operations..."
+$JAVAC ojvm/operations/*.java
+
+echo "Compiling main..."
+$JAVAC ojvm/*.java
+
+echo "Done"
+

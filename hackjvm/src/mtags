@@ -1,0 +1,3 @@
+#!/bin/ksh
+
+etags ojvm/*.java ojvm/exceptions/*.java ojvm/util/*.java ojvm/loading/*.java ojvm/loading/instructions/*.java ojvm/data/*.java ojvm/machine/*.java ojvm/operations/*.java

@@ -1,0 +1,9 @@
+The virtual machine and its runtime data areas.
+
+The package includes *containers* that hold the data manipulated by
+the JVM. The package does not deal with the interpretation of the
+data.
+
+The internal structure of the machine is not exposed. A facade object
+acts as an observer. Code in other packages only interacts with the
+machine through the facade. 

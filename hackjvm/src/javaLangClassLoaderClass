@@ -1,0 +1,2673 @@
+public abstract class java.lang.ClassLoader extends java.lang.Object implements 
+private boolean initialized = null
+private java.lang.ClassLoader parent = null
+private java.util.Vector classes = null
+private java.util.HashMap packages = null
+private static sun.misc.URLClassPath bootstrapClassPath = null
+private static java.lang.ClassLoader scl = null
+private static boolean sclSet = null
+private static java.lang.RuntimePermission getClassLoaderPerm = null
+private java.security.ProtectionDomain defaultDomain = null
+private static java.security.PermissionCollection defaultPermissions = null
+private static java.util.Vector loadedLibraryNames = null
+private static java.util.Vector systemNativeLibraries = null
+private java.util.Vector nativeLibraries = null
+private static java.util.Stack nativeLibraryContext = null
+private static [Ljava/lang/String; usr_paths = null
+private static [Ljava/lang/String; sys_paths = null
+static java.lang.Class class$java$lang$ClassLoader = null
+static  <clinit> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 0
+Instructions:
+0	aconst_null
+1	putstatic java.lang.ClassLoader :: getClassLoaderPerm : java.lang.RuntimePermission
+2	.
+3	.
+4	aconst_null
+5	putstatic java.lang.ClassLoader :: defaultPermissions : java.security.PermissionCollection
+6	.
+7	.
+8	new java.util.Vector
+9	.
+10	.
+11	dup
+12	invokespecial java.util.Vector :: <init> : ()V
+13	.
+14	.
+15	putstatic java.lang.ClassLoader :: loadedLibraryNames : java.util.Vector
+16	.
+17	.
+18	new java.util.Vector
+19	.
+20	.
+21	dup
+22	invokespecial java.util.Vector :: <init> : ()V
+23	.
+24	.
+25	putstatic java.lang.ClassLoader :: systemNativeLibraries : java.util.Vector
+26	.
+27	.
+28	new java.util.Stack
+29	.
+30	.
+31	dup
+32	invokespecial java.util.Stack :: <init> : ()V
+33	.
+34	.
+35	putstatic java.lang.ClassLoader :: nativeLibraryContext : java.util.Stack
+36	.
+37	.
+38	return
+Exception handlers:
+
+
+protected  <init> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.ClassLoader :: initialized : boolean
+7	.
+8	.
+9	aload_0
+10	new java.util.Vector
+11	.
+12	.
+13	dup
+14	invokespecial java.util.Vector :: <init> : ()V
+15	.
+16	.
+17	putfield java.lang.ClassLoader :: classes : java.util.Vector
+18	.
+19	.
+20	aload_0
+21	new java.util.HashMap
+22	.
+23	.
+24	dup
+25	invokespecial java.util.HashMap :: <init> : ()V
+26	.
+27	.
+28	putfield java.lang.ClassLoader :: packages : java.util.HashMap
+29	.
+30	.
+31	aload_0
+32	aconst_null
+33	putfield java.lang.ClassLoader :: defaultDomain : java.security.ProtectionDomain
+34	.
+35	.
+36	aload_0
+37	new java.util.Vector
+38	.
+39	.
+40	dup
+41	invokespecial java.util.Vector :: <init> : ()V
+42	.
+43	.
+44	putfield java.lang.ClassLoader :: nativeLibraries : java.util.Vector
+45	.
+46	.
+47	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+48	.
+49	.
+50	astore_1
+51	aload_1
+52	ifnull 7
+53	.
+54	.
+55	aload_1
+56	invokevirtual java.lang.SecurityManager :: checkCreateClassLoader : ()V
+57	.
+58	.
+59	aload_0
+60	invokestatic java.lang.ClassLoader :: getSystemClassLoader : ()Ljava/lang/ClassLoader;
+61	.
+62	.
+63	putfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+64	.
+65	.
+66	aload_0
+67	iconst_1
+68	putfield java.lang.ClassLoader :: initialized : boolean
+69	.
+70	.
+71	return
+Exception handlers:
+
+
+protected  <init> : (Ljava/lang/ClassLoader;)V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 3
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	aload_0
+5	iconst_0
+6	putfield java.lang.ClassLoader :: initialized : boolean
+7	.
+8	.
+9	aload_0
+10	new java.util.Vector
+11	.
+12	.
+13	dup
+14	invokespecial java.util.Vector :: <init> : ()V
+15	.
+16	.
+17	putfield java.lang.ClassLoader :: classes : java.util.Vector
+18	.
+19	.
+20	aload_0
+21	new java.util.HashMap
+22	.
+23	.
+24	dup
+25	invokespecial java.util.HashMap :: <init> : ()V
+26	.
+27	.
+28	putfield java.lang.ClassLoader :: packages : java.util.HashMap
+29	.
+30	.
+31	aload_0
+32	aconst_null
+33	putfield java.lang.ClassLoader :: defaultDomain : java.security.ProtectionDomain
+34	.
+35	.
+36	aload_0
+37	new java.util.Vector
+38	.
+39	.
+40	dup
+41	invokespecial java.util.Vector :: <init> : ()V
+42	.
+43	.
+44	putfield java.lang.ClassLoader :: nativeLibraries : java.util.Vector
+45	.
+46	.
+47	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+48	.
+49	.
+50	astore_2
+51	aload_2
+52	ifnull 7
+53	.
+54	.
+55	aload_2
+56	invokevirtual java.lang.SecurityManager :: checkCreateClassLoader : ()V
+57	.
+58	.
+59	aload_0
+60	aload_1
+61	putfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+62	.
+63	.
+64	aload_0
+65	iconst_1
+66	putfield java.lang.ClassLoader :: initialized : boolean
+67	.
+68	.
+69	return
+Exception handlers:
+
+
+static  access$0 : ()Ljava/util/Vector; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.ClassLoader :: loadedLibraryNames : java.util.Vector
+1	.
+2	.
+3	areturn
+Exception handlers:
+
+
+static  access$1 : ()Ljava/util/Stack; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.ClassLoader :: nativeLibraryContext : java.util.Stack
+1	.
+2	.
+3	areturn
+Exception handlers:
+
+
+ addClass : (Ljava/lang/Class;)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: classes : java.util.Vector
+2	.
+3	.
+4	aload_1
+5	invokevirtual java.util.Vector :: addElement : (Ljava/lang/Object;)V
+6	.
+7	.
+8	return
+Exception handlers:
+
+
+private  check : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: initialized : boolean
+2	.
+3	.
+4	ifne 13
+5	.
+6	.
+7	new java.lang.SecurityException
+8	.
+9	.
+10	dup
+11	ldc "ClassLoader object not initialized"
+12	.
+13	invokespecial java.lang.SecurityException :: <init> : (Ljava/lang/String;)V
+14	.
+15	.
+16	athrow
+17	return
+Exception handlers:
+
+
+static  class$ : (Ljava/lang/String;)Ljava/lang/Class; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokestatic java.lang.Class :: forName : (Ljava/lang/String;)Ljava/lang/Class;
+2	.
+3	.
+4	areturn
+5	astore_1
+6	new java.lang.NoClassDefFoundError
+7	.
+8	.
+9	dup
+10	aload_1
+11	invokevirtual java.lang.Throwable :: getMessage : ()Ljava/lang/String;
+12	.
+13	.
+14	invokespecial java.lang.NoClassDefFoundError :: <init> : (Ljava/lang/String;)V
+15	.
+16	.
+17	athrow
+Exception handlers:
+Exception Handler
+start_pc = 0
+end_pc = 5
+handler_pc = 5
+catchType = java.lang.ClassNotFoundException
+
+
+
+protected final  defineClass : (Ljava/lang/String;[BII)Ljava/lang/Class; throws java.lang.ClassFormatError 
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 6
+Instructions:
+0	aload_0
+1	invokespecial java.lang.ClassLoader :: check : ()V
+2	.
+3	.
+4	aload_0
+5	aload_1
+6	aload_2
+7	iload_3
+8	iload 4
+9	.
+10	invokespecial java.lang.ClassLoader :: defineClass0 : (Ljava/lang/String;[BII)Ljava/lang/Class;
+11	.
+12	.
+13	astore 5
+14	.
+15	aload 5
+16	.
+17	aload_0
+18	invokespecial java.lang.ClassLoader :: getDefaultDomain : ()Ljava/security/ProtectionDomain;
+19	.
+20	.
+21	invokevirtual java.lang.Class :: setProtectionDomain0 : (Ljava/security/ProtectionDomain;)V
+22	.
+23	.
+24	aload 5
+25	.
+26	areturn
+Exception handlers:
+
+
+protected final  defineClass : (Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; throws java.lang.ClassFormatError 
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 8
+Instructions:
+0	aload_0
+1	invokespecial java.lang.ClassLoader :: check : ()V
+2	.
+3	.
+4	aload 5
+5	.
+6	ifnonnull 13
+7	.
+8	.
+9	aload_0
+10	aload_1
+11	aload_2
+12	iload_3
+13	iload 4
+14	.
+15	invokevirtual java.lang.ClassLoader :: defineClass : (Ljava/lang/String;[BII)Ljava/lang/Class;
+16	.
+17	.
+18	areturn
+19	aload_0
+20	aload_1
+21	aload_2
+22	iload_3
+23	iload 4
+24	.
+25	invokespecial java.lang.ClassLoader :: defineClass0 : (Ljava/lang/String;[BII)Ljava/lang/Class;
+26	.
+27	.
+28	astore 6
+29	.
+30	aload 6
+31	.
+32	aload 5
+33	.
+34	invokevirtual java.lang.Class :: setProtectionDomain0 : (Ljava/security/ProtectionDomain;)V
+35	.
+36	.
+37	aload 5
+38	.
+39	invokevirtual java.security.ProtectionDomain :: getCodeSource : ()Ljava/security/CodeSource;
+40	.
+41	.
+42	ifnull 26
+43	.
+44	.
+45	aload 5
+46	.
+47	invokevirtual java.security.ProtectionDomain :: getCodeSource : ()Ljava/security/CodeSource;
+48	.
+49	.
+50	invokevirtual java.security.CodeSource :: getCertificates : ()[Ljava/security/cert/Certificate;
+51	.
+52	.
+53	astore 7
+54	.
+55	aload 7
+56	.
+57	ifnull 11
+58	.
+59	.
+60	aload_0
+61	aload 6
+62	.
+63	aload 7
+64	.
+65	invokevirtual java.lang.ClassLoader :: setSigners : (Ljava/lang/Class;[Ljava/lang/Object;)V
+66	.
+67	.
+68	aload 6
+69	.
+70	areturn
+Exception handlers:
+
+
+protected final  defineClass : ([BII)Ljava/lang/Class; throws java.lang.ClassFormatError 
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 4
+Instructions:
+0	aload_0
+1	aconst_null
+2	aload_1
+3	iload_2
+4	iload_3
+5	invokevirtual java.lang.ClassLoader :: defineClass : (Ljava/lang/String;[BII)Ljava/lang/Class;
+6	.
+7	.
+8	areturn
+Exception handlers:
+
+
+private native  defineClass0 : (Ljava/lang/String;[BII)Ljava/lang/Class; throws null
+Code: 
+null
+
+protected  definePackage : (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)Ljava/lang/Package; throws java.lang.IllegalArgumentException 
+Code: 
+Code Attribute:
+maxStack = 10
+maxLocals = 13
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: packages : java.util.HashMap
+2	.
+3	.
+4	astore 10
+5	.
+6	aload 10
+7	.
+8	monitorenter
+9	aload_0
+10	aload_1
+11	invokevirtual java.lang.ClassLoader :: getPackage : (Ljava/lang/String;)Ljava/lang/Package;
+12	.
+13	.
+14	astore 12
+15	.
+16	aload 12
+17	.
+18	ifnull 12
+19	.
+20	.
+21	new java.lang.IllegalArgumentException
+22	.
+23	.
+24	dup
+25	aload_1
+26	invokespecial java.lang.IllegalArgumentException :: <init> : (Ljava/lang/String;)V
+27	.
+28	.
+29	athrow
+30	new java.lang.Package
+31	.
+32	.
+33	dup
+34	aload_1
+35	aload_2
+36	aload_3
+37	aload 4
+38	.
+39	aload 5
+40	.
+41	aload 6
+42	.
+43	aload 7
+44	.
+45	aload 8
+46	.
+47	invokespecial java.lang.Package :: <init> : (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/net/URL;)V
+48	.
+49	.
+50	astore 12
+51	.
+52	aload_0
+53	getfield java.lang.ClassLoader :: packages : java.util.HashMap
+54	.
+55	.
+56	aload_1
+57	aload 12
+58	.
+59	invokevirtual java.util.HashMap :: put : (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+60	.
+61	.
+62	pop
+63	aload 12
+64	.
+65	astore 9
+66	.
+67	jsr 10
+68	.
+69	.
+70	aload 9
+71	.
+72	areturn
+73	aload 10
+74	.
+75	monitorexit
+76	athrow
+77	astore 11
+78	.
+79	aload 10
+80	.
+81	monitorexit
+82	ret 11
+83	.
+Exception handlers:
+Exception Handler
+start_pc = 9
+end_pc = 73
+handler_pc = 73
+catchType = null
+
+
+
+private native  findBootstrapClass : (Ljava/lang/String;)Ljava/lang/Class; throws java.lang.ClassNotFoundException 
+Code: 
+null
+
+protected  findClass : (Ljava/lang/String;)Ljava/lang/Class; throws java.lang.ClassNotFoundException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	new java.lang.ClassNotFoundException
+1	.
+2	.
+3	dup
+4	aload_1
+5	invokespecial java.lang.ClassNotFoundException :: <init> : (Ljava/lang/String;)V
+6	.
+7	.
+8	athrow
+Exception handlers:
+
+
+protected  findLibrary : (Ljava/lang/String;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 2
+Instructions:
+0	aconst_null
+1	areturn
+Exception handlers:
+
+
+protected final native  findLoadedClass : (Ljava/lang/String;)Ljava/lang/Class; throws null
+Code: 
+null
+
+static  findNative : (Ljava/lang/ClassLoader;Ljava/lang/String;)J throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 12
+Instructions:
+0	aload_0
+1	ifnull 10
+2	.
+3	.
+4	aload_0
+5	getfield java.lang.ClassLoader :: nativeLibraries : java.util.Vector
+6	.
+7	.
+8	goto 6
+9	.
+10	.
+11	getstatic java.lang.ClassLoader :: systemNativeLibraries : java.util.Vector
+12	.
+13	.
+14	astore_2
+15	aload_2
+16	astore 5
+17	.
+18	aload 5
+19	.
+20	monitorenter
+21	aload_2
+22	invokevirtual java.util.Vector :: size : ()I
+23	.
+24	.
+25	istore 7
+26	.
+27	iconst_0
+28	istore 8
+29	.
+30	goto 40
+31	.
+32	.
+33	aload_2
+34	iload 8
+35	.
+36	invokevirtual java.util.Vector :: elementAt : (I)Ljava/lang/Object;
+37	.
+38	.
+39	checkcast java.lang.ClassLoader$NativeLibrary
+40	.
+41	.
+42	astore 9
+43	.
+44	aload 9
+45	.
+46	aload_1
+47	invokevirtual java.lang.ClassLoader$NativeLibrary :: find : (Ljava/lang/String;)J
+48	.
+49	.
+50	lstore 10
+51	.
+52	lload 10
+53	.
+54	lconst_0
+55	lcmp
+56	ifeq 11
+57	.
+58	.
+59	lload 10
+60	.
+61	lstore_3
+62	jsr 25
+63	.
+64	.
+65	lload_3
+66	lreturn
+67	iinc 8 1
+68	.
+69	.
+70	iload 8
+71	.
+72	iload 7
+73	.
+74	if_icmplt -41
+75	.
+76	.
+77	aload 5
+78	.
+79	monitorexit
+80	goto 14
+81	.
+82	.
+83	aload 5
+84	.
+85	monitorexit
+86	athrow
+87	astore 6
+88	.
+89	aload 5
+90	.
+91	monitorexit
+92	ret 6
+93	.
+94	lconst_0
+95	lreturn
+Exception handlers:
+Exception Handler
+start_pc = 21
+end_pc = 77
+handler_pc = 83
+catchType = null
+
+
+
+protected  findResource : (Ljava/lang/String;)Ljava/net/URL; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 2
+Instructions:
+0	aconst_null
+1	areturn
+Exception handlers:
+
+
+protected  findResources : (Ljava/lang/String;)Ljava/util/Enumeration; throws java.io.IOException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	new sun.misc.CompoundEnumeration
+1	.
+2	.
+3	dup
+4	iconst_0
+5	anewarray java.util.Enumeration
+6	.
+7	.
+8	invokespecial sun.misc.CompoundEnumeration :: <init> : ([Ljava/util/Enumeration;)V
+9	.
+10	.
+11	areturn
+Exception handlers:
+
+
+protected final  findSystemClass : (Ljava/lang/String;)Ljava/lang/Class; throws java.lang.ClassNotFoundException 
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	invokespecial java.lang.ClassLoader :: check : ()V
+2	.
+3	.
+4	invokestatic java.lang.ClassLoader :: getSystemClassLoader : ()Ljava/lang/ClassLoader;
+5	.
+6	.
+7	astore_2
+8	aload_2
+9	ifnonnull 9
+10	.
+11	.
+12	aload_0
+13	aload_1
+14	invokespecial java.lang.ClassLoader :: findBootstrapClass : (Ljava/lang/String;)Ljava/lang/Class;
+15	.
+16	.
+17	areturn
+18	aload_2
+19	aload_1
+20	invokevirtual java.lang.ClassLoader :: loadClass : (Ljava/lang/String;)Ljava/lang/Class;
+21	.
+22	.
+23	areturn
+Exception handlers:
+
+
+static  getBootstrapClassPath : ()Lsun/misc/URLClassPath; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.ClassLoader :: bootstrapClassPath : sun.misc.URLClassPath
+1	.
+2	.
+3	ifnonnull 9
+4	.
+5	.
+6	invokestatic sun.misc.Launcher :: getBootstrapClassPath : ()Lsun/misc/URLClassPath;
+7	.
+8	.
+9	putstatic java.lang.ClassLoader :: bootstrapClassPath : sun.misc.URLClassPath
+10	.
+11	.
+12	getstatic java.lang.ClassLoader :: bootstrapClassPath : sun.misc.URLClassPath
+13	.
+14	.
+15	areturn
+Exception handlers:
+
+
+private static  getBootstrapResource : (Ljava/lang/String;)Ljava/net/URL; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	invokestatic java.lang.ClassLoader :: getBootstrapClassPath : ()Lsun/misc/URLClassPath;
+1	.
+2	.
+3	astore_1
+4	aload_1
+5	aload_0
+6	invokevirtual sun.misc.URLClassPath :: getResource : (Ljava/lang/String;)Lsun/misc/Resource;
+7	.
+8	.
+9	astore_2
+10	aload_2
+11	ifnull 10
+12	.
+13	.
+14	aload_2
+15	invokevirtual sun.misc.Resource :: getURL : ()Ljava/net/URL;
+16	.
+17	.
+18	goto 4
+19	.
+20	.
+21	aconst_null
+22	areturn
+Exception handlers:
+
+
+private static  getBootstrapResources : (Ljava/lang/String;)Ljava/util/Enumeration; throws java.io.IOException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	invokestatic java.lang.ClassLoader :: getBootstrapClassPath : ()Lsun/misc/URLClassPath;
+1	.
+2	.
+3	aload_0
+4	invokevirtual sun.misc.URLClassPath :: getResources : (Ljava/lang/String;)Ljava/util/Enumeration;
+5	.
+6	.
+7	astore_1
+8	new java.lang.ClassLoader$1
+9	.
+10	.
+11	dup
+12	aload_1
+13	invokespecial java.lang.ClassLoader$1 :: <init> : (Ljava/util/Enumeration;)V
+14	.
+15	.
+16	areturn
+Exception handlers:
+
+
+static native  getCallerClassLoader : ()Ljava/lang/ClassLoader; throws null
+Code: 
+null
+
+private  getDefaultDomain : ()Ljava/security/ProtectionDomain; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 4
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: defaultDomain : java.security.ProtectionDomain
+2	.
+3	.
+4	ifnonnull 89
+5	.
+6	.
+7	getstatic java.lang.ClassLoader :: class$java$lang$ClassLoader : java.lang.Class
+8	.
+9	.
+10	ifnull 9
+11	.
+12	.
+13	getstatic java.lang.ClassLoader :: class$java$lang$ClassLoader : java.lang.Class
+14	.
+15	.
+16	goto 12
+17	.
+18	.
+19	ldc "java.lang.ClassLoader"
+20	.
+21	invokestatic java.lang.ClassLoader :: class$ : (Ljava/lang/String;)Ljava/lang/Class;
+22	.
+23	.
+24	dup
+25	putstatic java.lang.ClassLoader :: class$java$lang$ClassLoader : java.lang.Class
+26	.
+27	.
+28	astore_1
+29	aload_1
+30	monitorenter
+31	getstatic java.lang.ClassLoader :: defaultPermissions : java.security.PermissionCollection
+32	.
+33	.
+34	ifnonnull 19
+35	.
+36	.
+37	new java.lang.ClassLoader$2
+38	.
+39	.
+40	dup
+41	invokespecial java.lang.ClassLoader$2 :: <init> : ()V
+42	.
+43	.
+44	invokestatic java.security.AccessController :: doPrivileged : (Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+45	.
+46	.
+47	checkcast java.security.PermissionCollection
+48	.
+49	.
+50	putstatic java.lang.ClassLoader :: defaultPermissions : java.security.PermissionCollection
+51	.
+52	.
+53	aload_0
+54	getfield java.lang.ClassLoader :: defaultDomain : java.security.ProtectionDomain
+55	.
+56	.
+57	ifnonnull 28
+58	.
+59	.
+60	new java.security.CodeSource
+61	.
+62	.
+63	dup
+64	aconst_null
+65	aconst_null
+66	invokespecial java.security.CodeSource :: <init> : (Ljava/net/URL;[Ljava/security/cert/Certificate;)V
+67	.
+68	.
+69	astore_3
+70	aload_0
+71	new java.security.ProtectionDomain
+72	.
+73	.
+74	dup
+75	aload_3
+76	getstatic java.lang.ClassLoader :: defaultPermissions : java.security.PermissionCollection
+77	.
+78	.
+79	invokespecial java.security.ProtectionDomain :: <init> : (Ljava/security/CodeSource;Ljava/security/PermissionCollection;)V
+80	.
+81	.
+82	putfield java.lang.ClassLoader :: defaultDomain : java.security.ProtectionDomain
+83	.
+84	.
+85	aload_1
+86	monitorexit
+87	goto 6
+88	.
+89	.
+90	aload_1
+91	monitorexit
+92	athrow
+93	aload_0
+94	getfield java.lang.ClassLoader :: defaultDomain : java.security.ProtectionDomain
+95	.
+96	.
+97	areturn
+Exception handlers:
+Exception Handler
+start_pc = 31
+end_pc = 85
+handler_pc = 90
+catchType = null
+
+
+
+static  getGetClassLoaderPerm : ()Ljava/lang/RuntimePermission; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.ClassLoader :: getClassLoaderPerm : java.lang.RuntimePermission
+1	.
+2	.
+3	ifnonnull 15
+4	.
+5	.
+6	new java.lang.RuntimePermission
+7	.
+8	.
+9	dup
+10	ldc "getClassLoader"
+11	.
+12	invokespecial java.lang.RuntimePermission :: <init> : (Ljava/lang/String;)V
+13	.
+14	.
+15	putstatic java.lang.ClassLoader :: getClassLoaderPerm : java.lang.RuntimePermission
+16	.
+17	.
+18	getstatic java.lang.ClassLoader :: getClassLoaderPerm : java.lang.RuntimePermission
+19	.
+20	.
+21	areturn
+Exception handlers:
+
+
+protected  getPackage : (Ljava/lang/String;)Ljava/lang/Package; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 6
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: packages : java.util.HashMap
+2	.
+3	.
+4	astore_3
+5	aload_3
+6	monitorenter
+7	aload_0
+8	getfield java.lang.ClassLoader :: packages : java.util.HashMap
+9	.
+10	.
+11	aload_1
+12	invokevirtual java.util.HashMap :: get : (Ljava/lang/Object;)Ljava/lang/Object;
+13	.
+14	.
+15	checkcast java.lang.Package
+16	.
+17	.
+18	astore 5
+19	.
+20	aload 5
+21	.
+22	ifnonnull 45
+23	.
+24	.
+25	aload_0
+26	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+27	.
+28	.
+29	ifnull 16
+30	.
+31	.
+32	aload_0
+33	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+34	.
+35	.
+36	aload_1
+37	invokevirtual java.lang.ClassLoader :: getPackage : (Ljava/lang/String;)Ljava/lang/Package;
+38	.
+39	.
+40	astore 5
+41	.
+42	goto 9
+43	.
+44	.
+45	aload_1
+46	invokestatic java.lang.Package :: getSystemPackage : (Ljava/lang/String;)Ljava/lang/Package;
+47	.
+48	.
+49	astore 5
+50	.
+51	aload 5
+52	.
+53	ifnull 14
+54	.
+55	.
+56	aload_0
+57	getfield java.lang.ClassLoader :: packages : java.util.HashMap
+58	.
+59	.
+60	aload_1
+61	aload 5
+62	.
+63	invokevirtual java.util.HashMap :: put : (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+64	.
+65	.
+66	pop
+67	aload 5
+68	.
+69	astore_2
+70	jsr 8
+71	.
+72	.
+73	aload_2
+74	areturn
+75	aload_3
+76	monitorexit
+77	athrow
+78	astore 4
+79	.
+80	aload_3
+81	monitorexit
+82	ret 4
+83	.
+Exception handlers:
+Exception Handler
+start_pc = 7
+end_pc = 75
+handler_pc = 75
+catchType = null
+
+
+
+protected  getPackages : ()[Ljava/lang/Package; throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 4
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: packages : java.util.HashMap
+2	.
+3	.
+4	astore_2
+5	aload_2
+6	monitorenter
+7	aload_0
+8	getfield java.lang.ClassLoader :: packages : java.util.HashMap
+9	.
+10	.
+11	invokevirtual java.util.HashMap :: clone : ()Ljava/lang/Object;
+12	.
+13	.
+14	checkcast java.util.Map
+15	.
+16	.
+17	astore_1
+18	aload_2
+19	monitorexit
+20	goto 6
+21	.
+22	.
+23	aload_2
+24	monitorexit
+25	athrow
+26	aload_0
+27	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+28	.
+29	.
+30	ifnull 14
+31	.
+32	.
+33	aload_0
+34	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+35	.
+36	.
+37	invokevirtual java.lang.ClassLoader :: getPackages : ()[Ljava/lang/Package;
+38	.
+39	.
+40	astore_2
+41	goto 7
+42	.
+43	.
+44	invokestatic java.lang.Package :: getSystemPackages : ()[Ljava/lang/Package;
+45	.
+46	.
+47	astore_2
+48	aload_2
+49	ifnull 33
+50	.
+51	.
+52	iconst_0
+53	istore_3
+54	goto 22
+55	.
+56	.
+57	aload_1
+58	aload_2
+59	iload_3
+60	aaload
+61	invokevirtual java.lang.Package :: getName : ()Ljava/lang/String;
+62	.
+63	.
+64	aload_2
+65	iload_3
+66	aaload
+67	invokeinterface java.util.Map :: put(3) : (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+68	.
+69	.
+70	.
+71	.
+72	pop
+73	iinc 3 1
+74	.
+75	.
+76	iload_3
+77	aload_2
+78	arraylength
+79	if_icmplt -22
+80	.
+81	.
+82	aload_1
+83	invokeinterface java.util.Map :: values(1) : ()Ljava/util/Collection;
+84	.
+85	.
+86	.
+87	.
+88	aload_1
+89	invokeinterface java.util.Map :: size(1) : ()I
+90	.
+91	.
+92	.
+93	.
+94	anewarray java.lang.Package
+95	.
+96	.
+97	invokeinterface java.util.Collection :: toArray(2) : ([Ljava/lang/Object;)[Ljava/lang/Object;
+98	.
+99	.
+100	.
+101	.
+102	checkcast [Ljava.lang.Package;
+103	.
+104	.
+105	areturn
+Exception handlers:
+Exception Handler
+start_pc = 7
+end_pc = 18
+handler_pc = 23
+catchType = null
+
+
+
+public final  getParent : ()Ljava/lang/ClassLoader; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+2	.
+3	.
+4	ifnonnull 5
+5	.
+6	.
+7	aconst_null
+8	areturn
+9	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+10	.
+11	.
+12	astore_1
+13	aload_1
+14	ifnull 26
+15	.
+16	.
+17	invokestatic java.lang.ClassLoader :: getCallerClassLoader : ()Ljava/lang/ClassLoader;
+18	.
+19	.
+20	astore_2
+21	aload_2
+22	ifnull 18
+23	.
+24	.
+25	aload_0
+26	aload_2
+27	invokevirtual java.lang.ClassLoader :: isAncestor : (Ljava/lang/ClassLoader;)Z
+28	.
+29	.
+30	ifne 10
+31	.
+32	.
+33	aload_1
+34	invokestatic java.lang.ClassLoader :: getGetClassLoaderPerm : ()Ljava/lang/RuntimePermission;
+35	.
+36	.
+37	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+38	.
+39	.
+40	aload_0
+41	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+42	.
+43	.
+44	areturn
+Exception handlers:
+
+
+public  getResource : (Ljava/lang/String;)Ljava/net/URL; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+2	.
+3	.
+4	ifnull 15
+5	.
+6	.
+7	aload_0
+8	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+9	.
+10	.
+11	aload_1
+12	invokevirtual java.lang.ClassLoader :: getResource : (Ljava/lang/String;)Ljava/net/URL;
+13	.
+14	.
+15	astore_2
+16	goto 8
+17	.
+18	.
+19	aload_1
+20	invokestatic java.lang.ClassLoader :: getBootstrapResource : (Ljava/lang/String;)Ljava/net/URL;
+21	.
+22	.
+23	astore_2
+24	aload_2
+25	ifnonnull 9
+26	.
+27	.
+28	aload_0
+29	aload_1
+30	invokevirtual java.lang.ClassLoader :: findResource : (Ljava/lang/String;)Ljava/net/URL;
+31	.
+32	.
+33	astore_2
+34	aload_2
+35	areturn
+Exception handlers:
+
+
+public  getResourceAsStream : (Ljava/lang/String;)Ljava/io/InputStream; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	aload_1
+2	invokevirtual java.lang.ClassLoader :: getResource : (Ljava/lang/String;)Ljava/net/URL;
+3	.
+4	.
+5	astore_2
+6	aload_2
+7	ifnull 10
+8	.
+9	.
+10	aload_2
+11	invokevirtual java.net.URL :: openStream : ()Ljava/io/InputStream;
+12	.
+13	.
+14	goto 4
+15	.
+16	.
+17	aconst_null
+18	areturn
+19	pop
+20	aconst_null
+21	areturn
+Exception handlers:
+Exception Handler
+start_pc = 6
+end_pc = 19
+handler_pc = 19
+catchType = java.io.IOException
+
+
+
+public final  getResources : (Ljava/lang/String;)Ljava/util/Enumeration; throws java.io.IOException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 3
+Instructions:
+0	iconst_2
+1	anewarray java.util.Enumeration
+2	.
+3	.
+4	astore_2
+5	aload_0
+6	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+7	.
+8	.
+9	ifnull 17
+10	.
+11	.
+12	aload_2
+13	iconst_0
+14	aload_0
+15	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+16	.
+17	.
+18	aload_1
+19	invokevirtual java.lang.ClassLoader :: getResources : (Ljava/lang/String;)Ljava/util/Enumeration;
+20	.
+21	.
+22	aastore
+23	goto 10
+24	.
+25	.
+26	aload_2
+27	iconst_0
+28	aload_1
+29	invokestatic java.lang.ClassLoader :: getBootstrapResources : (Ljava/lang/String;)Ljava/util/Enumeration;
+30	.
+31	.
+32	aastore
+33	aload_2
+34	iconst_1
+35	aload_0
+36	aload_1
+37	invokevirtual java.lang.ClassLoader :: findResources : (Ljava/lang/String;)Ljava/util/Enumeration;
+38	.
+39	.
+40	aastore
+41	new sun.misc.CompoundEnumeration
+42	.
+43	.
+44	dup
+45	aload_2
+46	invokespecial sun.misc.CompoundEnumeration :: <init> : ([Ljava/util/Enumeration;)V
+47	.
+48	.
+49	areturn
+Exception handlers:
+
+
+public static  getSystemClassLoader : ()Ljava/lang/ClassLoader; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	getstatic java.lang.ClassLoader :: sclSet : boolean
+1	.
+2	.
+3	ifne 22
+4	.
+5	.
+6	invokestatic sun.misc.Launcher :: getLauncher : ()Lsun/misc/Launcher;
+7	.
+8	.
+9	astore_0
+10	aload_0
+11	ifnull 10
+12	.
+13	.
+14	aload_0
+15	invokevirtual sun.misc.Launcher :: getClassLoader : ()Ljava/lang/ClassLoader;
+16	.
+17	.
+18	putstatic java.lang.ClassLoader :: scl : java.lang.ClassLoader
+19	.
+20	.
+21	iconst_1
+22	putstatic java.lang.ClassLoader :: sclSet : boolean
+23	.
+24	.
+25	getstatic java.lang.ClassLoader :: scl : java.lang.ClassLoader
+26	.
+27	.
+28	ifnonnull 5
+29	.
+30	.
+31	aconst_null
+32	areturn
+33	invokestatic java.lang.System :: getSecurityManager : ()Ljava/lang/SecurityManager;
+34	.
+35	.
+36	astore_0
+37	aload_0
+38	ifnull 35
+39	.
+40	.
+41	invokestatic java.lang.ClassLoader :: getCallerClassLoader : ()Ljava/lang/ClassLoader;
+42	.
+43	.
+44	astore_1
+45	aload_1
+46	ifnull 27
+47	.
+48	.
+49	aload_1
+50	getstatic java.lang.ClassLoader :: scl : java.lang.ClassLoader
+51	.
+52	.
+53	if_acmpeq 20
+54	.
+55	.
+56	getstatic java.lang.ClassLoader :: scl : java.lang.ClassLoader
+57	.
+58	.
+59	aload_1
+60	invokevirtual java.lang.ClassLoader :: isAncestor : (Ljava/lang/ClassLoader;)Z
+61	.
+62	.
+63	ifne 10
+64	.
+65	.
+66	aload_0
+67	invokestatic java.lang.ClassLoader :: getGetClassLoaderPerm : ()Ljava/lang/RuntimePermission;
+68	.
+69	.
+70	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+71	.
+72	.
+73	getstatic java.lang.ClassLoader :: scl : java.lang.ClassLoader
+74	.
+75	.
+76	areturn
+Exception handlers:
+
+
+public static  getSystemResource : (Ljava/lang/String;)Ljava/net/URL; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	invokestatic java.lang.ClassLoader :: getSystemClassLoader : ()Ljava/lang/ClassLoader;
+1	.
+2	.
+3	astore_1
+4	aload_1
+5	ifnonnull 8
+6	.
+7	.
+8	aload_0
+9	invokestatic java.lang.ClassLoader :: getBootstrapResource : (Ljava/lang/String;)Ljava/net/URL;
+10	.
+11	.
+12	areturn
+13	aload_1
+14	aload_0
+15	invokevirtual java.lang.ClassLoader :: getResource : (Ljava/lang/String;)Ljava/net/URL;
+16	.
+17	.
+18	areturn
+Exception handlers:
+
+
+public static  getSystemResourceAsStream : (Ljava/lang/String;)Ljava/io/InputStream; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokestatic java.lang.ClassLoader :: getSystemResource : (Ljava/lang/String;)Ljava/net/URL;
+2	.
+3	.
+4	astore_1
+5	aload_1
+6	ifnull 10
+7	.
+8	.
+9	aload_1
+10	invokevirtual java.net.URL :: openStream : ()Ljava/io/InputStream;
+11	.
+12	.
+13	goto 4
+14	.
+15	.
+16	aconst_null
+17	areturn
+18	pop
+19	aconst_null
+20	areturn
+Exception handlers:
+Exception Handler
+start_pc = 5
+end_pc = 18
+handler_pc = 18
+catchType = java.io.IOException
+
+
+
+public static  getSystemResources : (Ljava/lang/String;)Ljava/util/Enumeration; throws java.io.IOException 
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	invokestatic java.lang.ClassLoader :: getSystemClassLoader : ()Ljava/lang/ClassLoader;
+1	.
+2	.
+3	astore_1
+4	aload_1
+5	ifnonnull 8
+6	.
+7	.
+8	aload_0
+9	invokestatic java.lang.ClassLoader :: getBootstrapResources : (Ljava/lang/String;)Ljava/util/Enumeration;
+10	.
+11	.
+12	areturn
+13	aload_1
+14	aload_0
+15	invokevirtual java.lang.ClassLoader :: getResources : (Ljava/lang/String;)Ljava/util/Enumeration;
+16	.
+17	.
+18	areturn
+Exception handlers:
+
+
+private static  initializePath : (Ljava/lang/String;)[Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 8
+Instructions:
+0	aload_0
+1	ldc ""
+2	.
+3	invokestatic java.lang.System :: getProperty : (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+4	.
+5	.
+6	astore_1
+7	getstatic java.io.File :: pathSeparator : java.lang.String
+8	.
+9	.
+10	astore_2
+11	aload_1
+12	invokevirtual java.lang.String :: length : ()I
+13	.
+14	.
+15	istore_3
+16	aload_1
+17	aload_2
+18	invokevirtual java.lang.String :: indexOf : (Ljava/lang/String;)I
+19	.
+20	.
+21	istore 4
+22	.
+23	iconst_0
+24	istore 6
+25	.
+26	goto 17
+27	.
+28	.
+29	iinc 6 1
+30	.
+31	.
+32	aload_1
+33	aload_2
+34	iload 4
+35	.
+36	iconst_1
+37	iadd
+38	invokevirtual java.lang.String :: indexOf : (Ljava/lang/String;I)I
+39	.
+40	.
+41	istore 4
+42	.
+43	iload 4
+44	.
+45	ifge -16
+46	.
+47	.
+48	iload 6
+49	.
+50	iconst_1
+51	iadd
+52	anewarray java.lang.String
+53	.
+54	.
+55	astore 7
+56	.
+57	iconst_0
+58	dup
+59	istore 4
+60	.
+61	istore 6
+62	.
+63	aload_1
+64	aload_2
+65	invokevirtual java.lang.String :: indexOf : (Ljava/lang/String;)I
+66	.
+67	.
+68	istore 5
+69	.
+70	goto 63
+71	.
+72	.
+73	iload 5
+74	.
+75	iload 4
+76	.
+77	isub
+78	ifle 22
+79	.
+80	.
+81	aload 7
+82	.
+83	iload 6
+84	.
+85	iinc 6 1
+86	.
+87	.
+88	aload_1
+89	iload 4
+90	.
+91	iload 5
+92	.
+93	invokevirtual java.lang.String :: substring : (II)Ljava/lang/String;
+94	.
+95	.
+96	aastore
+97	goto 21
+98	.
+99	.
+100	iload 5
+101	.
+102	iload 4
+103	.
+104	isub
+105	ifne 13
+106	.
+107	.
+108	aload 7
+109	.
+110	iload 6
+111	.
+112	iinc 6 1
+113	.
+114	.
+115	ldc "."
+116	.
+117	aastore
+118	iload 5
+119	.
+120	iconst_1
+121	iadd
+122	istore 4
+123	.
+124	aload_1
+125	aload_2
+126	iload 4
+127	.
+128	invokevirtual java.lang.String :: indexOf : (Ljava/lang/String;I)I
+129	.
+130	.
+131	istore 5
+132	.
+133	iload 5
+134	.
+135	ifge -62
+136	.
+137	.
+138	aload 7
+139	.
+140	iload 6
+141	.
+142	aload_1
+143	iload 4
+144	.
+145	iload_3
+146	invokevirtual java.lang.String :: substring : (II)Ljava/lang/String;
+147	.
+148	.
+149	aastore
+150	aload 7
+151	.
+152	areturn
+Exception handlers:
+
+
+ isAncestor : (Ljava/lang/ClassLoader;)Z throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	astore_2
+2	aload_2
+3	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+4	.
+5	.
+6	astore_2
+7	aload_1
+8	aload_2
+9	if_acmpne 5
+10	.
+11	.
+12	iconst_1
+13	ireturn
+14	aload_2
+15	ifnonnull -13
+16	.
+17	.
+18	iconst_0
+19	ireturn
+Exception handlers:
+
+
+public  loadClass : (Ljava/lang/String;)Ljava/lang/Class; throws java.lang.ClassNotFoundException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	aload_0
+1	aload_1
+2	iconst_0
+3	invokevirtual java.lang.ClassLoader :: loadClass : (Ljava/lang/String;Z)Ljava/lang/Class;
+4	.
+5	.
+6	areturn
+Exception handlers:
+
+
+protected synchronized  loadClass : (Ljava/lang/String;Z)Ljava/lang/Class; throws java.lang.ClassNotFoundException 
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 4
+Instructions:
+0	aload_0
+1	aload_1
+2	invokevirtual java.lang.ClassLoader :: findLoadedClass : (Ljava/lang/String;)Ljava/lang/Class;
+3	.
+4	.
+5	astore_3
+6	aload_3
+7	ifnonnull 42
+8	.
+9	.
+10	aload_0
+11	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+12	.
+13	.
+14	ifnull 16
+15	.
+16	.
+17	aload_0
+18	getfield java.lang.ClassLoader :: parent : java.lang.ClassLoader
+19	.
+20	.
+21	aload_1
+22	iconst_0
+23	invokevirtual java.lang.ClassLoader :: loadClass : (Ljava/lang/String;Z)Ljava/lang/Class;
+24	.
+25	.
+26	astore_3
+27	goto 22
+28	.
+29	.
+30	aload_0
+31	aload_1
+32	invokespecial java.lang.ClassLoader :: findBootstrapClass : (Ljava/lang/String;)Ljava/lang/Class;
+33	.
+34	.
+35	astore_3
+36	goto 13
+37	.
+38	.
+39	pop
+40	aload_0
+41	aload_1
+42	invokevirtual java.lang.ClassLoader :: findClass : (Ljava/lang/String;)Ljava/lang/Class;
+43	.
+44	.
+45	astore_3
+46	goto 3
+47	.
+48	.
+49	iload_2
+50	ifeq 8
+51	.
+52	.
+53	aload_0
+54	aload_3
+55	invokevirtual java.lang.ClassLoader :: resolveClass : (Ljava/lang/Class;)V
+56	.
+57	.
+58	aload_3
+59	areturn
+Exception handlers:
+Exception Handler
+start_pc = 10
+end_pc = 36
+handler_pc = 39
+catchType = java.lang.ClassNotFoundException
+
+
+
+static  loadLibrary : (Ljava/lang/Class;Ljava/lang/String;Z)V throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 7
+Instructions:
+0	aload_0
+1	ifnonnull 7
+2	.
+3	.
+4	aconst_null
+5	goto 7
+6	.
+7	.
+8	aload_0
+9	invokevirtual java.lang.Class :: getClassLoader : ()Ljava/lang/ClassLoader;
+10	.
+11	.
+12	astore_3
+13	getstatic java.lang.ClassLoader :: sys_paths : [Ljava/lang/String;
+14	.
+15	.
+16	ifnonnull 19
+17	.
+18	.
+19	ldc "java.library.path"
+20	.
+21	invokestatic java.lang.ClassLoader :: initializePath : (Ljava/lang/String;)[Ljava/lang/String;
+22	.
+23	.
+24	putstatic java.lang.ClassLoader :: usr_paths : [Ljava/lang/String;
+25	.
+26	.
+27	ldc "sun.boot.library.path"
+28	.
+29	invokestatic java.lang.ClassLoader :: initializePath : (Ljava/lang/String;)[Ljava/lang/String;
+30	.
+31	.
+32	putstatic java.lang.ClassLoader :: sys_paths : [Ljava/lang/String;
+33	.
+34	.
+35	iload_2
+36	ifeq 43
+37	.
+38	.
+39	aload_0
+40	new java.io.File
+41	.
+42	.
+43	dup
+44	aload_1
+45	invokespecial java.io.File :: <init> : (Ljava/lang/String;)V
+46	.
+47	.
+48	invokestatic java.lang.ClassLoader :: loadLibrary0 : (Ljava/lang/Class;Ljava/io/File;)Z
+49	.
+50	.
+51	ifeq 4
+52	.
+53	.
+54	return
+55	new java.lang.UnsatisfiedLinkError
+56	.
+57	.
+58	dup
+59	new java.lang.StringBuffer
+60	.
+61	.
+62	dup
+63	ldc "Can't load library: "
+64	.
+65	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+66	.
+67	.
+68	aload_1
+69	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+70	.
+71	.
+72	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+73	.
+74	.
+75	invokespecial java.lang.UnsatisfiedLinkError :: <init> : (Ljava/lang/String;)V
+76	.
+77	.
+78	athrow
+79	aload_3
+80	ifnull 94
+81	.
+82	.
+83	aload_3
+84	aload_1
+85	invokevirtual java.lang.ClassLoader :: findLibrary : (Ljava/lang/String;)Ljava/lang/String;
+86	.
+87	.
+88	astore 4
+89	.
+90	aload 4
+91	.
+92	ifnull 82
+93	.
+94	.
+95	new java.io.File
+96	.
+97	.
+98	dup
+99	aload 4
+100	.
+101	invokespecial java.io.File :: <init> : (Ljava/lang/String;)V
+102	.
+103	.
+104	astore 5
+105	.
+106	aload 5
+107	.
+108	invokevirtual java.io.File :: isAbsolute : ()Z
+109	.
+110	.
+111	ifne 28
+112	.
+113	.
+114	new java.lang.UnsatisfiedLinkError
+115	.
+116	.
+117	dup
+118	new java.lang.StringBuffer
+119	.
+120	.
+121	dup
+122	ldc "ClassLoader.findClass failed to return an absolute path: "
+123	.
+124	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+125	.
+126	.
+127	aload 4
+128	.
+129	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+130	.
+131	.
+132	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+133	.
+134	.
+135	invokespecial java.lang.UnsatisfiedLinkError :: <init> : (Ljava/lang/String;)V
+136	.
+137	.
+138	athrow
+139	aload_0
+140	aload 5
+141	.
+142	invokestatic java.lang.ClassLoader :: loadLibrary0 : (Ljava/lang/Class;Ljava/io/File;)Z
+143	.
+144	.
+145	ifeq 4
+146	.
+147	.
+148	return
+149	new java.lang.UnsatisfiedLinkError
+150	.
+151	.
+152	dup
+153	new java.lang.StringBuffer
+154	.
+155	.
+156	dup
+157	ldc "Can't load "
+158	.
+159	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+160	.
+161	.
+162	aload 4
+163	.
+164	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+165	.
+166	.
+167	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+168	.
+169	.
+170	invokespecial java.lang.UnsatisfiedLinkError :: <init> : (Ljava/lang/String;)V
+171	.
+172	.
+173	athrow
+174	iconst_0
+175	istore 4
+176	.
+177	goto 35
+178	.
+179	.
+180	new java.io.File
+181	.
+182	.
+183	dup
+184	getstatic java.lang.ClassLoader :: sys_paths : [Ljava/lang/String;
+185	.
+186	.
+187	iload 4
+188	.
+189	aaload
+190	aload_1
+191	invokestatic java.lang.System :: mapLibraryName : (Ljava/lang/String;)Ljava/lang/String;
+192	.
+193	.
+194	invokespecial java.io.File :: <init> : (Ljava/lang/String;Ljava/lang/String;)V
+195	.
+196	.
+197	astore 5
+198	.
+199	aload_0
+200	aload 5
+201	.
+202	invokestatic java.lang.ClassLoader :: loadLibrary0 : (Ljava/lang/Class;Ljava/io/File;)Z
+203	.
+204	.
+205	ifeq 4
+206	.
+207	.
+208	return
+209	iinc 4 1
+210	.
+211	.
+212	iload 4
+213	.
+214	getstatic java.lang.ClassLoader :: sys_paths : [Ljava/lang/String;
+215	.
+216	.
+217	arraylength
+218	if_icmplt -38
+219	.
+220	.
+221	aload_3
+222	ifnull 50
+223	.
+224	.
+225	iconst_0
+226	istore 5
+227	.
+228	goto 35
+229	.
+230	.
+231	new java.io.File
+232	.
+233	.
+234	dup
+235	getstatic java.lang.ClassLoader :: usr_paths : [Ljava/lang/String;
+236	.
+237	.
+238	iload 5
+239	.
+240	aaload
+241	aload_1
+242	invokestatic java.lang.System :: mapLibraryName : (Ljava/lang/String;)Ljava/lang/String;
+243	.
+244	.
+245	invokespecial java.io.File :: <init> : (Ljava/lang/String;Ljava/lang/String;)V
+246	.
+247	.
+248	astore 6
+249	.
+250	aload_0
+251	aload 6
+252	.
+253	invokestatic java.lang.ClassLoader :: loadLibrary0 : (Ljava/lang/Class;Ljava/io/File;)Z
+254	.
+255	.
+256	ifeq 4
+257	.
+258	.
+259	return
+260	iinc 5 1
+261	.
+262	.
+263	iload 5
+264	.
+265	getstatic java.lang.ClassLoader :: usr_paths : [Ljava/lang/String;
+266	.
+267	.
+268	arraylength
+269	if_icmplt -38
+270	.
+271	.
+272	new java.lang.UnsatisfiedLinkError
+273	.
+274	.
+275	dup
+276	new java.lang.StringBuffer
+277	.
+278	.
+279	dup
+280	ldc "no "
+281	.
+282	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+283	.
+284	.
+285	aload_1
+286	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+287	.
+288	.
+289	ldc " in java.library.path"
+290	.
+291	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+292	.
+293	.
+294	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+295	.
+296	.
+297	invokespecial java.lang.UnsatisfiedLinkError :: <init> : (Ljava/lang/String;)V
+298	.
+299	.
+300	athrow
+Exception handlers:
+
+
+private static  loadLibrary0 : (Ljava/lang/Class;Ljava/io/File;)Z throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 19
+Instructions:
+0	new java.lang.ClassLoader$3
+1	.
+2	.
+3	dup
+4	aload_1
+5	invokespecial java.lang.ClassLoader$3 :: <init> : (Ljava/io/File;)V
+6	.
+7	.
+8	invokestatic java.security.AccessController :: doPrivileged : (Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+9	.
+10	.
+11	checkcast java.lang.Boolean
+12	.
+13	.
+14	astore_2
+15	aload_2
+16	invokevirtual java.lang.Boolean :: booleanValue : ()Z
+17	.
+18	.
+19	ifne 5
+20	.
+21	.
+22	iconst_0
+23	ireturn
+24	aload_1
+25	invokevirtual java.io.File :: getCanonicalPath : ()Ljava/lang/String;
+26	.
+27	.
+28	astore_3
+29	goto 6
+30	.
+31	.
+32	pop
+33	iconst_0
+34	ireturn
+35	aload_0
+36	ifnonnull 7
+37	.
+38	.
+39	aconst_null
+40	goto 7
+41	.
+42	.
+43	aload_0
+44	invokevirtual java.lang.Class :: getClassLoader : ()Ljava/lang/ClassLoader;
+45	.
+46	.
+47	astore 4
+48	.
+49	aload 4
+50	.
+51	ifnull 11
+52	.
+53	.
+54	aload 4
+55	.
+56	getfield java.lang.ClassLoader :: nativeLibraries : java.util.Vector
+57	.
+58	.
+59	goto 6
+60	.
+61	.
+62	getstatic java.lang.ClassLoader :: systemNativeLibraries : java.util.Vector
+63	.
+64	.
+65	astore 5
+66	.
+67	aload 5
+68	.
+69	astore 7
+70	.
+71	aload 7
+72	.
+73	monitorenter
+74	aload 5
+75	.
+76	invokevirtual java.util.Vector :: size : ()I
+77	.
+78	.
+79	istore 9
+80	.
+81	iconst_0
+82	istore 10
+83	.
+84	goto 39
+85	.
+86	.
+87	aload 5
+88	.
+89	iload 10
+90	.
+91	invokevirtual java.util.Vector :: elementAt : (I)Ljava/lang/Object;
+92	.
+93	.
+94	checkcast java.lang.ClassLoader$NativeLibrary
+95	.
+96	.
+97	astore 11
+98	.
+99	aload_3
+100	aload 11
+101	.
+102	getfield java.lang.ClassLoader$NativeLibrary :: name : java.lang.String
+103	.
+104	.
+105	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+106	.
+107	.
+108	ifeq 12
+109	.
+110	.
+111	iconst_1
+112	istore 6
+113	.
+114	jsr 280
+115	.
+116	.
+117	iload 6
+118	.
+119	ireturn
+120	iinc 10 1
+121	.
+122	.
+123	iload 10
+124	.
+125	iload 9
+126	.
+127	if_icmplt -40
+128	.
+129	.
+130	getstatic java.lang.ClassLoader :: loadedLibraryNames : java.util.Vector
+131	.
+132	.
+133	astore 12
+134	.
+135	aload 12
+136	.
+137	monitorenter
+138	getstatic java.lang.ClassLoader :: loadedLibraryNames : java.util.Vector
+139	.
+140	.
+141	aload_3
+142	invokevirtual java.util.Vector :: contains : (Ljava/lang/Object;)Z
+143	.
+144	.
+145	ifeq 32
+146	.
+147	.
+148	new java.lang.UnsatisfiedLinkError
+149	.
+150	.
+151	dup
+152	new java.lang.StringBuffer
+153	.
+154	.
+155	dup
+156	ldc "Native Library "
+157	.
+158	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+159	.
+160	.
+161	aload_3
+162	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+163	.
+164	.
+165	ldc " already loaded in another classloader"
+166	.
+167	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+168	.
+169	.
+170	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+171	.
+172	.
+173	invokespecial java.lang.UnsatisfiedLinkError :: <init> : (Ljava/lang/String;)V
+174	.
+175	.
+176	athrow
+177	getstatic java.lang.ClassLoader :: nativeLibraryContext : java.util.Stack
+178	.
+179	.
+180	invokevirtual java.util.Vector :: size : ()I
+181	.
+182	.
+183	istore 14
+184	.
+185	iconst_0
+186	istore 15
+187	.
+188	goto 85
+189	.
+190	.
+191	getstatic java.lang.ClassLoader :: nativeLibraryContext : java.util.Stack
+192	.
+193	.
+194	iload 15
+195	.
+196	invokevirtual java.util.Vector :: elementAt : (I)Ljava/lang/Object;
+197	.
+198	.
+199	checkcast java.lang.ClassLoader$NativeLibrary
+200	.
+201	.
+202	astore 16
+203	.
+204	aload_3
+205	aload 16
+206	.
+207	getfield java.lang.ClassLoader$NativeLibrary :: name : java.lang.String
+208	.
+209	.
+210	invokevirtual java.lang.String :: equals : (Ljava/lang/Object;)Z
+211	.
+212	.
+213	ifeq 57
+214	.
+215	.
+216	aload 4
+217	.
+218	aload 16
+219	.
+220	invokestatic java.lang.ClassLoader$NativeLibrary :: access$0 : (Ljava/lang/ClassLoader$NativeLibrary;)Ljava/lang/Class;
+221	.
+222	.
+223	invokevirtual java.lang.Class :: getClassLoader : ()Ljava/lang/ClassLoader;
+224	.
+225	.
+226	if_acmpne 15
+227	.
+228	.
+229	iconst_1
+230	istore 11
+231	.
+232	jsr 151
+233	.
+234	.
+235	jsr 159
+236	.
+237	.
+238	iload 11
+239	.
+240	ireturn
+241	new java.lang.UnsatisfiedLinkError
+242	.
+243	.
+244	dup
+245	new java.lang.StringBuffer
+246	.
+247	.
+248	dup
+249	ldc "Native Library "
+250	.
+251	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+252	.
+253	.
+254	aload_3
+255	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+256	.
+257	.
+258	ldc " is being loaded in another classloader"
+259	.
+260	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+261	.
+262	.
+263	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+264	.
+265	.
+266	invokespecial java.lang.UnsatisfiedLinkError :: <init> : (Ljava/lang/String;)V
+267	.
+268	.
+269	athrow
+270	iinc 15 1
+271	.
+272	.
+273	iload 15
+274	.
+275	iload 14
+276	.
+277	if_icmplt -86
+278	.
+279	.
+280	new java.lang.ClassLoader$NativeLibrary
+281	.
+282	.
+283	dup
+284	aload_0
+285	aload_3
+286	invokespecial java.lang.ClassLoader$NativeLibrary :: <init> : (Ljava/lang/Class;Ljava/lang/String;)V
+287	.
+288	.
+289	astore 16
+290	.
+291	getstatic java.lang.ClassLoader :: nativeLibraryContext : java.util.Stack
+292	.
+293	.
+294	aload 16
+295	.
+296	invokevirtual java.util.Stack :: push : (Ljava/lang/Object;)Ljava/lang/Object;
+297	.
+298	.
+299	pop
+300	aload 16
+301	.
+302	aload_3
+303	invokevirtual java.lang.ClassLoader$NativeLibrary :: load : (Ljava/lang/String;)V
+304	.
+305	.
+306	jsr 14
+307	.
+308	.
+309	goto 22
+310	.
+311	.
+312	astore 17
+313	.
+314	jsr 6
+315	.
+316	.
+317	aload 17
+318	.
+319	athrow
+320	astore 18
+321	.
+322	getstatic java.lang.ClassLoader :: nativeLibraryContext : java.util.Stack
+323	.
+324	.
+325	invokevirtual java.util.Stack :: pop : ()Ljava/lang/Object;
+326	.
+327	.
+328	pop
+329	ret 18
+330	.
+331	aload 16
+332	.
+333	getfield java.lang.ClassLoader$NativeLibrary :: handle : long
+334	.
+335	.
+336	lconst_0
+337	lcmp
+338	ifeq 29
+339	.
+340	.
+341	getstatic java.lang.ClassLoader :: loadedLibraryNames : java.util.Vector
+342	.
+343	.
+344	aload_3
+345	invokevirtual java.util.Vector :: addElement : (Ljava/lang/Object;)V
+346	.
+347	.
+348	aload 5
+349	.
+350	aload 16
+351	.
+352	invokevirtual java.util.Vector :: addElement : (Ljava/lang/Object;)V
+353	.
+354	.
+355	iconst_1
+356	istore 11
+357	.
+358	jsr 25
+359	.
+360	.
+361	jsr 33
+362	.
+363	.
+364	iload 11
+365	.
+366	ireturn
+367	iconst_0
+368	istore 11
+369	.
+370	jsr 13
+371	.
+372	.
+373	jsr 21
+374	.
+375	.
+376	iload 11
+377	.
+378	ireturn
+379	aload 12
+380	.
+381	monitorexit
+382	athrow
+383	astore 13
+384	.
+385	aload 12
+386	.
+387	monitorexit
+388	ret 13
+389	.
+390	aload 7
+391	.
+392	monitorexit
+393	athrow
+394	astore 8
+395	.
+396	aload 7
+397	.
+398	monitorexit
+399	ret 8
+400	.
+Exception handlers:
+Exception Handler
+start_pc = 24
+end_pc = 29
+handler_pc = 32
+catchType = java.io.IOException
+
+Exception Handler
+start_pc = 300
+end_pc = 306
+handler_pc = 312
+catchType = null
+
+Exception Handler
+start_pc = 138
+end_pc = 379
+handler_pc = 379
+catchType = null
+
+Exception Handler
+start_pc = 74
+end_pc = 390
+handler_pc = 390
+catchType = null
+
+
+
+protected final  resolveClass : (Ljava/lang/Class;)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 2
+Instructions:
+0	aload_0
+1	invokespecial java.lang.ClassLoader :: check : ()V
+2	.
+3	.
+4	aload_0
+5	aload_1
+6	invokespecial java.lang.ClassLoader :: resolveClass0 : (Ljava/lang/Class;)V
+7	.
+8	.
+9	return
+Exception handlers:
+
+
+private native  resolveClass0 : (Ljava/lang/Class;)V throws null
+Code: 
+null
+
+protected final  setSigners : (Ljava/lang/Class;[Ljava/lang/Object;)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 3
+Instructions:
+0	aload_0
+1	invokespecial java.lang.ClassLoader :: check : ()V
+2	.
+3	.
+4	aload_1
+5	aload_2
+6	invokevirtual java.lang.Class :: setSigners : ([Ljava/lang/Object;)V
+7	.
+8	.
+9	return
+Exception handlers:
+
+
+

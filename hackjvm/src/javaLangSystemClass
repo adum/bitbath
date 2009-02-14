@@ -1,0 +1,693 @@
+public final class java.lang.System extends java.lang.Object implements 
+public static final java.io.InputStream in = null
+public static final java.io.PrintStream out = null
+public static final java.io.PrintStream err = null
+private static java.lang.SecurityManager security = null
+private static java.util.Properties props = null
+static  <clinit> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.System :: registerNatives : ()V
+1	.
+2	.
+3	invokestatic java.lang.System :: nullInputStream : ()Ljava/io/InputStream;
+4	.
+5	.
+6	putstatic java.lang.System :: in : java.io.InputStream
+7	.
+8	.
+9	invokestatic java.lang.System :: nullPrintStream : ()Ljava/io/PrintStream;
+10	.
+11	.
+12	putstatic java.lang.System :: out : java.io.PrintStream
+13	.
+14	.
+15	invokestatic java.lang.System :: nullPrintStream : ()Ljava/io/PrintStream;
+16	.
+17	.
+18	putstatic java.lang.System :: err : java.io.PrintStream
+19	.
+20	.
+21	aconst_null
+22	putstatic java.lang.System :: security : java.lang.SecurityManager
+23	.
+24	.
+25	return
+Exception handlers:
+
+
+private  <init> : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	aload_0
+1	invokespecial java.lang.Object :: <init> : ()V
+2	.
+3	.
+4	return
+Exception handlers:
+
+
+public static native  arraycopy : (Ljava/lang/Object;ILjava/lang/Object;II)V throws null
+Code: 
+null
+
+private static  checkIO : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	ifnull 18
+4	.
+5	.
+6	getstatic java.lang.System :: security : java.lang.SecurityManager
+7	.
+8	.
+9	new java.lang.RuntimePermission
+10	.
+11	.
+12	dup
+13	ldc "setIO"
+14	.
+15	invokespecial java.lang.RuntimePermission :: <init> : (Ljava/lang/String;)V
+16	.
+17	.
+18	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+19	.
+20	.
+21	return
+Exception handlers:
+
+
+public static native  currentTimeMillis : ()J throws null
+Code: 
+null
+
+public static  exit : (I)V throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.Runtime :: getRuntime : ()Ljava/lang/Runtime;
+1	.
+2	.
+3	iload_0
+4	invokevirtual java.lang.Runtime :: exit : (I)V
+5	.
+6	.
+7	return
+Exception handlers:
+
+
+public static  gc : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.Runtime :: getRuntime : ()Ljava/lang/Runtime;
+1	.
+2	.
+3	invokevirtual java.lang.Runtime :: gc : ()V
+4	.
+5	.
+6	return
+Exception handlers:
+
+
+static native  getCallerClass : ()Ljava/lang/Class; throws null
+Code: 
+null
+
+public static  getProperties : ()Ljava/util/Properties; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	ifnull 9
+4	.
+5	.
+6	getstatic java.lang.System :: security : java.lang.SecurityManager
+7	.
+8	.
+9	invokevirtual java.lang.SecurityManager :: checkPropertiesAccess : ()V
+10	.
+11	.
+12	getstatic java.lang.System :: props : java.util.Properties
+13	.
+14	.
+15	areturn
+Exception handlers:
+
+
+public static  getProperty : (Ljava/lang/String;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 2
+maxLocals = 1
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	ifnull 10
+4	.
+5	.
+6	getstatic java.lang.System :: security : java.lang.SecurityManager
+7	.
+8	.
+9	aload_0
+10	invokevirtual java.lang.SecurityManager :: checkPropertyAccess : (Ljava/lang/String;)V
+11	.
+12	.
+13	getstatic java.lang.System :: props : java.util.Properties
+14	.
+15	.
+16	aload_0
+17	invokevirtual java.util.Properties :: getProperty : (Ljava/lang/String;)Ljava/lang/String;
+18	.
+19	.
+20	areturn
+Exception handlers:
+
+
+public static  getProperty : (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 2
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	ifnull 10
+4	.
+5	.
+6	getstatic java.lang.System :: security : java.lang.SecurityManager
+7	.
+8	.
+9	aload_0
+10	invokevirtual java.lang.SecurityManager :: checkPropertyAccess : (Ljava/lang/String;)V
+11	.
+12	.
+13	getstatic java.lang.System :: props : java.util.Properties
+14	.
+15	.
+16	aload_0
+17	aload_1
+18	invokevirtual java.util.Properties :: getProperty : (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+19	.
+20	.
+21	areturn
+Exception handlers:
+
+
+public static  getSecurityManager : ()Ljava/lang/SecurityManager; throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	areturn
+Exception handlers:
+
+
+public static  getenv : (Ljava/lang/String;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 1
+Instructions:
+0	new java.lang.Error
+1	.
+2	.
+3	dup
+4	new java.lang.StringBuffer
+5	.
+6	.
+7	dup
+8	ldc "getenv no longer supported, use properties and -D instead: "
+9	.
+10	invokespecial java.lang.StringBuffer :: <init> : (Ljava/lang/String;)V
+11	.
+12	.
+13	aload_0
+14	invokevirtual java.lang.StringBuffer :: append : (Ljava/lang/String;)Ljava/lang/StringBuffer;
+15	.
+16	.
+17	invokevirtual java.lang.StringBuffer :: toString : ()Ljava/lang/String;
+18	.
+19	.
+20	invokespecial java.lang.Error :: <init> : (Ljava/lang/String;)V
+21	.
+22	.
+23	athrow
+Exception handlers:
+
+
+public static native  identityHashCode : (Ljava/lang/Object;)I throws null
+Code: 
+null
+
+private static native  initProperties : (Ljava/util/Properties;)Ljava/util/Properties; throws null
+Code: 
+null
+
+private static  initializeSystemClass : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 6
+maxLocals = 3
+Instructions:
+0	new java.util.Properties
+1	.
+2	.
+3	dup
+4	invokespecial java.util.Properties :: <init> : ()V
+5	.
+6	.
+7	putstatic java.lang.System :: props : java.util.Properties
+8	.
+9	.
+10	getstatic java.lang.System :: props : java.util.Properties
+11	.
+12	.
+13	invokestatic java.lang.System :: initProperties : (Ljava/util/Properties;)Ljava/util/Properties;
+14	.
+15	.
+16	pop
+17	new java.io.FileInputStream
+18	.
+19	.
+20	dup
+21	getstatic java.io.FileDescriptor :: in : java.io.FileDescriptor
+22	.
+23	.
+24	invokespecial java.io.FileInputStream :: <init> : (Ljava/io/FileDescriptor;)V
+25	.
+26	.
+27	astore_0
+28	new java.io.FileOutputStream
+29	.
+30	.
+31	dup
+32	getstatic java.io.FileDescriptor :: out : java.io.FileDescriptor
+33	.
+34	.
+35	invokespecial java.io.FileOutputStream :: <init> : (Ljava/io/FileDescriptor;)V
+36	.
+37	.
+38	astore_1
+39	new java.io.FileOutputStream
+40	.
+41	.
+42	dup
+43	getstatic java.io.FileDescriptor :: err : java.io.FileDescriptor
+44	.
+45	.
+46	invokespecial java.io.FileOutputStream :: <init> : (Ljava/io/FileDescriptor;)V
+47	.
+48	.
+49	astore_2
+50	new java.io.BufferedInputStream
+51	.
+52	.
+53	dup
+54	aload_0
+55	invokespecial java.io.BufferedInputStream :: <init> : (Ljava/io/InputStream;)V
+56	.
+57	.
+58	invokestatic java.lang.System :: setIn0 : (Ljava/io/InputStream;)V
+59	.
+60	.
+61	new java.io.PrintStream
+62	.
+63	.
+64	dup
+65	new java.io.BufferedOutputStream
+66	.
+67	.
+68	dup
+69	aload_1
+70	sipush 128
+71	.
+72	.
+73	invokespecial java.io.BufferedOutputStream :: <init> : (Ljava/io/OutputStream;I)V
+74	.
+75	.
+76	iconst_1
+77	invokespecial java.io.PrintStream :: <init> : (Ljava/io/OutputStream;Z)V
+78	.
+79	.
+80	invokestatic java.lang.System :: setOut0 : (Ljava/io/PrintStream;)V
+81	.
+82	.
+83	new java.io.PrintStream
+84	.
+85	.
+86	dup
+87	new java.io.BufferedOutputStream
+88	.
+89	.
+90	dup
+91	aload_2
+92	sipush 128
+93	.
+94	.
+95	invokespecial java.io.BufferedOutputStream :: <init> : (Ljava/io/OutputStream;I)V
+96	.
+97	.
+98	iconst_1
+99	invokespecial java.io.PrintStream :: <init> : (Ljava/io/OutputStream;Z)V
+100	.
+101	.
+102	invokestatic java.lang.System :: setErr0 : (Ljava/io/PrintStream;)V
+103	.
+104	.
+105	return
+Exception handlers:
+
+
+public static  load : (Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.Runtime :: getRuntime : ()Ljava/lang/Runtime;
+1	.
+2	.
+3	invokestatic java.lang.System :: getCallerClass : ()Ljava/lang/Class;
+4	.
+5	.
+6	aload_0
+7	invokevirtual java.lang.Runtime :: load0 : (Ljava/lang/Class;Ljava/lang/String;)V
+8	.
+9	.
+10	return
+Exception handlers:
+
+
+public static  loadLibrary : (Ljava/lang/String;)V throws null
+Code: 
+Code Attribute:
+maxStack = 3
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.Runtime :: getRuntime : ()Ljava/lang/Runtime;
+1	.
+2	.
+3	invokestatic java.lang.System :: getCallerClass : ()Ljava/lang/Class;
+4	.
+5	.
+6	aload_0
+7	invokevirtual java.lang.Runtime :: loadLibrary0 : (Ljava/lang/Class;Ljava/lang/String;)V
+8	.
+9	.
+10	return
+Exception handlers:
+
+
+public static native  mapLibraryName : (Ljava/lang/String;)Ljava/lang/String; throws null
+Code: 
+null
+
+private static  nullInputStream : ()Ljava/io/InputStream; throws java.lang.NullPointerException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.System :: currentTimeMillis : ()J
+1	.
+2	.
+3	lconst_0
+4	lcmp
+5	ifle 5
+6	.
+7	.
+8	aconst_null
+9	areturn
+10	new java.lang.NullPointerException
+11	.
+12	.
+13	dup
+14	invokespecial java.lang.NullPointerException :: <init> : ()V
+15	.
+16	.
+17	athrow
+Exception handlers:
+
+
+private static  nullPrintStream : ()Ljava/io/PrintStream; throws java.lang.NullPointerException 
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.System :: currentTimeMillis : ()J
+1	.
+2	.
+3	lconst_0
+4	lcmp
+5	ifle 5
+6	.
+7	.
+8	aconst_null
+9	areturn
+10	new java.lang.NullPointerException
+11	.
+12	.
+13	dup
+14	invokespecial java.lang.NullPointerException :: <init> : ()V
+15	.
+16	.
+17	athrow
+Exception handlers:
+
+
+private static native  registerNatives : ()V throws null
+Code: 
+null
+
+public static  runFinalization : ()V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 0
+Instructions:
+0	invokestatic java.lang.Runtime :: getRuntime : ()Ljava/lang/Runtime;
+1	.
+2	.
+3	invokevirtual java.lang.Runtime :: runFinalization : ()V
+4	.
+5	.
+6	return
+Exception handlers:
+
+
+public static  runFinalizersOnExit : (Z)V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.Runtime :: getRuntime : ()Ljava/lang/Runtime;
+1	.
+2	.
+3	pop
+4	iload_0
+5	invokestatic java.lang.Runtime :: runFinalizersOnExit : (Z)V
+6	.
+7	.
+8	return
+Exception handlers:
+
+
+public static  setErr : (Ljava/io/PrintStream;)V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.System :: checkIO : ()V
+1	.
+2	.
+3	aload_0
+4	invokestatic java.lang.System :: setErr0 : (Ljava/io/PrintStream;)V
+5	.
+6	.
+7	return
+Exception handlers:
+
+
+private static native  setErr0 : (Ljava/io/PrintStream;)V throws null
+Code: 
+null
+
+public static  setIn : (Ljava/io/InputStream;)V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.System :: checkIO : ()V
+1	.
+2	.
+3	aload_0
+4	invokestatic java.lang.System :: setIn0 : (Ljava/io/InputStream;)V
+5	.
+6	.
+7	return
+Exception handlers:
+
+
+private static native  setIn0 : (Ljava/io/InputStream;)V throws null
+Code: 
+null
+
+public static  setOut : (Ljava/io/PrintStream;)V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	invokestatic java.lang.System :: checkIO : ()V
+1	.
+2	.
+3	aload_0
+4	invokestatic java.lang.System :: setOut0 : (Ljava/io/PrintStream;)V
+5	.
+6	.
+7	return
+Exception handlers:
+
+
+private static native  setOut0 : (Ljava/io/PrintStream;)V throws null
+Code: 
+null
+
+public static  setProperties : (Ljava/util/Properties;)V throws null
+Code: 
+Code Attribute:
+maxStack = 1
+maxLocals = 1
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	ifnull 9
+4	.
+5	.
+6	getstatic java.lang.System :: security : java.lang.SecurityManager
+7	.
+8	.
+9	invokevirtual java.lang.SecurityManager :: checkPropertiesAccess : ()V
+10	.
+11	.
+12	aload_0
+13	putstatic java.lang.System :: props : java.util.Properties
+14	.
+15	.
+16	return
+Exception handlers:
+
+
+public static  setProperty : (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; throws null
+Code: 
+Code Attribute:
+maxStack = 5
+maxLocals = 2
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	ifnull 19
+4	.
+5	.
+6	getstatic java.lang.System :: security : java.lang.SecurityManager
+7	.
+8	.
+9	new java.util.PropertyPermission
+10	.
+11	.
+12	dup
+13	aload_0
+14	ldc "write"
+15	.
+16	invokespecial java.util.PropertyPermission :: <init> : (Ljava/lang/String;Ljava/lang/String;)V
+17	.
+18	.
+19	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+20	.
+21	.
+22	getstatic java.lang.System :: props : java.util.Properties
+23	.
+24	.
+25	aload_0
+26	aload_1
+27	invokevirtual java.util.Hashtable :: put : (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+28	.
+29	.
+30	checkcast java.lang.String
+31	.
+32	.
+33	areturn
+Exception handlers:
+
+
+public static synchronized  setSecurityManager : (Ljava/lang/SecurityManager;)V throws null
+Code: 
+Code Attribute:
+maxStack = 4
+maxLocals = 1
+Instructions:
+0	getstatic java.lang.System :: security : java.lang.SecurityManager
+1	.
+2	.
+3	ifnull 18
+4	.
+5	.
+6	getstatic java.lang.System :: security : java.lang.SecurityManager
+7	.
+8	.
+9	new java.lang.RuntimePermission
+10	.
+11	.
+12	dup
+13	ldc "setSecurityManager"
+14	.
+15	invokespecial java.lang.RuntimePermission :: <init> : (Ljava/lang/String;)V
+16	.
+17	.
+18	invokevirtual java.lang.SecurityManager :: checkPermission : (Ljava/security/Permission;)V
+19	.
+20	.
+21	aload_0
+22	putstatic java.lang.System :: security : java.lang.SecurityManager
+23	.
+24	.
+25	iconst_m1
+26	invokestatic sun.net.InetAddressCachePolicy :: setIfNotSet : (I)V
+27	.
+28	.
+29	return
+Exception handlers:
+
+
