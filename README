@@ -1,0 +1,24 @@
+BitBath
+=======
+
+BitBath is a programming game: pit your army of bots against your enemy. Strategy and tactics will crush the weak.
+
+The homepage for bitbath is http://www.hacker.org/bitbath/
+
+Code Layout
+-----------
+
+The core codebase lies in Engine/. This has the basic game logic, the UI's, etc.
+
+In hackjvm/ we find the JVM that executes bot matches in a controlled environment. This is based on the OJVM written by Omar Sabry, and is written entirely in Java.
+
+The directory hackjvm/rt/ hosts the Java classes that form the core library bots are allowed to execute (things like String, HashMap, etc).
+
+The root bitbath/ directory contains files used to build the standard SDK end-users can download from the website.
+
+Dependencies
+------------
+
+To run the 3-D version of Bit
+Bath, you must install jMonkeyEngine, an open-source 3-D engine written in Java. Make sure you get version 2.0, which is available on SVN from Google Code.
+http://www.jmonkeyengine.com/
