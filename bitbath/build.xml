@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<project name="BitBathSDK" basedir="." default="all">
+
+<!--===================================
+properties
+====================================-->
+    <property name="home.dir" value="." />
+    <property name="src.dir" value="SDK/src" />
+    <property name="classes.dir" value="SDK/bin" />
+    <property name="zipfile" value="BitBathSDK.zip" />
+
+    <patternset id="sources">
+        <include name="*.java" />
+    </patternset>
+ 
+<!--===================================
+classpath
+====================================-->
+    <path id="classpath">
+        <pathelement location="${src.dir}" />
+    </path>
+
+<!--===================================
+default target
+====================================-->
+    <target name="all" depends="zip"/>
+
+<!--===================================
+prepare directories
+====================================-->
+    <target name="prepare">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+<!--===================================
+clean up
+====================================-->
+    <target name="clean">
+        <delete dir="${classes.dir}" />
+    </target>
+
+<!--===================================
+compile
+====================================-->
+    <target name="compile" depends="prepare">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" source="1.5" target="1.5">
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+<!--===================================
+zip
+====================================-->
+    <target name="zip" depends="compile">
+        <zip zipfile="${zipfile}">
+            <zipfileset dir="SDK" includes="**/*.java" prefix="BitBath"/>
+            <zipfileset dir="SDK" includes="**/*.class" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/*.jar" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/.project" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/.classpath" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/*.bat" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/*.sh" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/*.txt" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/*.xml" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/*.html" prefix="BitBath" />
+            <zipfileset dir="SDK" includes="**/*.png" prefix="BitBath" />
+	</zip>
+    </target>
+
+</project>
